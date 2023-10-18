@@ -22,38 +22,32 @@ CREATE SEQUENCE public.user_id_seq
     NO CYCLE;
 
 CREATE TABLE public.apartment (
-                                  id int4 NOT NULL DEFAULT nextval('user_id_seq'::regclass),
-                                  number_of_rooms int4 NOT NULL,
-                                  square numeric(10, 2) NULL,
-                                  rent_price numeric(10, 2) NOT NULL,
-                                  floor int4 NULL,
-                                  description text NULL,
-                                  max_users int4 NULL,
-                                  double_bed bool NOT NULL DEFAULT false,
-                                  single_bed bool NOT NULL DEFAULT false,
-                                  CONSTRAINT apartment_pk PRIMARY KEY (id)
+                                  id integer DEFAULT nextval('public.user_id_seq'::regclass) NOT NULL,
+                                  number_of_rooms integer NOT NULL,
+                                  square numeric(10,2),
+                                  rent_price numeric(10,2) NOT NULL,
+                                  floor integer,
+                                  description text,
+                                  number_of_double_beds integer NOT NULL,
+                                  number_of_single_beds integer NOT NULL
 );
 
 CREATE TABLE public."user" (
-                               id serial4 NOT NULL,
-                               "name" text NOT NULL,
-                               surname text NULL,
-                               email text NULL,
+                               id integer NOT NULL,
+                               name text NOT NULL,
+                               surname text,
+                               email text,
                                phone text NOT NULL,
-                               address text NULL,
-                               CONSTRAINT user_pkey PRIMARY KEY (id)
+                               address text
 );
 
 CREATE TABLE public.reservation (
-                                    id serial4 NOT NULL,
-                                    apartment_id int4 NOT NULL,
-                                    user_id int4 NOT NULL,
-                                    start_datetime timestamp NOT NULL,
-                                    end_datetime timestamp NOT NULL,
-                                    number_of_people int4 NOT NULL,
+                                    id integer NOT NULL,
+                                    apartment_id integer NOT NULL,
+                                    user_id integer NOT NULL,
+                                    start_datetime timestamp without time zone NOT NULL,
+                                    end_datetime timestamp without time zone NOT NULL,
+                                    number_of_people integer NOT NULL,
                                     status public.reservation_status NOT NULL,
-                                    price numeric(10, 2) NULL,
-                                    CONSTRAINT reservation_pkey PRIMARY KEY (id),
-                                    CONSTRAINT reservation_apartment_id_fkey FOREIGN KEY (apartment_id) REFERENCES public.apartment(id),
-                                    CONSTRAINT reservation_user_id_fkey FOREIGN KEY (user_id) REFERENCES public."user"(id)
+                                    price numeric(10,2) NOT NULL
 );
