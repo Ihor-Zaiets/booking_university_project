@@ -1,4 +1,4 @@
 package com.university.booking_university_project.modules.user;
 
-public class UserService {
+public interface UserService {
 }
