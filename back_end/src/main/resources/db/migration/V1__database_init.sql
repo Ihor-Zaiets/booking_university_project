@@ -5,24 +5,8 @@ CREATE TYPE public.reservation_status AS ENUM (
     'FINISHED',
     'UNFINISHED');
 
-CREATE SEQUENCE public.reservation_id_seq
-    INCREMENT BY 1
-    MINVALUE 1
-    MAXVALUE 2147483647
-    START 1
-    CACHE 1
-    NO CYCLE;
-
-CREATE SEQUENCE public.user_id_seq
-    INCREMENT BY 1
-    MINVALUE 1
-    MAXVALUE 2147483647
-    START 1
-    CACHE 1
-    NO CYCLE;
-
 CREATE TABLE public.apartment (
-                                  id integer DEFAULT nextval('public.user_id_seq'::regclass) NOT NULL,
+                                  id serial primary key ,
                                   number_of_rooms integer NOT NULL,
                                   square numeric(10,2),
                                   rent_price numeric(10,2) NOT NULL,
@@ -33,7 +17,7 @@ CREATE TABLE public.apartment (
 );
 
 CREATE TABLE public."user" (
-                               id integer NOT NULL,
+                               id serial primary key ,
                                name text NOT NULL,
                                surname text,
                                email text,
@@ -42,7 +26,7 @@ CREATE TABLE public."user" (
 );
 
 CREATE TABLE public.reservation (
-                                    id integer NOT NULL,
+                                    id serial primary key ,
                                     apartment_id integer NOT NULL,
                                     user_id integer NOT NULL,
                                     start_datetime timestamp without time zone NOT NULL,
