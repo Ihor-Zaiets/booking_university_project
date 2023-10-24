@@ -1,15 +1,16 @@
 package com.university.booking_university_project.jpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
 import java.util.Objects;
 
+@Table(schema = "public", name = "apartment")
 @Entity
 public class Apartment {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
