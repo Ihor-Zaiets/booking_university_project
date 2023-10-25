@@ -1,12 +1,13 @@
 package com.university.booking_university_project.modules;
 
+import com.university.booking_university_project.jpa.IdEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
 import java.util.Optional;
 
 public interface BaseService<
-        ENTITY,
+        ENTITY extends IdEntity<ID>,
         ID extends Serializable,
         DAO extends JpaRepository<ENTITY, ID>> {
 

@@ -1,15 +1,15 @@
 package com.university.booking_university_project.modules;
 
+import com.university.booking_university_project.jpa.IdEntity;
+import java.io.Serializable;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
-import java.util.Optional;
-
 @Service
 public abstract class BaseServiceImpl<
-        ENTITY,
+        ENTITY extends IdEntity<ID>,
         ID extends Serializable,
         DAO extends JpaRepository<ENTITY, ID>
         > implements BaseService<ENTITY, ID, DAO>{
