@@ -1,6 +1,5 @@
 package com.university.booking_university_project.jpa.entity;
 
-import com.university.booking_university_project.jpa.IdEntity;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
@@ -8,7 +7,7 @@ import java.util.Objects;
 
 @Table(schema = "public", name = "user")
 @Entity
-public class User implements IdEntity<Integer> {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
