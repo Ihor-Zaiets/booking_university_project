@@ -9,35 +9,33 @@ import org.springframework.stereotype.Service;
 
 @Service
 public abstract class BaseServiceImpl<
-        ENTITY extends IdEntity<ID>,
-        ID extends Serializable,
-        DAO extends JpaRepository<ENTITY, ID>
-        > implements BaseService<ENTITY, ID, DAO>{
+        ENTITY extends IdEntity<ID>, ID extends Serializable, DAO extends JpaRepository<ENTITY, ID>>
+    implements BaseService<ENTITY, ID, DAO> {
 
-    private final DAO dao;
+  private final DAO dao;
 
-    @Autowired
-    protected BaseServiceImpl(DAO dao) {
-        this.dao = dao;
-    }
+  @Autowired
+  protected BaseServiceImpl(DAO dao) {
+    this.dao = dao;
+  }
 
-    @Override
-    public ENTITY save(ENTITY entity) {
-        return this.dao.save(entity);
-    }
+  @Override
+  public ENTITY save(ENTITY entity) {
+    return this.dao.save(entity);
+  }
 
-    @Override
-    public Optional<ENTITY> findById(ID id) {
-        return this.dao.findById(id);
-    }
+  @Override
+  public Optional<ENTITY> findById(ID id) {
+    return this.dao.findById(id);
+  }
 
-    @Override
-    public void delete(ENTITY entity) {
-        this.dao.delete(entity);
-    }
+  @Override
+  public void delete(ENTITY entity) {
+    this.dao.delete(entity);
+  }
 
-    @Override
-    public void deleteById(ID id) {
-        this.dao.deleteById(id);
-    }
+  @Override
+  public void deleteById(ID id) {
+    this.dao.deleteById(id);
+  }
 }

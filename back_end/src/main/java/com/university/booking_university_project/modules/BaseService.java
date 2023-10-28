@@ -7,15 +7,13 @@ import java.io.Serializable;
 import java.util.Optional;
 
 public interface BaseService<
-        ENTITY extends IdEntity<ID>,
-        ID extends Serializable,
-        DAO extends JpaRepository<ENTITY, ID>> {
+    ENTITY extends IdEntity<ID>, ID extends Serializable, DAO extends JpaRepository<ENTITY, ID>> {
 
-    ENTITY save(ENTITY entity);
+  ENTITY save(ENTITY entity);
 
-    Optional<ENTITY> findById(ID id);
+  Optional<ENTITY> findById(ID id);
 
-    void delete(ENTITY entity);
+  void delete(ENTITY entity);
 
-    void deleteById(ID id);
+  void deleteById(ID id);
 }

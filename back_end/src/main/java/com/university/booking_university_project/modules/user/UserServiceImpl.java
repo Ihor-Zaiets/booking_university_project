@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User, Integer, UserRepository> implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User, Integer, UserRepository>
+    implements UserService {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        super(userRepository);
-        this.userRepository = userRepository;
-    }
+  @Autowired
+  public UserServiceImpl(UserRepository userRepository) {
+    super(userRepository);
+    this.userRepository = userRepository;
+  }
 }
