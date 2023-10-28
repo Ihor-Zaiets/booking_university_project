@@ -29,9 +29,9 @@ CREATE TABLE public.reservation (
                                     id serial primary key ,
                                     apartment_id integer NOT NULL,
                                     user_id integer NOT NULL,
-                                    start_datetime timestamp without time zone NOT NULL,
-                                    end_datetime timestamp without time zone NOT NULL,
+                                    start_date timestamp without time zone NOT NULL,
+                                    end_date timestamp without time zone NOT NULL,
                                     number_of_people integer NOT NULL,
-                                    status public.reservation_status NOT NULL,
+                                    reservation_status public.reservation_status NOT NULL,
                                     price numeric(10,2) NOT NULL
 );
