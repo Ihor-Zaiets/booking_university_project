@@ -6,9 +6,9 @@ import java.util.Optional;
 public interface BaseService<T, ID> {
 
   List<T> saveAll(List<T> ts);
-  
+
   void deleteAll(List<T> ts);
-  
+
   void deleteAllByIds(List<ID> ids);
 
   default T save(T t) {
