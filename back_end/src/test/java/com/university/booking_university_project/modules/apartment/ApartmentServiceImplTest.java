@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ApartmentServiceImplTest implements BaseServiceTest<Apartment, Integer, ApartmentServiceImpl> {
+public class ApartmentServiceImplTest
+    implements BaseServiceTest<Apartment, Integer, ApartmentServiceImpl> {
 
   private final ApartmentRepository apartmentRepository;
 
