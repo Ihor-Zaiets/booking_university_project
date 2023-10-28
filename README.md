@@ -47,3 +47,9 @@ right, so every extend will be tested on that functionality automatically.
 
 Okay, so after long frustration and strong misunderstanding of how to deal with it, I decided to delete all code,
 i do not understand, because i see, that i collapsed under all new things that came at once.
+
+That day at the evening:
+
+Finally i finished BaseService tests. I even returned almost half of what i deleted previously. 
+Really step by step strategy helped me with it. Not that, i did not know about it, but somehow this time it just 
+was what it was.
