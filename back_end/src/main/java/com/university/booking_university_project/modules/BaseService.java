@@ -1,19 +1,27 @@
 package com.university.booking_university_project.modules;
 
-import com.university.booking_university_project.jpa.IdEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.io.Serializable;
+import java.util.List;
 import java.util.Optional;
 
-public interface BaseService<
-    ENTITY extends IdEntity<ID>, ID extends Serializable, DAO extends JpaRepository<ENTITY, ID>> {
+public interface BaseService<T, ID> {
 
-  ENTITY save(ENTITY entity);
+  List<T> saveAll(List<T> ts);
+  
+  void deleteAll(List<T> ts);
+  
+  void deleteAllByIds(List<ID> ids);
 
-  Optional<ENTITY> findById(ID id);
+  default T save(T t) {
+    return saveAll(List.of(t)).get(0);
+  }
 
-  void delete(ENTITY entity);
+  Optional<T> findById(ID id);
 
-  void deleteById(ID id);
+  default void delete(T t) {
+    deleteAll(List.of(t));
+  }
+
+  default void deleteById(ID id) {
+    deleteAllByIds(List.of(id));
+  }
 }
