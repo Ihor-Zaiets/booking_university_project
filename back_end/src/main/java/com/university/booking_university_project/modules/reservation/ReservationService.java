@@ -1,4 +1,6 @@
 package com.university.booking_university_project.modules.reservation;
 
-public class ReservationService {
-}
+import com.university.booking_university_project.jpa.entity.Reservation;
+import com.university.booking_university_project.modules.BaseService;
+
+public interface ReservationService extends BaseService<Reservation, Integer> {}

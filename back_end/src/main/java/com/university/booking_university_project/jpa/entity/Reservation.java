@@ -1,5 +1,6 @@
 package com.university.booking_university_project.jpa.entity;
 
+import com.university.booking_university_project.jpa.IEntity;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
@@ -9,11 +10,11 @@ import java.util.Objects;
 
 @Table(schema = "public", name = "reservation")
 @Entity
-public class Reservation {
+public class Reservation implements IEntity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @NonNull
     @ManyToOne
@@ -35,13 +36,14 @@ public class Reservation {
     private Integer numberOfPeople;
 
     @NonNull
+    @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
