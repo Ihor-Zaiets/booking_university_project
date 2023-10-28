@@ -38,3 +38,12 @@ Also, I heard, that it is possible to test interfaces too. Following TDD princip
 without tests" I should test my Service interface, cus it have some methods. 
 But I have absolutely no idea, how interface tests should look like. So now, 
 I spend my time googling, how to test interfaces and generic classes and all.
+
+(28.10.2023)
+
+I copied idea of BaseServiceImpl from my work project, but now, when i want to cover it in tests, it`s driving me crazy.
+I still cannot decide what consider a good\bad code\test practise and how to be sure, that i cover this implementation
+right, so every extend will be tested on that functionality automatically.
+
+Okay, so after long frustration and strong misunderstanding of how to deal with it, I decided to delete all code,
+i do not understand, because i see, that i collapsed under all new things that came at once.
