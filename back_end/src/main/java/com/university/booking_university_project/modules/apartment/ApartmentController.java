@@ -1,4 +1,3 @@
 package com.university.booking_university_project.modules.apartment;
 
-public class ApartmentController {
-}
+public class ApartmentController {}

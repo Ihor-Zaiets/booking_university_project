@@ -1,5 +1,6 @@
 package com.university.booking_university_project.jpa.entity;
 
+import com.university.booking_university_project.jpa.IEntity;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
@@ -7,11 +8,11 @@ import java.util.Objects;
 
 @Table(schema = "public", name = "apartment")
 @Entity
-public class Apartment {
+public class Apartment implements IEntity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @NonNull
     private Integer numberOfRooms;
@@ -31,11 +32,11 @@ public class Apartment {
     @NonNull
     private Integer numberOfSingleBeds;
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
