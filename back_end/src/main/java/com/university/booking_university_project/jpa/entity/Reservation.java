@@ -36,6 +36,9 @@ public class Reservation implements IEntity<Integer> {
     private Integer numberOfPeople;
 
     @NonNull
+    private Integer price;
+
+    @NonNull
     @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
 
@@ -99,6 +102,15 @@ public class Reservation implements IEntity<Integer> {
 
     public void setReservationStatus(@NonNull ReservationStatus reservationStatus) {
         this.reservationStatus = reservationStatus;
+    }
+
+    @NonNull
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(@NonNull Integer price) {
+        this.price = price;
     }
 
     @Override
