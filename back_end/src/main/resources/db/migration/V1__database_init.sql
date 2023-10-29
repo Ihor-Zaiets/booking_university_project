@@ -32,6 +32,6 @@ CREATE TABLE public.reservation (
                                     start_date timestamp without time zone NOT NULL,
                                     end_date timestamp without time zone NOT NULL,
                                     number_of_people integer NOT NULL,
-                                    reservation_status public.reservation_status NOT NULL,
+                                    reservation_status text NOT NULL,
                                     price numeric(10,2) NOT NULL
 );
