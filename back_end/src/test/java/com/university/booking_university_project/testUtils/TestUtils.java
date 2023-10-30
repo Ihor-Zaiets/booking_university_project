@@ -9,7 +9,7 @@ public class TestUtils {
 
   public User createUserEntity(String name, String surname, String email, String phone, String address) {
     User user = new User();
-    user.setFirstName(name);
+    user.setFirstname(name);
     user.setSurname(surname);
     user.setEmail(email);
     user.setPhone(phone);
