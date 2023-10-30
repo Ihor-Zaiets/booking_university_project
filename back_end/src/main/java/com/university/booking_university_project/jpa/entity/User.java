@@ -15,7 +15,7 @@ public class User implements IEntity<Integer> {
     private Integer id;
 
     @NonNull
-    private String name;
+    private String firstName;
 
     private String surname;
 
@@ -35,12 +35,12 @@ public class User implements IEntity<Integer> {
     }
 
     @NonNull
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(@NonNull String name) {
-        this.name = name;
+    public void setFirstName(@NonNull String name) {
+        this.firstName = name;
     }
 
     public String getSurname() {

@@ -20,7 +20,7 @@ CREATE TABLE public.apartment (
 
 CREATE TABLE public."user" (
                                id serial primary key ,
-                               name text NOT NULL,
+                               first_name text NOT NULL,
                                surname text,
                                email text,
                                phone text NOT NULL,
