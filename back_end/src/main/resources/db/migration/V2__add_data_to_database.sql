@@ -54,13 +54,13 @@ INSERT INTO public.apartment (number_of_rooms, square, rent_price, floor, descri
 -- user table data insert
 
 
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('John', 'Doe', 'john.doe@example.com', '+1234567890', '123 Main St');
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Jane', NULL, 'jane.smith@example.com', '+9876543210', '456 Elm St');
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Alice', 'Johnson', NULL, '+1112223333', '789 Oak St');
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Bob', 'Williams', 'bob.williams@example.com', '+4445556666', NULL);
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Eva', 'Davis', 'eva.davis@example.com', '+9998887777', '987 Birch St');
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Michael', 'Brown', NULL, '+7778889999', NULL);
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Sara', 'Lee', 'sara.lee@example.com', '+3332221111', NULL);
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('David', 'Martin', 'david.martin@example.com', '+6667778888', '876 Spruce St');
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Emily', 'Garcia', 'emily.garcia@example.com', '+2223334444', NULL);
-INSERT INTO public."user" ("first_name", surname, email, phone, address) VALUES ('Daniel', 'Rodriguez', NULL, '+1231231234', NULL);
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('John', 'Doe', 'john.doe@example.com', '+1234567890', '123 Main St');
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Jane', NULL, 'jane.smith@example.com', '+9876543210', '456 Elm St');
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Alice', 'Johnson', NULL, '+1112223333', '789 Oak St');
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Bob', 'Williams', 'bob.williams@example.com', '+4445556666', NULL);
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Eva', 'Davis', 'eva.davis@example.com', '+9998887777', '987 Birch St');
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Michael', 'Brown', NULL, '+7778889999', NULL);
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Sara', 'Lee', 'sara.lee@example.com', '+3332221111', NULL);
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('David', 'Martin', 'david.martin@example.com', '+6667778888', '876 Spruce St');
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Emily', 'Garcia', 'emily.garcia@example.com', '+2223334444', NULL);
+INSERT INTO public."user" ("firstname", surname, email, phone, address) VALUES ('Daniel', 'Rodriguez', NULL, '+1231231234', NULL);
