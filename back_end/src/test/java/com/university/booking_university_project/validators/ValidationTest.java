@@ -14,29 +14,58 @@ public class ValidationTest {
     String end = "string ";
     String both = " string ";
     String multiple = "   string   ";
+    String whiteSpaces = "      ";
 
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(beginning));
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(end));
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(both));
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(multiple));
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(beginning), Validation.TRIM_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(end), Validation.TRIM_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(both), Validation.TRIM_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(multiple), Validation.TRIM_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateTrimSpaces(whiteSpaces), Validation.TRIM_VALIDATION_MESSAGE);
+  }
+
+  @Test
+  public void validateStringIsNullOrEmptyThrowIfItIs() {
+    String empty = "";
+
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(empty), Validation.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(null), Validation.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+  }
+
+  @Test
+  public void validateStringIsNullOrEmptyNotThrowIfItIsNot() {
+    String string = "string";
+
+    Assertions.assertDoesNotThrow(() -> Validation.validateStringNullOrEmpty(string));
+  }
+
+  @Test
+  public void everyValidationShouldThrowIfStringContainsTrimSpaces() {
+    String string = " string ";
+
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(string), Validation.TRIM_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserSurname(string), Validation.TRIM_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateEmail(string), Validation.TRIM_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validatePhone(string), Validation.TRIM_VALIDATION_MESSAGE);
   }
 
   @Test
   public void validateTrimSpacesNotThrowIfDoesNotContains() {
     String string = "string";
+    String empty = "";
 
     Assertions.assertDoesNotThrow(() -> Validation.validateTrimSpaces(string));
+    Assertions.assertDoesNotThrow(() -> Validation.validateTrimSpaces(empty));
   }
 
   @Test
-  public void validateUserFirstNameThrowIfUserFirstnameIsNullOrBlank() {
+  public void validateUserFirstNameThrowIfUserFirstnameIsNullOrEmpty() {
     String userFirstName = "";
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(userFirstName));
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(null));
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(userFirstName), Validation.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(null), Validation.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   @Test
-  public void validateUserFirstNameNotThrowIfUserFirstnameIsNotNullOrBlank() {
+  public void validateUserFirstNameNotThrowIfUserFirstnameIsNotNullOrEmpty() {
     String userFirstName = "name";
     Assertions.assertDoesNotThrow(() -> Validation.validateUserFirstName(userFirstName));
   }
@@ -44,18 +73,18 @@ public class ValidationTest {
   @Test
   public void validateUserFirstnameThrowIfUserFirstNameContainsOnlyNumbers() {
     String userFirstName = "34598632";
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(userFirstName));
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(userFirstName), Validation.USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN);
   }
 
   @Test
-  public void validateUserSurnameThrowIfUserSurnameNullOrBlank() {
+  public void validateUserSurnameThrowIfUserSurnameNullOrEmpty() {
     String userSurname = "";
     Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserSurname(userSurname));
     Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserSurname(null));
   }
 
   @Test
-  public void validateUserSurnameNotThrowIfUserSurnameIsNotNullOrBlank() {
+  public void validateUserSurnameNotThrowIfUserSurnameIsNotNullOrEmpty() {
     String userSurname = "surname";
     Assertions.assertDoesNotThrow(() -> Validation.validateUserSurname(userSurname));
   }
