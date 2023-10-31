@@ -35,5 +35,7 @@ CREATE TABLE public.reservation (
                                     end_date timestamp without time zone NOT NULL,
                                     number_of_people integer NOT NULL,
                                     reservation_status public.reservation_status NOT NULL,
-                                    price numeric(10,2) NOT NULL
+                                    price numeric(10,2) NOT NULL,
+                                    FOREIGN KEY (apartment_id) REFERENCES public.apartment (id),
+                                    FOREIGN KEY (user_id) REFERENCES public."user" (id)
 );
