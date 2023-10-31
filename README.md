@@ -64,3 +64,16 @@ to text.
 Then, i\`m not sure, if i wrote tests good enough for reservation crud. Should\`ve i mocked User and Apartment or is it ok.
 
 Anyway, i finally finished first step and created CRUD for all basic Entities.
+
+(31.10.2023)
+
+So everything was good. I created Validation class. Tests + validations all is good as could be, but then I found out, 
+that created by me methods save\delete are public. That is not something i wanted. They should private or protected. 
+It was a moment, when i learned a minus of interfaces. All their methods must be public. After that i started writing
+implementation through abstract class BaseServiceImpl. An idk why, but this time everything was just working. Truly
+I was overwhelmed by many new things in the beginning. So everything was good. Tests, then methods in class. 
+
+And there is now new problem. I cannot test protected or private methods. I started googling. Turned out, i shouldn\`t
+test private methods. If i should, then, i wrote them wrong. At first I had kind of good practises collision 
+**TDD** vs **private methods**. But know i think, i kind of get it. Public API vs private methods. Also found new topic
+to google. JaCoCo.
