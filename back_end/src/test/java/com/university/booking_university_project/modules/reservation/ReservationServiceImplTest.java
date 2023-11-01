@@ -4,7 +4,7 @@ import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.jpa.entity.Reservation;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
-import com.university.booking_university_project.modules.baseService.BaseServiceTest;
+import com.university.booking_university_project.modules.EntityService;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
 import jakarta.persistence.EntityManager;
 import java.sql.Timestamp;
@@ -15,8 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ReservationServiceImplTest
-    implements BaseServiceTest<Reservation, Integer, ReservationServiceImpl> {
+public class ReservationServiceImplTest {
 
   private final ReservationRepository reservationRepository;
 
@@ -34,29 +33,6 @@ public class ReservationServiceImplTest
       EntityManager entityManager) {
     this.reservationRepository = reservationRepository;
     this.entityManager = entityManager;
-  }
-
-  @Override
-  public ReservationServiceImpl createService() {
-    return new ReservationServiceImpl(reservationRepository);
-  }
-
-  @Override
-  public Reservation createEntity() {
-    Apartment apartment = new Apartment();
-    User user = new User();
-    apartment.setId(0);
-    user.setId(0);
-
-    Reservation reservation = new Reservation();
-    reservation.setApartment(apartment);
-    reservation.setUser(user);
-    reservation.setStart_date(TEST_START_DATE);
-    reservation.setEnd_date(TEST_END_DATE);
-    reservation.setNumberOfPeople(TEST_NUMBER_OF_PEOPLE);
-    reservation.setReservationStatus(TEST_RESERVATION_STATUS);
-    reservation.setPrice(TEST_RESERVATION_PRICE);
-    return reservation;
   }
 
   @BeforeEach
