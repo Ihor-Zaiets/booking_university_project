@@ -2,89 +2,41 @@ package com.university.booking_university_project.jpa.entity;
 
 import com.university.booking_university_project.jpa.IEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 import java.util.Objects;
 
+@Getter
+@Setter
 @Table(schema = "public", name = "user")
 @Entity
 public class User implements IEntity<Integer> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @NonNull
-    private String firstname;
+  @NonNull private String firstname;
 
-    private String surname;
+  private String surname;
 
-    private String email;
+  private String email;
 
-    @NonNull
-    private String phone;
+  @NonNull private String phone;
 
-    private String address;
+  private String address;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof User user)) return false;
+    return Objects.equals(getId(), user.getId());
+  }
 
-    public Integer getId() {
-        return id;
-    }
-
-    @NonNull
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(@NonNull String name) {
-        this.firstname = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @NonNull
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(@NonNull String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-        return Objects.equals(getId(), user.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
 }
