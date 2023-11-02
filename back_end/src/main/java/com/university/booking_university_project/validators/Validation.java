@@ -4,16 +4,18 @@ import com.university.booking_university_project.exception.ValidationException;
 
 public class Validation {
 
-  public final static String ONLY_NUMBERS_REGEX = "\\d+";
-  public final static String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-  public final static String PHONE_REGEX = "^(\\+\\d{1,3}\\s*)?\\d{9}$";
+  public static final String ONLY_NUMBERS_REGEX = "\\d+";
+  public static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+  public static final String PHONE_REGEX = "^(\\+\\d{1,3}\\s*)?\\d{9}$";
 
-  public final static String TRIM_VALIDATION_MESSAGE = "String contains white spaces at beginning or end";
+  public static final String TRIM_VALIDATION_MESSAGE = "String contains white spaces at beginning or end";
   public static final String USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN = "User firstname bad pattern";
   public static final String STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE = "String is null or empty";
-  public final static String USER_SURNAME_VALIDATION_MESSAGE = "User surname is null or empty";
-  public final static String EMAIL_VALIDATION_MESSAGE = "Email does not match pattern";
-  public final static String PHONE_NUMBER_VALIDATION_MESSAGE = "Phone number does not match pattern";
+  public static final String USER_SURNAME_VALIDATION_MESSAGE = "User surname is null or empty";
+  public static final String EMAIL_VALIDATION_MESSAGE = "Email does not match pattern";
+  public static final String PHONE_NUMBER_VALIDATION_MESSAGE = "Phone number does not match pattern";
+  public static final String EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE = "Email already exists";
+  public static final String PHONE_ALREADY_EXISTS_VALIDATION_MESSAGE = "Phone number already exists";
 
   /**
    * @param string string to check on trim spaces, if null then ignore.
