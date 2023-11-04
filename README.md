@@ -64,3 +64,18 @@ to text.
 Then, i\`m not sure, if i wrote tests good enough for reservation crud. Should\`ve i mocked User and Apartment or is it ok.
 
 Anyway, i finally finished first step and created CRUD for all basic Entities.
+
+(04.11.2023)
+
+In the first time i successfully mocked all dependencies end write an isolated tests, although, it happened in my work
+project, not here. I could have tried to implement this here, but I`m really tired of re-writing current project.
+My enthusiasm is not infinite and i already want to finish this project ASAP. So i decided to decline all my refactors
+and keep save and delete methods public. 
+
+I`m currently trying to implement user authorization and from what i see, it`s contained in spring security. I found just 
+a beautiful tutorial, but when i tried to extend WebSecurityConfigurerAdapter from spring security module, there was no
+such class at all. Luckily, my work project already had all that implemented, so I checked it. the problem was in versions
+of spring security. In my project it was 5.4.5. I installed 6.0.14. I also remembered version numbering convention X.Y.Z
+Where X is when some backward incompatible changes is made. Like deleting some of the tutorial classes i needed. I decided
+to not go for another tutorial and just configure it on old version, since, i just need to implements that functionality 
+for my university project. 
