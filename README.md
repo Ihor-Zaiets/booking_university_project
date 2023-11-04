@@ -79,3 +79,13 @@ of spring security. In my project it was 5.4.5. I installed 6.0.14. I also remem
 Where X is when some backward incompatible changes is made. Like deleting some of the tutorial classes i needed. I decided
 to not go for another tutorial and just configure it on old version, since, i just need to implements that functionality 
 for my university project. 
+
+Later that day
+
+Okay, now i have problems with dependency versions. I decided to find another tutorial, but again, there was 
+used WebSecurityConfigurerAdapter. As i suspect, if in 5.4.5 version of spring security this class looks completely ok,
+but in spring-security-config 5.7.11 this class annotated as deprecated and then, as we know in 6.Y.Z this class is no 
+longer present. Problem is, when using not latest versions, there may be conflicts and i already met few. So i decided 
+to change spring-boot-parent version so it would completely download me whole project of desired version. I`ve got another
+error. Annotations on me Apartment entity does not working, because jakarta package is missing. I guess, i need to find 
+some tutorial on 6.Y.Z spring security package.
