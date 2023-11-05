@@ -18,6 +18,10 @@ public class User implements IEntity<Integer> {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+  private String login;
+
+  private String password;
+
   @NonNull private String firstname;
 
   private String surname;

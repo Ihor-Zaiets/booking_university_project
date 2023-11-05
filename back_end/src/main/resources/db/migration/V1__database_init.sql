@@ -20,11 +20,14 @@ CREATE TABLE public.apartment (
 
 CREATE TABLE public."user" (
                                id serial primary key ,
+                               login text,
+                               password text,
                                firstname text NOT NULL,
                                surname text,
                                email text,
                                phone text NOT NULL,
-                               address text
+                               address text,
+                               CONSTRAINT user__login_uk UNIQUE (login)
 );
 
 CREATE TABLE public.reservation (
