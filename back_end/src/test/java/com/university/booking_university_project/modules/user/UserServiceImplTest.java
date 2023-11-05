@@ -1,15 +1,14 @@
 package com.university.booking_university_project.modules.user;
 
+import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.baseService.BaseServiceTest;
 import com.university.booking_university_project.modules.user.dto.UserCreationDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.testUtils.TestUtils;
-import com.university.booking_university_project.validators.Validation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -70,7 +69,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
     Assertions.assertThrows(
         ValidationException.class,
         () -> userServiceImpl.createUser(userCreationDTO),
-        Validation.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE);
+        ExceptionMessage.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE);
   }
 
   @Test
@@ -115,6 +114,6 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
     Assertions.assertThrows(
             ValidationException.class,
             () -> userServiceImpl.createUser(userCreationDTO),
-            Validation.PHONE_ALREADY_EXISTS_VALIDATION_MESSAGE);
+            ExceptionMessage.PHONE_ALREADY_EXISTS_VALIDATION_MESSAGE);
   }
 }
