@@ -42,3 +42,18 @@ CREATE TABLE public.reservation (
                                     FOREIGN KEY (apartment_id) REFERENCES public.apartment (id),
                                     FOREIGN KEY (user_id) REFERENCES public."user" (id)
 );
+
+CREATE TABLE public."role" (
+                               id serial NOT NULL,
+                               "name" text NOT NULL,
+                               description varchar NULL,
+                               CONSTRAINT role_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE public.user_role (
+                                  user_id int NOT NULL,
+                                  role_id int NOT NULL,
+                                  CONSTRAINT user_role_un UNIQUE (user_id,role_id),
+                                  CONSTRAINT user_role_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE,
+                                  CONSTRAINT user_role_fk_1 FOREIGN KEY (role_id) REFERENCES public."role"(id) ON DELETE CASCADE
+);

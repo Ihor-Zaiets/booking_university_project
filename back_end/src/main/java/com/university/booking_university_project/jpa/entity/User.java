@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.lang.NonNull;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -22,6 +23,14 @@ public class User implements IEntity<Integer> {
   private String login;
 
   private String password;
+
+  @ManyToMany
+  @JoinTable(
+          name = "user_role",
+          joinColumns = @JoinColumn(name = "user_id"),
+          inverseJoinColumns = @JoinColumn(name = "role_id")
+  )
+  private List<Role> roles;
 
   @NonNull private String firstname;
 
