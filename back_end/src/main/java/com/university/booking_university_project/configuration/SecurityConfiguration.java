@@ -14,7 +14,12 @@ public class SecurityConfiguration {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-    httpSecurity.csrf().disable().authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated()).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
+    httpSecurity.csrf().disable().authorizeHttpRequests((authorize) ->
+            authorize
+                    .requestMatchers("/auth/testString").authenticated()
+                    .anyRequest().permitAll())
+//            .httpBasic(Customizer.withDefaults()) //  turn on for postman testing
+            .formLogin(Customizer.withDefaults());
 
     return httpSecurity.build();
   }
