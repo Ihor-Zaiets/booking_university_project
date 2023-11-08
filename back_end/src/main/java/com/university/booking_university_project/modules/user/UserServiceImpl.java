@@ -2,6 +2,7 @@ package com.university.booking_university_project.modules.user;
 
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.user.dto.UserCreationDTO;
+import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,18 @@ public class UserServiceImpl implements UserService {
     return userRepository.findById(id);
   }
 
-  public void createUser(UserCreationDTO userCreationDTO) {
+  @Override
+  public List<UserDTO> createUsers(List<UserCreationDTO> userCreationDTOList) {
+    return null;
+  }
 
+  @Override
+  public List<UserDTO> findAllDTO() {
+    return null;
+  }
+
+  @Override
+  public List<UserDTO> editUsers(UserCreationDTO userCreationDTO) {
+    return null;
   }
 }
