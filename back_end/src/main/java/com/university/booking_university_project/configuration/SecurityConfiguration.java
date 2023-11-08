@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.List;
+
 @Configuration
 public class SecurityConfiguration {
 
@@ -16,10 +18,13 @@ public class SecurityConfiguration {
 
     httpSecurity.csrf().disable().authorizeHttpRequests((authorize) ->
             authorize
-                    .requestMatchers("/auth/testString").authenticated()
+//                    .requestMatchers("/api/auth/testString").hasAnyAuthority("ADMIN") //example
                     .anyRequest().permitAll())
 //            .httpBasic(Customizer.withDefaults()) //  turn on for postman testing
-            .formLogin(Customizer.withDefaults());
+            .formLogin(formConfigurer ->
+                    formConfigurer
+                            .defaultSuccessUrl("/start")
+                            .permitAll());
 
     return httpSecurity.build();
   }
