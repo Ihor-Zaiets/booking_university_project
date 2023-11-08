@@ -1,6 +1,9 @@
 package com.university.booking_university_project.modules.role;
 
 import com.university.booking_university_project.jpa.entity.Role;
+import com.university.booking_university_project.modules.role.dto.RoleCreationDTO;
+import com.university.booking_university_project.modules.role.dto.RoleDTO;
+import com.university.booking_university_project.modules.role.dto.UserRoleDTO;
 import com.university.booking_university_project.modules.role.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +39,30 @@ public class RoleServiceImpl implements RoleService {
   @Override
   public Optional<Role> findById(Integer id) {
     return roleRepository.findById(id);
+  }
+
+  @Override
+  public List<RoleDTO> createRoles(RoleCreationDTO roleCreationDTO) {
+    return null;
+  }
+
+  @Override
+  public List<RoleDTO> findAllRolesDTO() {
+    return null;
+  }
+
+  @Override
+  public List<RoleDTO> editRoles(RoleCreationDTO roleCreationDTO) {
+    return null;
+  }
+
+  @Override
+  public void grantRoles(List<UserRoleDTO> userRoleDTOList) {
+
+  }
+
+  @Override
+  public void revokeRoles(List<UserRoleDTO> userRoleDTOList) {
+
   }
 }
