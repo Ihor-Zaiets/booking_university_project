@@ -1,6 +1,8 @@
 package com.university.booking_university_project.modules.reservation;
 
 import com.university.booking_university_project.jpa.entity.Reservation;
+import com.university.booking_university_project.modules.reservation.dto.ReservationCreationDTO;
+import com.university.booking_university_project.modules.reservation.dto.ReservationDTO;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,20 @@ public class ReservationServiceImpl implements ReservationService {
   @Override
   public Optional<Reservation> findById(Integer id) {
     return reservationRepository.findById(id);
+  }
+
+  @Override
+  public List<ReservationDTO> createReservations(List<ReservationCreationDTO> reservationCreationDTOList) {
+    return null;
+  }
+
+  @Override
+  public List<ReservationDTO> findAllDTO() {
+    return null;
+  }
+
+  @Override
+  public List<ReservationDTO> editReservations(ReservationCreationDTO reservationCreationDTO) {
+    return null;
   }
 }
