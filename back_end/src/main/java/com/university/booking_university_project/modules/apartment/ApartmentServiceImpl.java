@@ -1,6 +1,8 @@
 package com.university.booking_university_project.modules.apartment;
 
 import com.university.booking_university_project.jpa.entity.Apartment;
+import com.university.booking_university_project.modules.apartment.dto.ApartmentCreationDTO;
+import com.university.booking_university_project.modules.apartment.dto.ApartmentDTO;
 import com.university.booking_university_project.modules.apartment.repository.ApartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,20 @@ public class ApartmentServiceImpl implements ApartmentService {
   @Override
   public Optional<Apartment> findById(Integer id) {
     return apartmentRepository.findById(id);
+  }
+
+  @Override
+  public List<ApartmentDTO> createApartments(List<ApartmentCreationDTO> apartmentCreationDTOList) {
+    return null;
+  }
+
+  @Override
+  public List<ApartmentDTO> findAllDTO() {
+    return null;
+  }
+
+  @Override
+  public List<ApartmentDTO> editApartments(ApartmentCreationDTO apartmentCreationDTO) {
+    return null;
   }
 }
