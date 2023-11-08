@@ -7,6 +7,11 @@ import org.springframework.lang.NonNull;
 @Getter
 @Setter
 public class UserCreationDTO {
+
+  private String login;
+
+  private String password;
+
   @NonNull private String firstname;
 
   private String surname;
