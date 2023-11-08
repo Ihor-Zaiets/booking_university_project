@@ -71,6 +71,6 @@ INSERT INTO public.role VALUES (2, 'USER', NULL);
 
 -- user_role data insert
 
-INSERT INTO public.user_role VALUES (1, 1);
-INSERT INTO public.user_role VALUES (2, 2);
-INSERT INTO public.user_role VALUES (3, 2);
+INSERT INTO public.user_role(user_id, role_id) VALUES (1, 1);
+INSERT INTO public.user_role(user_id, role_id) VALUES (2, 2);
+INSERT INTO public.user_role(user_id, role_id) VALUES (3, 2);

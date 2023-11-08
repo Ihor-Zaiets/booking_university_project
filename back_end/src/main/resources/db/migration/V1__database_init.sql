@@ -8,7 +8,7 @@ CREATE TYPE public.reservation_status AS ENUM (
 CREATE CAST (character varying AS public.reservation_status) WITH INOUT AS IMPLICIT;
 
 CREATE TABLE public.apartment (
-                                  id serial primary key ,
+                                  id serial primary key,
                                   number_of_rooms integer NOT NULL,
                                   square numeric(10,2),
                                   rent_price numeric(10,2) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE public.apartment (
 );
 
 CREATE TABLE public."user" (
-                               id serial primary key ,
+                               id serial primary key,
                                login text,
                                password text,
                                firstname text NOT NULL,
@@ -44,13 +44,13 @@ CREATE TABLE public.reservation (
 );
 
 CREATE TABLE public."role" (
-                               id serial NOT NULL,
+                               id serial primary key,
                                "name" text NOT NULL,
-                               description varchar NULL,
-                               CONSTRAINT role_pk PRIMARY KEY (id)
+                               description varchar NULL
 );
 
 CREATE TABLE public.user_role (
+                                  id serial primary key,
                                   user_id int NOT NULL,
                                   role_id int NOT NULL,
                                   CONSTRAINT user_role_un UNIQUE (user_id,role_id),
