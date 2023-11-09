@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserServiceImpl> {
 
@@ -68,7 +70,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
     Assertions.assertThrows(
         ValidationException.class,
-        () -> userServiceImpl.createUser(userCreationDTO),
+        () -> userServiceImpl.createUsers(List.of(userCreationDTO)),
         ExceptionMessage.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE);
   }
 
@@ -90,7 +92,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
     userCreationDTO.setPhone(TEST_USER_PHONE_V2);
     userCreationDTO.setAddress(TEST_USER_ADDRESS + variableVersion);
 
-    Assertions.assertDoesNotThrow(() -> userServiceImpl.createUser(userCreationDTO));
+    Assertions.assertDoesNotThrow(() -> userServiceImpl.createUsers(List.of(userCreationDTO)));
   }
 
   @Test
@@ -113,7 +115,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
     Assertions.assertThrows(
             ValidationException.class,
-            () -> userServiceImpl.createUser(userCreationDTO),
+            () -> userServiceImpl.createUsers(List.of(userCreationDTO)),
             ExceptionMessage.PHONE_ALREADY_EXISTS_VALIDATION_MESSAGE);
   }
 }
