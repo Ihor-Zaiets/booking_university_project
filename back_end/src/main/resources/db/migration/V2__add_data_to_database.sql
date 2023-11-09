@@ -53,16 +53,16 @@ INSERT INTO public.apartment (number_of_rooms, square, rent_price, floor, descri
 
 -- user table data insert
 
-INSERT INTO public."user" VALUES (1, 'admin', '$2a$12$AhQoDd2zsJOxI5Ub4gZnFeuDTQHsNIORIteHYn0yeYzFSugxsdsHu', 'admin', '', 'admin@example.com', '+1234567890', '');
-INSERT INTO public."user" VALUES (2, 'user1', '$2a$12$5hmdp5b1hYMbPiodPqQmbunaAs91AM1jqSG2iIcJw7OOUYkJzhRKm', 'Jane', NULL, 'jane.smith@example.com', '+9876543210', '456 Elm St');
-INSERT INTO public."user" VALUES (3, 'user2', '$2a$12$T/sbH4Kff6V6t6z/Ww2Tnea8r6EkO0QeNvBnubPOXXYUntYNQYiBi', 'Alice', 'Johnson', NULL, '+1112223333', '789 Oak St');
-INSERT INTO public."user" VALUES (4, NULL, NULL, 'Bob', 'Williams', 'bob.williams@example.com', '+4445556666', NULL);
-INSERT INTO public."user" VALUES (5, NULL, NULL, 'Eva', 'Davis', 'eva.davis@example.com', '+9998887777', '987 Birch St');
-INSERT INTO public."user" VALUES (6, NULL, NULL, 'Michael', 'Brown', NULL, '+7778889999', NULL);
-INSERT INTO public."user" VALUES (7, NULL, NULL, 'Sara', 'Lee', 'sara.lee@example.com', '+3332221111', NULL);
-INSERT INTO public."user" VALUES (8, NULL, NULL, 'David', 'Martin', 'david.martin@example.com', '+6667778888', '876 Spruce St');
-INSERT INTO public."user" VALUES (9, NULL, NULL, 'Emily', 'Garcia', 'emily.garcia@example.com', '+2223334444', NULL);
-INSERT INTO public."user" VALUES (10, NULL, NULL, 'Daniel', 'Rodriguez', NULL, '+1231231234', NULL);
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES ('admin', '$2a$12$AhQoDd2zsJOxI5Ub4gZnFeuDTQHsNIORIteHYn0yeYzFSugxsdsHu', 'admin', '', 'admin@example.com', '+1234567890', '');
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES ('user1', '$2a$12$5hmdp5b1hYMbPiodPqQmbunaAs91AM1jqSG2iIcJw7OOUYkJzhRKm', 'Jane', NULL, 'jane.smith@example.com', '+9876543210', '456 Elm St');
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES ('user2', '$2a$12$T/sbH4Kff6V6t6z/Ww2Tnea8r6EkO0QeNvBnubPOXXYUntYNQYiBi', 'Alice', 'Johnson', NULL, '+1112223333', '789 Oak St');
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES (NULL, NULL, 'Bob', 'Williams', 'bob.williams@example.com', '+4445556666', NULL);
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES (NULL, NULL, 'Eva', 'Davis', 'eva.davis@example.com', '+9998887777', '987 Birch St');
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES (NULL, NULL, 'Michael', 'Brown', NULL, '+7778889999', NULL);
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES (NULL, NULL, 'Sara', 'Lee', 'sara.lee@example.com', '+3332221111', NULL);
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES (NULL, NULL, 'David', 'Martin', 'david.martin@example.com', '+6667778888', '876 Spruce St');
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES (NULL, NULL, 'Emily', 'Garcia', 'emily.garcia@example.com', '+2223334444', NULL);
+INSERT INTO public."user"(login, password, firstname, surname, email, phone, address) VALUES (NULL, NULL, 'Daniel', 'Rodriguez', NULL, '+1231231234', NULL);
 
 -- role data insert
 
