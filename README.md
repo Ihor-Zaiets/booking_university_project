@@ -42,50 +42,67 @@ I spend my time googling, how to test interfaces and generic classes and all.
 
 (28.10.2023)
 
-I copied idea of BaseServiceImpl from my work project, but now, when i want to cover it in tests, it`s driving me crazy.
-I still cannot decide what consider a good\bad code\test practise and how to be sure, that i cover this implementation
+I copied idea of BaseServiceImpl from my work project, but now, when I want to cover it in tests, it's driving me crazy.
+I still cannot decide what consider a good/bad code/test practise and how to be sure, that I cover this implementation
 right, so every extend will be tested on that functionality automatically.
 
 Okay, so after long frustration and strong misunderstanding of how to deal with it, I decided to delete all code,
-i do not understand, because i see, that i collapsed under all new things that came at once.
+I do not understand, because I see, that I collapsed under all new things that came at once.
 
-That day at the evening:
+That day in the evening:
 
-Finally i finished BaseService tests. I even returned almost half of what i deleted previously.
-Really step by step strategy helped me with it. Not that, i did not know about it, but somehow this time it just
+Finally, I finished BaseService tests. I even returned almost half of what I deleted previously.
+Really step by step strategy helped me with it. Not that, I did not know about it, but somehow this time it just
 was what it was.
 
 (29.10.2023)
 
-I knew i would have problems with Reservation, but did not except that much. For whatever reason, PostgreSQL just will
-not cast text to reservation_status, so to enable Reservation saving, i must to migrate data type from reservation_status
+I knew I would have problems with Reservation, but did not except that much. For whatever reason, PostgresSQL just will
+not cast text to reservation_status, so to enable Reservation saving, I must migrate data type from reservation_status
 to text.
 
-Then, i\`m not sure, if i wrote tests good enough for reservation crud. Should\`ve i mocked User and Apartment or is it ok.
+Then, I'm not sure, if I wrote tests good enough for reservation crud. Should've I mocked User and Apartment or is it ok.
 
-Anyway, i finally finished first step and created CRUD for all basic Entities.
+Anyway, I finally finished first step and created CRUD for all basic Entities.
 
 (04.11.2023)
 
-In the first time i successfully mocked all dependencies end write an isolated tests, although, it happened in my work
-project, not here. I could have tried to implement this here, but I`m really tired of re-writing current project.
-My enthusiasm is not infinite and i already want to finish this project ASAP. So i decided to decline all my refactors
+In the first time I successfully mocked all dependencies end write an isolated tests, although, it happened in my work
+project, not here. I could have tried to implement this here, but I'm exhausted of re-writing current project.
+My enthusiasm is not infinite and I already want to finish this project ASAP. So I decided to decline all my refactors
 and keep save and delete methods public. 
 
-I`m currently trying to implement user authorization and from what i see, it`s contained in spring security. I found just 
-a beautiful tutorial, but when i tried to extend WebSecurityConfigurerAdapter from spring security module, there was no
+I'm currently trying to implement user authorization and from what I see, it's contained in spring security. I found just 
+a beautiful tutorial, but when I tried to extend WebSecurityConfigurerAdapter from spring security module, there was no
 such class at all. Luckily, my work project already had all that implemented, so I checked it. the problem was in versions
 of spring security. In my project it was 5.4.5. I installed 6.0.14. I also remembered version numbering convention X.Y.Z
-Where X is when some backward incompatible changes is made. Like deleting some of the tutorial classes i needed. I decided
-to not go for another tutorial and just configure it on old version, since, i just need to implements that functionality 
+Where X is when some backward incompatible changes is made. Like deleting some of the tutorial classes I needed. I decided
+to not go for another tutorial and just configure it on old version, since, I just need to implement that functionality 
 for my university project. 
 
 Later that day
 
-Okay, now i have problems with dependency versions. I decided to find another tutorial, but again, there was 
-used WebSecurityConfigurerAdapter. As i suspect, if in 5.4.5 version of spring security this class looks completely ok,
+Okay, now I have problems with dependency versions. I decided to find another tutorial, but again, there was 
+used WebSecurityConfigurerAdapter. As I suspect, if in 5.4.5 version of spring security this class looks completely ok,
 but in spring-security-config 5.7.11 this class annotated as deprecated and then, as we know in 6.Y.Z this class is no 
-longer present. Problem is, when using not latest versions, there may be conflicts and i already met few. So i decided 
-to change spring-boot-parent version so it would completely download me whole project of desired version. I`ve got another
-error. Annotations on me Apartment entity does not working, because jakarta package is missing. I guess, i need to find 
+longer present. Problem is, when using not latest versions, there may be conflicts and I already met few. So I decided 
+to change spring-boot-parent version, so it would completely download me whole project of desired version. I've got another
+error. Annotations on me Apartment entity does not work, because jakarta package is missing. I guess, I need to find 
 some tutorial on 6.Y.Z spring security package.
+
+(09.11.2023)
+
+I already created all controller and endpoints, dtos and services methods. Today I started implementing services methods
+and wanted to use DozerBeanMapper to map dto with entity and vise-versa. And I met a lot of technical difficulties.
+map method is not static, so I need object of this class. If I need object, I need inject dependency. I tried to use
+@Autowired but got exception "no bean of ... found". That was a moment when I found out about @Configuration and @Bean 
+definition. So now I created mu configuration class and defined Bean of DozerBeanMapper. Now Autowired does not throw me 
+exception. 
+
+And gosh, constructor DI is so annoying. I like Field DI much more. It is said, that it's not recommended, so I decided
+to try a good practise, but in work I didn't meet any problem with field injection, but I meet a lot of problems with
+constructor DIs.
+
+Also, I think I'm doing this project at worst time. Even DozerMapper has new 6.X.Y version and a lot of things have changes.
+no more available new DozerBeanMapper() constructor. 
+Now I have to do something like that (DozerBeanMapper) DozerBeanMapperBuilder.buildDefault();
