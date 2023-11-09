@@ -6,7 +6,7 @@ import org.springframework.lang.NonNull;
 
 @Getter
 @Setter
-public class UserCreationDTO {
+public class UserUpdateDTO {
 
   private Integer id;
 

@@ -4,7 +4,8 @@ import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
-import com.university.booking_university_project.modules.user.dto.UserCreationDTO;
+import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
+import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.validators.Validation;
@@ -50,9 +51,9 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public List<UserDTO> createUsers(List<UserCreationDTO> userCreationDTOList) {
+  public List<UserDTO> createUsers(List<UserCreateDTO> userCreationDTOList) {
     List<User> users = new ArrayList<>();
-    for (UserCreationDTO userCreationDTO : userCreationDTOList) {
+    for (UserUpdateDTO userCreationDTO : userCreationDTOList) {
       validateUser(userCreationDTO);
       users.add(mapper.map(userCreationDTO, User.class));
     }
@@ -66,22 +67,22 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public List<UserDTO> editUsers(List<UserCreationDTO> userCreationDTOList) {
+  public List<UserDTO> editUsers(List<UserUpdateDTO> userUpdateDTOList) {
     List<User> users = new ArrayList<>();
-    for (UserCreationDTO userCreationDTO : userCreationDTOList) {
-      validateUser(userCreationDTO);
-      users.add(mapper.map(userCreationDTO, User.class));
+    for (UserUpdateDTO userUpdateDTO : userUpdateDTOList) {
+      validateUser(userUpdateDTO);
+      users.add(mapper.map(userUpdateDTO, User.class));
     }
     List<User> savedUsers = userRepository.saveAll(users);
     return savedUsers.stream().map(user -> mapper.map(user, UserDTO.class)).toList();
   }
 
-  private void validateUser(UserCreationDTO userCreationDTO) {
-    Validation.validateUserFirstName(userCreationDTO.getFirstname());
-    Validation.validateUserSurname(userCreationDTO.getSurname());
-    Validation.validateEmail(userCreationDTO.getEmail());
-    validateEmail(userCreationDTO.getEmail());
-    Validation.validatePhone(userCreationDTO.getPhone());
+  private void validateUser(UserUpdateDTO userUpdateDTO) {
+    Validation.validateUserFirstName(userUpdateDTO.getFirstname());
+    Validation.validateUserSurname(userUpdateDTO.getSurname());
+    Validation.validateEmail(userUpdateDTO.getEmail());
+    validateEmail(userUpdateDTO.getEmail());
+    Validation.validatePhone(userUpdateDTO.getPhone());
   }
 
   private void validateEmail(String email) {

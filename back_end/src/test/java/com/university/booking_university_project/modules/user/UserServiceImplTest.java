@@ -5,7 +5,8 @@ import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.baseService.BaseServiceTest;
-import com.university.booking_university_project.modules.user.dto.UserCreationDTO;
+import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
+import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.testUtils.TestUtils;
 import java.util.List;
@@ -64,7 +65,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
             TEST_USER_PHONE,
             TEST_USER_ADDRESS));
 
-    UserCreationDTO userCreationDTO = new UserCreationDTO();
+    UserCreateDTO userCreationDTO = new UserCreateDTO();
     userCreationDTO.setFirstname(TEST_USER_NAME + variableVersion);
     userCreationDTO.setSurname(TEST_USER_SURNAME + variableVersion);
     userCreationDTO.setEmail(TEST_USER_EMAIL);
@@ -88,7 +89,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
             TEST_USER_PHONE,
             TEST_USER_ADDRESS));
 
-    UserCreationDTO userCreationDTO = new UserCreationDTO();
+    UserCreateDTO userCreationDTO = new UserCreateDTO();
     userCreationDTO.setFirstname(TEST_USER_NAME + variableVersion);
     userCreationDTO.setSurname(TEST_USER_SURNAME + variableVersion);
     userCreationDTO.setEmail(TEST_USER_EMAIL + variableVersion);
@@ -109,7 +110,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
                     TEST_USER_PHONE,
                     TEST_USER_ADDRESS));
 
-    UserCreationDTO userCreationDTO = new UserCreationDTO();
+    UserCreateDTO userCreationDTO = new UserCreateDTO();
     userCreationDTO.setFirstname(TEST_USER_NAME + variableVersion);
     userCreationDTO.setSurname(TEST_USER_SURNAME + variableVersion);
     userCreationDTO.setEmail(TEST_USER_EMAIL + variableVersion);

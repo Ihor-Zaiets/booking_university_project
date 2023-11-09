@@ -1,6 +1,7 @@
 package com.university.booking_university_project.modules.user;
 
-import com.university.booking_university_project.modules.user.dto.UserCreationDTO;
+import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
+import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class UserController {
   }
 
   @PostMapping("/createAll")
-  public ResponseEntity<List<UserDTO>> createUsers(@RequestBody List<UserCreationDTO> userCreationDTOList) {
+  public ResponseEntity<List<UserDTO>> createUsers(@RequestBody List<UserCreateDTO> userCreationDTOList) {
     return ResponseEntity.ok(userService.createUsers(userCreationDTOList));
   }
 
@@ -30,9 +31,9 @@ public class UserController {
     return ResponseEntity.ok(userService.findAllDTO());
   }
 
-  @PostMapping("/editAll")
-  public ResponseEntity<List<UserDTO>> editUsers(@RequestBody List<UserCreationDTO> userCreationDTOList) {
-    return ResponseEntity.ok(userService.editUsers(userCreationDTOList));
+  @PatchMapping("/editAll")
+  public ResponseEntity<List<UserDTO>> editUsers(@RequestBody List<UserUpdateDTO> userUpdateDTOList) {
+    return ResponseEntity.ok(userService.editUsers(userUpdateDTOList));
   }
 
   @DeleteMapping("/deleteAll")
