@@ -8,6 +8,8 @@ import org.springframework.lang.NonNull;
 @Setter
 public class UserCreationDTO {
 
+  private Integer id;
+
   private String login;
 
   private String password;

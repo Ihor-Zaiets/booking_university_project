@@ -1,5 +1,6 @@
 package com.university.booking_university_project.modules.user;
 
+import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
@@ -7,12 +8,11 @@ import com.university.booking_university_project.modules.baseService.BaseService
 import com.university.booking_university_project.modules.user.dto.UserCreationDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.testUtils.TestUtils;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 @SpringBootTest
 public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserServiceImpl> {
@@ -23,6 +23,8 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
   private final UserServiceImpl userServiceImpl;
 
+  private final Mapper mapper;
+
   public static final String TEST_USER_NAME = "TEST_USER_NAME";
   public static final String TEST_USER_SURNAME = "TEST_USER_SURNAME";
   public static final String TEST_USER_EMAIL = "TEST_USER_EMAIL@email.com";
@@ -32,16 +34,17 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
   @Autowired
   public UserServiceImplTest(
-      UserRepository userRepository, TestUtils testUtils, UserServiceImpl userServiceImpl) {
+          UserRepository userRepository, TestUtils testUtils, UserServiceImpl userServiceImpl, Mapper mapper) {
     this.userRepository = userRepository;
     this.testUtils = testUtils;
     this.userServiceImpl = userServiceImpl;
+    this.mapper = mapper;
   }
 
   @Override
   @Autowired
   public UserServiceImpl createService() {
-    return new UserServiceImpl(userRepository);
+    return new UserServiceImpl(userRepository, mapper);
   }
 
   @Override
@@ -76,7 +79,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
   @Test
   public void createUserNotThrowIfFieldsDoesNotRepeats() {
-    String variableVersion = "v2";
+    String variableVersion = "vII";
     userRepository.save(
         testUtils.createUserEntity(
             TEST_USER_NAME,

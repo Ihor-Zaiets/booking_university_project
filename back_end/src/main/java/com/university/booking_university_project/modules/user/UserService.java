@@ -12,5 +12,5 @@ public interface UserService extends BaseService<User, Integer> {
 
   List<UserDTO> findAllDTO();
 
-  List<UserDTO> editUsers(UserCreationDTO userCreationDTO);
+  List<UserDTO> editUsers(List<UserCreationDTO> userCreationDTO);
 }

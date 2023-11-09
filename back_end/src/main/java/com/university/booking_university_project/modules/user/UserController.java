@@ -31,8 +31,8 @@ public class UserController {
   }
 
   @PostMapping("/editAll")
-  public ResponseEntity<List<UserDTO>> editUsers(@RequestBody UserCreationDTO userCreationDTO) {
-    return ResponseEntity.ok(userService.editUsers(userCreationDTO));
+  public ResponseEntity<List<UserDTO>> editUsers(@RequestBody List<UserCreationDTO> userCreationDTOList) {
+    return ResponseEntity.ok(userService.editUsers(userCreationDTOList));
   }
 
   @DeleteMapping("/deleteAll")
