@@ -24,8 +24,8 @@ public class Validation {
   }
 
   public static void validateUserFirstName(String firstName) {
-    validateTrimSpaces(firstName);
     validateStringNullOrEmpty(firstName);
+    validateTrimSpaces(firstName);
     if (firstName.matches(ONLY_NUMBERS_REGEX))
       throw new ValidationException(ExceptionMessage.USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN);
   }
@@ -46,6 +46,7 @@ public class Validation {
   }
 
   public static void validatePhone(String userPhone) {
+    validateStringNullOrEmpty(userPhone);
     validateTrimSpaces(userPhone);
     if (!userPhone.replaceAll(" ", "").matches(PHONE_REGEX))
       throw new ValidationException(ExceptionMessage.PHONE_NUMBER_VALIDATION_MESSAGE);
