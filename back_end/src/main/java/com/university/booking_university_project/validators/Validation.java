@@ -32,7 +32,7 @@ public class Validation {
 
   public static void validateUserSurname(String userSurname) {
     validateTrimSpaces(userSurname);
-    if (userSurname == null || userSurname.isBlank() || userSurname.matches(ONLY_NUMBERS_REGEX))
+    if (userSurname != null && (userSurname.isBlank() || userSurname.matches(ONLY_NUMBERS_REGEX)))
       throw new ValidationException(ExceptionMessage.USER_SURNAME_VALIDATION_MESSAGE);
   }
 
