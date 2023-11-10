@@ -4,6 +4,7 @@ import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
+import com.university.booking_university_project.modules.role.RoleService;
 import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
 import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
 import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
@@ -23,11 +24,14 @@ public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
 
+  private final RoleService roleService;
+
   private final Mapper mapper;
 
   @Autowired
-  public UserServiceImpl(UserRepository userRepository, Mapper mapper) {
+  public UserServiceImpl(UserRepository userRepository, RoleService roleService, Mapper mapper) {
     this.userRepository = userRepository;
+    this.roleService = roleService;
     this.mapper = mapper;
   }
 
@@ -81,6 +85,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public UserDTO signUp(UserRegistrationRequest registrationRequest) {
     User user = mapper.map(registrationRequest, User.class);
+    roleService.assignDefaultRole(user);
     user = userRepository.save(user);
     return mapper.map(user, UserDTO.class);
   }

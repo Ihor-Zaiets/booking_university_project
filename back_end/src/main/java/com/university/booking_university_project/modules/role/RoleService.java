@@ -1,6 +1,7 @@
 package com.university.booking_university_project.modules.role;
 
 import com.university.booking_university_project.jpa.entity.Role;
+import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.BaseService;
 import com.university.booking_university_project.modules.role.dto.RoleCreationDTO;
 import com.university.booking_university_project.modules.role.dto.RoleDTO;
@@ -18,4 +19,6 @@ public interface RoleService extends BaseService<Role, Integer> {
   void grantRoles(List<UserRoleDTO> userRoleDTOList);
 
   void revokeRoles(List<UserRoleDTO> userRoleDTOList);
+
+  void assignDefaultRole(User user);
 }

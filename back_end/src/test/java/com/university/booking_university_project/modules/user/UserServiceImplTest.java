@@ -6,7 +6,6 @@ import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.baseService.BaseServiceTest;
 import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
-import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.testUtils.TestUtils;
 import java.util.List;
@@ -45,7 +44,7 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
   @Override
   @Autowired
   public UserServiceImpl createService() {
-    return new UserServiceImpl(userRepository, mapper);
+    return new UserServiceImpl(userRepository, roleService, mapper);
   }
 
   @Override
