@@ -5,6 +5,7 @@ import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
+import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
 import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
@@ -77,15 +78,22 @@ public class UserServiceImpl implements UserService {
     return savedUsers.stream().map(user -> mapper.map(user, UserDTO.class)).toList();
   }
 
+  @Override
+  public UserDTO signUp(UserRegistrationRequest registrationRequest) {
+    User user = mapper.map(registrationRequest, User.class);
+    user = userRepository.save(user);
+    return mapper.map(user, UserDTO.class);
+  }
+
   private void validateUser(UserUpdateDTO userUpdateDTO) {
     Validation.validateUserFirstName(userUpdateDTO.getFirstname());
     Validation.validateUserSurname(userUpdateDTO.getSurname());
     Validation.validateEmail(userUpdateDTO.getEmail());
-    validateEmail(userUpdateDTO.getEmail());
+    validateUserEmail(userUpdateDTO.getEmail());
     Validation.validatePhone(userUpdateDTO.getPhone());
   }
 
-  private void validateEmail(String email) {
+  public void validateUserEmail(String email) {
     if (userRepository.existsByEmail(email))
       throw new ValidationException(ExceptionMessage.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE);
   }

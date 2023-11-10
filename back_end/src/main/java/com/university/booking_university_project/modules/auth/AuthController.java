@@ -1,12 +1,12 @@
 package com.university.booking_university_project.modules.auth;
 
+import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/Auth")
 public class AuthController {
 
   private final AuthService authService;
@@ -15,9 +15,8 @@ public class AuthController {
     this.authService = authService;
   }
 
-  @PostMapping("/signup")
-  public ResponseEntity<Void> getResponseEntity(@RequestBody UserRegistrationRequest registrationRequest) {
-    authService.signUp(registrationRequest);
-    return new ResponseEntity<>(HttpStatus.OK);
+  @PostMapping("/SignUp")
+  public ResponseEntity<UserDTO> getResponseEntity(@RequestBody UserRegistrationRequest registrationRequest) {
+    return ResponseEntity.ok(authService.signUp(registrationRequest));
   }
 }
