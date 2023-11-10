@@ -1,23 +1,31 @@
 package com.university.booking_university_project.modules.apartment;
 
+import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.modules.apartment.dto.ApartmentCreationDTO;
 import com.university.booking_university_project.modules.apartment.dto.ApartmentDTO;
+import com.university.booking_university_project.modules.apartment.dto.ApartmentUpdateDTO;
 import com.university.booking_university_project.modules.apartment.repository.ApartmentRepository;
+import com.university.booking_university_project.validators.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ApartmentServiceImpl implements ApartmentService {
 
   private final ApartmentRepository apartmentRepository;
 
+  private final Mapper mapper;
+
   @Autowired
-  public ApartmentServiceImpl(ApartmentRepository apartmentRepository) {
+  public ApartmentServiceImpl(ApartmentRepository apartmentRepository, Mapper mapper) {
     this.apartmentRepository = apartmentRepository;
+    this.mapper = mapper;
   }
 
   @Override
@@ -42,7 +50,22 @@ public class ApartmentServiceImpl implements ApartmentService {
 
   @Override
   public List<ApartmentDTO> createApartments(List<ApartmentCreationDTO> apartmentCreationDTOList) {
-    return null;
+    List<Apartment> apartments = new ArrayList<>();
+    for (ApartmentCreationDTO apartmentCreationDTO : apartmentCreationDTOList) {
+      validateApartment(apartmentCreationDTO);
+      apartments.add(mapper.map(apartmentCreationDTO, Apartment.class));
+    }
+    apartments = apartmentRepository.saveAll(apartments);
+    return apartments.stream().map(apartment -> mapper.map(apartment, ApartmentDTO.class)).collect(Collectors.toList());
+  }
+
+  private void validateApartment(ApartmentCreationDTO apartmentCreationDTO) {
+    Validation.validateNumberMoreThen0(apartmentCreationDTO.getFloor());
+    Validation.validateNumberMoreThen0(apartmentCreationDTO.getSquare());
+    Validation.validateNumberMoreThen0(apartmentCreationDTO.getRentPrice());
+    Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfRooms());
+    Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfDoubleBeds());
+    Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfSingleBeds());
   }
 
   @Override
@@ -51,7 +74,7 @@ public class ApartmentServiceImpl implements ApartmentService {
   }
 
   @Override
-  public List<ApartmentDTO> editApartments(ApartmentCreationDTO apartmentCreationDTO) {
+  public List<ApartmentDTO> editApartments(ApartmentUpdateDTO apartmentCreationDTO) {
     return null;
   }
 }

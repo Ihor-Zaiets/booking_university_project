@@ -5,6 +5,7 @@ import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.baseService.BaseServiceTest;
+import com.university.booking_university_project.modules.role.RoleService;
 import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.testUtils.TestUtils;
@@ -23,6 +24,8 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
   private final UserServiceImpl userServiceImpl;
 
+  private final RoleService roleService;
+
   private final Mapper mapper;
 
   public static final String TEST_USER_NAME = "TEST_USER_NAME";
@@ -34,10 +37,11 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
   @Autowired
   public UserServiceImplTest(
-          UserRepository userRepository, TestUtils testUtils, UserServiceImpl userServiceImpl, Mapper mapper) {
+          UserRepository userRepository, TestUtils testUtils, UserServiceImpl userServiceImpl, RoleService roleService, Mapper mapper) {
     this.userRepository = userRepository;
     this.testUtils = testUtils;
     this.userServiceImpl = userServiceImpl;
+    this.roleService = roleService;
     this.mapper = mapper;
   }
 

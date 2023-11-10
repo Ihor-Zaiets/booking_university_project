@@ -10,4 +10,6 @@ public class ExceptionMessage {
   public static final String EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE = "Email already exists";
   public static final String PHONE_ALREADY_EXISTS_VALIDATION_MESSAGE = "Phone number already exists";
   public static final String USER_NOT_FOUND_EXCEPTION = "User not found";
+
+  public static final String NUMERIC_FIELD_IS_0_OR_LESS = "Numeric field is 0 or less";
 }

@@ -51,4 +51,9 @@ public class Validation {
     if (!userPhone.replaceAll(" ", "").matches(PHONE_REGEX))
       throw new ValidationException(ExceptionMessage.PHONE_NUMBER_VALIDATION_MESSAGE);
   }
+
+  public static void validateNumberMoreThen0(Number number) {
+    if (!(number.doubleValue() > 0))
+      throw new ValidationException(ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+  }
 }

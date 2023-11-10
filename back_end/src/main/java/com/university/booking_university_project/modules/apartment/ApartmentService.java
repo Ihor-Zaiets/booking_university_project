@@ -4,6 +4,7 @@ import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.modules.BaseService;
 import com.university.booking_university_project.modules.apartment.dto.ApartmentCreationDTO;
 import com.university.booking_university_project.modules.apartment.dto.ApartmentDTO;
+import com.university.booking_university_project.modules.apartment.dto.ApartmentUpdateDTO;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface ApartmentService extends BaseService<Apartment, Integer> {
 
   List<ApartmentDTO> findAllDTO();
 
-  List<ApartmentDTO> editApartments(ApartmentCreationDTO apartmentCreationDTO);
+  List<ApartmentDTO> editApartments(ApartmentUpdateDTO apartmentCreationDTO);
 }

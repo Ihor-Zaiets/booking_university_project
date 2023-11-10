@@ -1,5 +1,6 @@
 package com.university.booking_university_project.modules.apartment;
 
+import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.modules.apartment.repository.ApartmentRepository;
 import com.university.booking_university_project.modules.baseService.BaseServiceTest;
@@ -15,6 +16,8 @@ public class ApartmentServiceBaseTest
 
   private final TestUtils testUtils;
 
+  private final Mapper mapper;
+
   public static final int TEST_NUMBER_OF_ROOMS = 3;
   public static final double TEST_SQUARE = 100.0;
   public static final double TEST_RENT_PRICE = 1500.0;
@@ -24,14 +27,15 @@ public class ApartmentServiceBaseTest
   public static final int TEST_NUMBER_OF_SINGLE_BEDS = 1;
 
   @Autowired
-  public ApartmentServiceBaseTest(ApartmentRepository apartmentRepository, TestUtils testUtils) {
+  public ApartmentServiceBaseTest(ApartmentRepository apartmentRepository, TestUtils testUtils, Mapper mapper) {
     this.apartmentRepository = apartmentRepository;
     this.testUtils = testUtils;
+    this.mapper = mapper;
   }
 
   @Override
   public ApartmentServiceImpl createService() {
-    return new ApartmentServiceImpl(apartmentRepository);
+    return new ApartmentServiceImpl(apartmentRepository, mapper);
   }
 
   @Override

@@ -2,6 +2,7 @@ package com.university.booking_university_project.modules.apartment;
 
 import com.university.booking_university_project.modules.apartment.dto.ApartmentCreationDTO;
 import com.university.booking_university_project.modules.apartment.dto.ApartmentDTO;
+import com.university.booking_university_project.modules.apartment.dto.ApartmentUpdateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class ApartmentController {
   }
 
   @PostMapping("/editAll")
-  public ResponseEntity<List<ApartmentDTO>> editApartments(@RequestBody ApartmentCreationDTO ApartmentCreationDTO) {
+  public ResponseEntity<List<ApartmentDTO>> editApartments(@RequestBody ApartmentUpdateDTO ApartmentCreationDTO) {
     return ResponseEntity.ok(apartmentService.editApartments(ApartmentCreationDTO));
   }
 
