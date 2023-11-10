@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ApartmentServiceImplTest
+public class ApartmentServiceBaseTest
     implements BaseServiceTest<Apartment, Integer, ApartmentServiceImpl> {
 
   private final ApartmentRepository apartmentRepository;
@@ -24,7 +24,7 @@ public class ApartmentServiceImplTest
   public static final int TEST_NUMBER_OF_SINGLE_BEDS = 1;
 
   @Autowired
-  public ApartmentServiceImplTest(ApartmentRepository apartmentRepository, TestUtils testUtils) {
+  public ApartmentServiceBaseTest(ApartmentRepository apartmentRepository, TestUtils testUtils) {
     this.apartmentRepository = apartmentRepository;
     this.testUtils = testUtils;
   }
