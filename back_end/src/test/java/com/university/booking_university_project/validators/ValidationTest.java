@@ -28,8 +28,8 @@ public class ValidationTest {
   public void validateStringIsNullOrEmptyThrowIfItIs() {
     String empty = "";
 
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(empty), ExceptionMessage.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(null), ExceptionMessage.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(empty), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(null), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   @Test
@@ -61,8 +61,8 @@ public class ValidationTest {
   @Test
   public void validateUserFirstNameThrowIfUserFirstnameIsNullOrEmpty() {
     String userFirstName = "";
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(userFirstName), ExceptionMessage.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(null), ExceptionMessage.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(userFirstName), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserFirstName(null), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   @Test

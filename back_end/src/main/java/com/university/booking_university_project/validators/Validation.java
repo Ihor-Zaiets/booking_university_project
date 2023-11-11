@@ -20,7 +20,7 @@ public class Validation {
 
   public static void validateStringNullOrEmpty(String string) {
     if (string == null || string.isEmpty())
-      throw new ValidationException(ExceptionMessage.STRING_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+      throw new ValidationException(ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   public static void validateUserFirstName(String firstName) {
@@ -54,6 +54,6 @@ public class Validation {
 
   public static void validateNumberMoreThen0(Number number) {
     if (!(number.doubleValue() > 0))
-      throw new ValidationException(ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+      throw new ValidationException(ExceptionMessage.WRONG_NUMERIC_VALUE);
   }
 }
