@@ -2,6 +2,7 @@ package com.university.booking_university_project.modules.reservation;
 
 import com.university.booking_university_project.modules.reservation.dto.ReservationCreationDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationDTO;
+import com.university.booking_university_project.modules.reservation.dto.ReservationUpdateDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class ReservationController {
   }
 
   @PostMapping("/editAll")
-  public ResponseEntity<List<ReservationDTO>> editReservations(@RequestBody ReservationCreationDTO reservationCreationDTO) {
+  public ResponseEntity<List<ReservationDTO>> editReservations(@RequestBody List<ReservationUpdateDTO> reservationCreationDTO) {
     return ResponseEntity.ok(reservationService.editReservations(reservationCreationDTO));
   }
 

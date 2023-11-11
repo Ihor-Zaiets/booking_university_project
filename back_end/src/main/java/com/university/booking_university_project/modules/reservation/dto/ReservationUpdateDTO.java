@@ -1,9 +1,8 @@
 package com.university.booking_university_project.modules.reservation.dto;
 
-import com.university.booking_university_project.jpa.entity.Apartment;
-import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.lang.NonNull;
@@ -12,17 +11,17 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
-public class ReservationDTO {
-
+public class ReservationUpdateDTO {
   private Integer id;
 
-  private Integer apartment_id;
+  private Integer apartmentId;
 
-  private Integer user_id;
+  private Integer userId;
 
-  @NonNull private Timestamp start_date;
+  @NonNull
+  private Timestamp startDate;
 
-  @NonNull private Timestamp end_date;
+  @NonNull private Timestamp endDate;
 
   @NonNull private Integer numberOfPeople;
 
