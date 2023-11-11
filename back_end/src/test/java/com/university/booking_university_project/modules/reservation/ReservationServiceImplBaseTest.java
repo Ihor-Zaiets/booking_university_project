@@ -55,8 +55,8 @@ public class ReservationServiceImplBaseTest
     Reservation reservation = new Reservation();
     reservation.setApartment(apartment);
     reservation.setUser(user);
-    reservation.setStart_date(TEST_START_DATE);
-    reservation.setEnd_date(TEST_END_DATE);
+    reservation.setStartDate(TEST_START_DATE);
+    reservation.setEndDate(TEST_END_DATE);
     reservation.setNumberOfPeople(TEST_NUMBER_OF_PEOPLE);
     reservation.setReservationStatus(TEST_RESERVATION_STATUS);
     reservation.setPrice(TEST_RESERVATION_PRICE);
