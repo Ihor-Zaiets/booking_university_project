@@ -106,3 +106,9 @@ constructor DIs.
 Also, I think I'm doing this project at worst time. Even DozerMapper has new 6.X.Y version and a lot of things have changes.
 no more available new DozerBeanMapper() constructor. 
 Now I have to do something like that (DozerBeanMapper) DozerBeanMapperBuilder.buildDefault();
+
+(11.11.2023)
+
+Today I tried to implement some front-end, cuz my tutor said it`s required for presentation. Gosh, i hate front-end. 
+I tried, i failed. Hard, complicated, unknown technology for me. Guess, next time i'd try to convince him, 
+that front-end is not required and never was.
