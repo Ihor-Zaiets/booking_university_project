@@ -113,4 +113,4 @@ Today I tried to implement some front-end, cuz my tutor said it`s required for p
 I tried, i failed. Hard, complicated, unknown technology for me. Guess, next time i'd try to convince him, 
 that front-end is not required and never was.
 
-Also today I for the first time wrote tests for repository. ... took al ong time to do
+Also today I for the first time wrote tests for repository. ... took a long time to do
