@@ -66,8 +66,8 @@ INSERT INTO public."user"(login, password, firstname, surname, email, phone, add
 
 -- role data insert
 
-INSERT INTO public.role VALUES (1, 'ADMIN', NULL);
-INSERT INTO public.role VALUES (2, 'USER', NULL);
+INSERT INTO public.role (name, description) VALUES ('ADMIN', NULL);
+INSERT INTO public.role (name, description) VALUES ('USER', NULL);
 
 -- user_role data insert
 
