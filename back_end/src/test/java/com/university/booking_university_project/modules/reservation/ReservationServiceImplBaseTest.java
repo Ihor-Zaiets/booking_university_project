@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ReservationServiceImplTest
+public class ReservationServiceImplBaseTest
     implements BaseServiceTest<Reservation, Integer, ReservationServiceImpl> {
 
   private final ReservationRepository reservationRepository;
@@ -29,7 +29,7 @@ public class ReservationServiceImplTest
   private static final Integer TEST_RESERVATION_PRICE = 1000;
 
   @Autowired
-  public ReservationServiceImplTest(
+  public ReservationServiceImplBaseTest(
       ReservationRepository reservationRepository,
       EntityManager entityManager) {
     this.reservationRepository = reservationRepository;
@@ -61,7 +61,7 @@ public class ReservationServiceImplTest
 
   @BeforeEach
   public void setUp() {
-    Logger logger = LoggerFactory.getLogger(ReservationServiceImplTest.class);
+    Logger logger = LoggerFactory.getLogger(ReservationServiceImplBaseTest.class);
     logger.info("before each< find me");
     String disableConstraintsQuery = "ALTER TABLE public.reservation DISABLE TRIGGER ALL;";
     entityManager.createNativeQuery(disableConstraintsQuery).executeUpdate();
