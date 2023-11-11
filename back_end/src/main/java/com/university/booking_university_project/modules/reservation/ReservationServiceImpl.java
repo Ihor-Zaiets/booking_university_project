@@ -64,8 +64,8 @@ public class ReservationServiceImpl implements ReservationService {
 
   private <DTO extends ReservationUpdateDTO> void validateReservation(DTO reservationCreationDTO) {
     validateDates(reservationCreationDTO.getStartDate(), reservationCreationDTO.getEndDate());
-    Validation.validateStringNullOrEmpty(reservationCreationDTO.getUserId());
-    Validation.validateStringNullOrEmpty(reservationCreationDTO.getApartmentId());
+    Validation.validateObjectNullOrEmpty(reservationCreationDTO.getUserId());
+    Validation.validateObjectNullOrEmpty(reservationCreationDTO.getApartmentId());
     Validation.validateNumberMoreOrEquals0(reservationCreationDTO.getNumberOfPeople());
     Validation.validateNumberMoreOrEquals0(reservationCreationDTO.getPrice());
     validateReservationOverlay(reservationCreationDTO);

@@ -20,13 +20,13 @@ public class Validation {
     }
   }
 
-  public static void validateStringNullOrEmpty(Object object) {
+  public static void validateObjectNullOrEmpty(Object object) {
     if (Objects.isNull(object) || object instanceof String && object.toString().isEmpty())
       throw new ValidationException(ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   public static void validateUserFirstName(String firstName) {
-    validateStringNullOrEmpty(firstName);
+    validateObjectNullOrEmpty(firstName);
     validateTrimSpaces(firstName);
     if (firstName.matches(ONLY_NUMBERS_REGEX))
       throw new ValidationException(ExceptionMessage.USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN);
@@ -48,7 +48,7 @@ public class Validation {
   }
 
   public static void validatePhone(String userPhone) {
-    validateStringNullOrEmpty(userPhone);
+    validateObjectNullOrEmpty(userPhone);
     validateTrimSpaces(userPhone);
     if (!userPhone.replaceAll(" ", "").matches(PHONE_REGEX))
       throw new ValidationException(ExceptionMessage.PHONE_NUMBER_VALIDATION_MESSAGE);

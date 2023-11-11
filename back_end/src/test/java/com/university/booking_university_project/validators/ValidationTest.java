@@ -28,15 +28,15 @@ public class ValidationTest {
   public void validateStringIsNullOrEmptyThrowIfItIs() {
     String empty = "";
 
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(empty), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateStringNullOrEmpty(null), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateObjectNullOrEmpty(empty), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+    Assertions.assertThrows(ValidationException.class, () -> Validation.validateObjectNullOrEmpty(null), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   @Test
   public void validateStringIsNullOrEmptyNotThrowIfItIsNot() {
     String string = "string";
 
-    Assertions.assertDoesNotThrow(() -> Validation.validateStringNullOrEmpty(string));
+    Assertions.assertDoesNotThrow(() -> Validation.validateObjectNullOrEmpty(string));
   }
 
   @Test

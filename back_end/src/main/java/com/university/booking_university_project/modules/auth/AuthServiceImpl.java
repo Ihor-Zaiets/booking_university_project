@@ -32,12 +32,12 @@ public class AuthServiceImpl implements AuthService {
   }
 
   private void validatePassword(String password) {
-    Validation.validateStringNullOrEmpty(password);
+    Validation.validateObjectNullOrEmpty(password);
     Validation.validateTrimSpaces(password);
   }
 
   private void validateLogin(String login) {
-    Validation.validateStringNullOrEmpty(login);
+    Validation.validateObjectNullOrEmpty(login);
     Validation.validateTrimSpaces(login);
   }
 }
