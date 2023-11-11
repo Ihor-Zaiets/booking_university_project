@@ -112,3 +112,5 @@ Now I have to do something like that (DozerBeanMapper) DozerBeanMapperBuilder.bu
 Today I tried to implement some front-end, cuz my tutor said it`s required for presentation. Gosh, i hate front-end. 
 I tried, i failed. Hard, complicated, unknown technology for me. Guess, next time i'd try to convince him, 
 that front-end is not required and never was.
+
+Also today I for the first time wrote tests for repository. ... took al ong time to do
