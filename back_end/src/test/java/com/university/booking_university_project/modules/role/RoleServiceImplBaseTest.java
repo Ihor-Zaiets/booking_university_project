@@ -5,14 +5,14 @@ import com.university.booking_university_project.modules.baseService.BaseService
 import com.university.booking_university_project.modules.role.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class RoleServiceImplTest implements BaseServiceTest<Role, Integer, RoleServiceImpl> {
+public class RoleServiceImplBaseTest implements BaseServiceTest<Role, Integer, RoleServiceImpl> {
 
   private final RoleRepository roleRepository;
 
   public static final String TEST_ROLE_NAME = "ADMIN";
 
   @Autowired
-  public RoleServiceImplTest(RoleRepository roleRepository) {
+  public RoleServiceImplBaseTest(RoleRepository roleRepository) {
     this.roleRepository = roleRepository;
   }
 
