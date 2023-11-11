@@ -59,7 +59,7 @@ public class ApartmentServiceImpl implements ApartmentService {
     return apartments.stream().map(apartment -> mapper.map(apartment, ApartmentDTO.class)).collect(Collectors.toList());
   }
 
-  private void validateApartment(ApartmentCreationDTO apartmentCreationDTO) {
+  private <DTO extends ApartmentUpdateDTO> void validateApartment(DTO apartmentCreationDTO) {
     Validation.validateNumberMoreThen0(apartmentCreationDTO.getFloor());
     Validation.validateNumberMoreThen0(apartmentCreationDTO.getSquare());
     Validation.validateNumberMoreThen0(apartmentCreationDTO.getRentPrice());
@@ -70,11 +70,17 @@ public class ApartmentServiceImpl implements ApartmentService {
 
   @Override
   public List<ApartmentDTO> findAllDTO() {
-    return null;
+    return apartmentRepository.findAll().stream().map(entity -> mapper.map(entity, ApartmentDTO.class)).collect(Collectors.toList());
   }
 
   @Override
-  public List<ApartmentDTO> editApartments(List<ApartmentUpdateDTO> apartmentCreationDTO) {
-    return null;
+  public List<ApartmentDTO> editApartments(List<ApartmentUpdateDTO> apartmentUpdateDTOList) {
+    List<Apartment> apartments = new ArrayList<>();
+    for (ApartmentUpdateDTO apartmentUpdateDTO : apartmentUpdateDTOList) {
+      validateApartment(apartmentUpdateDTO);
+      apartments.add(mapper.map(apartmentUpdateDTO, Apartment.class));
+    }
+    apartments = apartmentRepository.saveAll(apartments);
+    return apartments.stream().map(apartment -> mapper.map(apartment, ApartmentDTO.class)).collect(Collectors.toList());
   }
 }
