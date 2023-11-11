@@ -19,6 +19,7 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Address</th>
+        <th>Edit</th>
         <!-- Add other fields as needed -->
     </tr>
     </thead>
@@ -37,6 +38,12 @@
         <td th:text="${userDTO.email}"></td>
         <td th:text="${userDTO.phone}"></td>
         <td th:text="${userDTO.address}"></td>
+        <td>
+            <!-- Edit button with a link to the edit page -->
+            <form th:method="post" th:action="@{'/api/User/editUsers'}">
+                <input type="submit" value="Edit">
+            </form>
+        </td>
         <!-- Add other fields as needed -->
     </tr>
     </tbody>

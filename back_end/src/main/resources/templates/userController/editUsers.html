@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit User</title>
+</head>
+<body>
+
+<h1>Edit User</h1>
+
+<form th:object="${userDTO}" th:action="@{'/api/User/editUsers'}" method="post">
+  <label>ID:</label>
+  <span th:text="${userDTO.id}"></span>
+  <br>
+
+  <label>Login:</label>
+  <input type="text" th:field="*{login}" />
+  <br>
+
+  <label>Password:</label>
+  <input type="text" th:field="*{password}" />
+  <br>
+
+  <label>Roles:</label>
+  <ul>
+    <li th:each="role : ${userDTO.roles}" th:text="${role.name}"></li>
+  </ul>
+  <br>
+
+  <label>Firstname:</label>
+  <input type="text" th:field="*{firstname}" />
+  <br>
+
+  <label>Surname:</label>
+  <input type="text" th:field="*{surname}" />
+  <br>
+
+  <label>Email:</label>
+  <input type="text" th:field="*{email}" />
+  <br>
+
+  <label>Phone:</label>
+  <input type="text" th:field="*{phone}" />
+  <br>
+
+  <label>Address:</label>
+  <input type="text" th:field="*{address}" />
+  <br>
+
+  <!-- Add other fields as needed -->
+
+  <input type="submit" value="Save">
+</form>
+
+</body>
+</html>
