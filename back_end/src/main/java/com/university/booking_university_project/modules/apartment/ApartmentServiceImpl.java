@@ -74,7 +74,7 @@ public class ApartmentServiceImpl implements ApartmentService {
   }
 
   @Override
-  public List<ApartmentDTO> editApartments(ApartmentUpdateDTO apartmentCreationDTO) {
+  public List<ApartmentDTO> editApartments(List<ApartmentUpdateDTO> apartmentCreationDTO) {
     return null;
   }
 }

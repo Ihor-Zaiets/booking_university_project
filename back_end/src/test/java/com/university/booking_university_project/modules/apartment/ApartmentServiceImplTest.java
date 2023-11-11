@@ -42,9 +42,11 @@ public class ApartmentServiceImplTest {
 
     when(apartmentCreationDTO.getFloor()).thenReturn(0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
 
     when(apartmentCreationDTO.getFloor()).thenReturn(-1);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
   }
 
   @Test
@@ -53,9 +55,11 @@ public class ApartmentServiceImplTest {
 
     when(apartmentCreationDTO.getSquare()).thenReturn(0.0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
 
     when(apartmentCreationDTO.getSquare()).thenReturn(-1.0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
   }
 
   @Test
@@ -64,9 +68,11 @@ public class ApartmentServiceImplTest {
 
     when(apartmentCreationDTO.getRentPrice()).thenReturn(0.0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
 
     when(apartmentCreationDTO.getRentPrice()).thenReturn(-1.0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
   }
 
   @Test
@@ -75,9 +81,11 @@ public class ApartmentServiceImplTest {
 
     when(apartmentCreationDTO.getNumberOfRooms()).thenReturn(0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
 
     when(apartmentCreationDTO.getNumberOfRooms()).thenReturn(-1);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
   }
 
   @Test
@@ -86,9 +94,11 @@ public class ApartmentServiceImplTest {
 
     when(apartmentCreationDTO.getNumberOfDoubleBeds()).thenReturn(0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
 
     when(apartmentCreationDTO.getNumberOfDoubleBeds()).thenReturn(-1);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
   }
 
   @Test
@@ -97,9 +107,11 @@ public class ApartmentServiceImplTest {
 
     when(apartmentCreationDTO.getNumberOfSingleBeds()).thenReturn(0);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
 
     when(apartmentCreationDTO.getNumberOfSingleBeds()).thenReturn(-1);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
+    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.NUMERIC_FIELD_IS_0_OR_LESS);
   }
 
   @Test

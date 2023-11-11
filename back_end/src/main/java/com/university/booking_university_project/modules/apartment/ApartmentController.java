@@ -32,7 +32,7 @@ public class ApartmentController {
   }
 
   @PostMapping("/editAll")
-  public ResponseEntity<List<ApartmentDTO>> editApartments(@RequestBody ApartmentUpdateDTO ApartmentCreationDTO) {
+  public ResponseEntity<List<ApartmentDTO>> editApartments(@RequestBody List<ApartmentUpdateDTO> ApartmentCreationDTO) {
     return ResponseEntity.ok(apartmentService.editApartments(ApartmentCreationDTO));
   }
 
