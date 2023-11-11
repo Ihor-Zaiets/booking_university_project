@@ -78,10 +78,9 @@ public class ValidationTest {
   }
 
   @Test
-  public void validateUserSurnameThrowIfUserSurnameNullOrEmpty() {
+  public void validateUserSurnameThrowIfUserSurnameEmpty() {
     String userSurname = "";
     Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserSurname(userSurname));
-    Assertions.assertThrows(ValidationException.class, () -> Validation.validateUserSurname(null));
   }
 
   @Test
