@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+</head>
+<body>
+
+<h1>User List</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Roles</th>
+        <th>Firstname</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <!-- Add other fields as needed -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userDTO : ${userDTOList}">
+        <td th:text="${userDTO.id}"></td>
+        <td th:text="${userDTO.login}"></td>
+        <td th:text="${userDTO.password}"></td>
+        <td>
+            <ul>
+                <li th:each="role : ${userDTO.roles}" th:text="${role.name}"></li>
+            </ul>
+        </td>
+        <td th:text="${userDTO.firstname}"></td>
+        <td th:text="${userDTO.surname}"></td>
+        <td th:text="${userDTO.email}"></td>
+        <td th:text="${userDTO.phone}"></td>
+        <td th:text="${userDTO.address}"></td>
+        <!-- Add other fields as needed -->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
