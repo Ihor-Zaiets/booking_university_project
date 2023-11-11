@@ -12,8 +12,6 @@ public class UserUpdateDTO {
 
   private String login;
 
-  private String password;
-
   @NonNull private String firstname;
 
   private String surname;

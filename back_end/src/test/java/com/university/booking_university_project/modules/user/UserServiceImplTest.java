@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserServiceImpl> {
@@ -28,6 +29,8 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
   private final Mapper mapper;
 
+  private final PasswordEncoder passwordEncoder;
+
   public static final String TEST_USER_NAME = "TEST_USER_NAME";
   public static final String TEST_USER_SURNAME = "TEST_USER_SURNAME";
   public static final String TEST_USER_EMAIL = "TEST_USER_EMAIL@email.com";
@@ -37,18 +40,19 @@ public class UserServiceImplTest implements BaseServiceTest<User, Integer, UserS
 
   @Autowired
   public UserServiceImplTest(
-          UserRepository userRepository, TestUtils testUtils, UserServiceImpl userServiceImpl, RoleService roleService, Mapper mapper) {
+          UserRepository userRepository, TestUtils testUtils, UserServiceImpl userServiceImpl, RoleService roleService, Mapper mapper, PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.testUtils = testUtils;
     this.userServiceImpl = userServiceImpl;
     this.roleService = roleService;
     this.mapper = mapper;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @Override
   @Autowired
   public UserServiceImpl createService() {
-    return new UserServiceImpl(userRepository, roleService, mapper);
+    return new UserServiceImpl(userRepository, roleService, mapper, passwordEncoder);
   }
 
   @Override

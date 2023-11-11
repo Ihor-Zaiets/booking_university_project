@@ -17,6 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,11 +29,14 @@ public class UserServiceImpl implements UserService {
 
   private final Mapper mapper;
 
+  private final PasswordEncoder passwordEncoder;
+
   @Autowired
-  public UserServiceImpl(UserRepository userRepository, RoleService roleService, Mapper mapper) {
+  public UserServiceImpl(UserRepository userRepository, RoleService roleService, Mapper mapper, PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.roleService = roleService;
     this.mapper = mapper;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @Override
@@ -86,6 +90,9 @@ public class UserServiceImpl implements UserService {
   public UserDTO signUp(UserRegistrationRequest registrationRequest) {
     User user = mapper.map(registrationRequest, User.class);
     roleService.assignDefaultRole(user);
+    if (user.getPassword() != null)
+      user.setPassword(passwordEncoder.encode(user.getPassword()));
+
     user = userRepository.save(user);
     return mapper.map(user, UserDTO.class);
   }
