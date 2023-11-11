@@ -13,7 +13,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   @Query(value = "select exists(select * from public.reservation r where " +
           "r.apartment_id = :apartmentId " +
           "and r.reservation_status = 'ACTIVE' " +
-          "and (:startDate >= r.start_date and :startDate <= r.end_date" +
-          "     or :endDate >= r.start_date and :endDate <= r.end_date))", nativeQuery = true)
+          "and (:startDate > r.start_date and :startDate < r.end_date or :startDate = r.start_date or :startDate = r.end_date" +
+          "     or :endDate > r.start_date and :endDate < r.end_date or :endDate = r.start_date or :endDate = r.end_date))", nativeQuery = true)
   boolean isReservationExistsForApartmentInDates(Integer apartmentId, Timestamp startDate, Timestamp endDate);
 }
