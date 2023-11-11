@@ -1,5 +1,6 @@
 package com.university.booking_university_project.modules.reservation;
 
+import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.jpa.entity.Reservation;
 import com.university.booking_university_project.jpa.entity.User;
@@ -22,6 +23,8 @@ public class ReservationServiceImplBaseTest
 
   private final EntityManager entityManager;
 
+  private final Mapper mapper;
+
   private static final Timestamp TEST_START_DATE = Timestamp.valueOf("2023-01-01 12:00:00");
   private static final Timestamp TEST_END_DATE = Timestamp.valueOf("2023-01-03 12:00:00");
   private static final int TEST_NUMBER_OF_PEOPLE = 4;
@@ -30,15 +33,16 @@ public class ReservationServiceImplBaseTest
 
   @Autowired
   public ReservationServiceImplBaseTest(
-      ReservationRepository reservationRepository,
-      EntityManager entityManager) {
+          ReservationRepository reservationRepository,
+          EntityManager entityManager, Mapper mapper) {
     this.reservationRepository = reservationRepository;
     this.entityManager = entityManager;
+    this.mapper = mapper;
   }
 
   @Override
   public ReservationServiceImpl createService() {
-    return new ReservationServiceImpl(reservationRepository);
+    return new ReservationServiceImpl(reservationRepository, mapper);
   }
 
   @Override

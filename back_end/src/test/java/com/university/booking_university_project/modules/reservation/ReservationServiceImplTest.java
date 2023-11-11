@@ -3,8 +3,11 @@ package com.university.booking_university_project.modules.reservation;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
+import com.university.booking_university_project.jpa.entity.Apartment;
+import com.university.booking_university_project.jpa.entity.Reservation;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
 import com.university.booking_university_project.modules.reservation.dto.ReservationCreationDTO;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
@@ -24,6 +27,9 @@ public class ReservationServiceImplTest {
 
   @Mock
   private ReservationRepository reservationRepository;
+
+  @Mock
+  private Mapper mapper;
 
   @Test
   public void ShouldThrowIfApartmentIsNull() {
@@ -86,6 +92,7 @@ public class ReservationServiceImplTest {
   @Test
   public void shouldNotThrow() {
     ReservationCreationDTO reservationCreationDTO = createDTOMock();
+    when(mapper.map(reservationCreationDTO, Reservation.class)).thenReturn(mock(Reservation.class));
     assertDoesNotThrow(() -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)));
     assertDoesNotThrow(() -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)));
   }

@@ -3,6 +3,8 @@ package com.university.booking_university_project.validators;
 import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
 
+import java.util.Objects;
+
 public class Validation {
 
   public static final String ONLY_NUMBERS_REGEX = "\\d+";
@@ -18,8 +20,8 @@ public class Validation {
     }
   }
 
-  public static void validateStringNullOrEmpty(String string) {
-    if (string == null || string.isEmpty())
+  public static void validateStringNullOrEmpty(Object object) {
+    if (Objects.isNull(object) || object instanceof String && object.toString().isEmpty())
       throw new ValidationException(ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
@@ -56,4 +58,9 @@ public class Validation {
     if (!(number.doubleValue() > 0))
       throw new ValidationException(ExceptionMessage.WRONG_NUMERIC_VALUE);
   }
+  public static void validateNumberMoreOrEquals0(Number number) {
+    if (!(number.doubleValue() >= 0))
+      throw new ValidationException(ExceptionMessage.WRONG_NUMERIC_VALUE);
+  }
+
 }
