@@ -1,0 +1,33 @@
+package com.university.booking_university_project.modules.sender;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SenderServiceImpl implements EmailSenderService{
+
+  private final JavaMailSender javaMailSender;
+
+  @Autowired
+  public SenderServiceImpl(JavaMailSender javaMailSender) {
+    this.javaMailSender = javaMailSender;
+  }
+
+
+  @Override
+  public void send(String to, String title, String content) throws MessagingException {
+    MimeMessage mail = javaMailSender.createMimeMessage();
+    MimeMessageHelper mailSend = new MimeMessageHelper(mail);
+    mailSend.setTo(to);
+    mailSend.setReplyTo(to);
+    mailSend.setFrom("hidden82.hidden82@gmail.com");
+    mailSend.setSubject(title);
+    mailSend.setText(content);
+
+    javaMailSender.send(mail);
+  }
+}
