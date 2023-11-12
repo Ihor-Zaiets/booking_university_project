@@ -1,5 +1,6 @@
 package com.university.booking_university_project.exception;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
+@Log4j2
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -27,6 +29,7 @@ public class GlobalExceptionHandler {
     String stackTrace = stackTraceAsString(exception);
 
     details = new ResponseBodyExceptionDetails(status, message, stackTrace);
+    log.error(message, exception);
 
     return new ResponseEntity<>(details, status);
   }
