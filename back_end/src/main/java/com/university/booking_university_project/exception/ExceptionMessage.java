@@ -8,6 +8,7 @@ public class ExceptionMessage {
   public static final String EMAIL_VALIDATION_MESSAGE = "Email does not match pattern";
   public static final String PHONE_NUMBER_VALIDATION_MESSAGE = "Phone number does not match pattern";
   public static final String EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE = "Email already exists";
+  public static final String ROLE_ALREADY_EXISTS_VALIDATION_MESSAGE = "Role already exists";
   public static final String PHONE_ALREADY_EXISTS_VALIDATION_MESSAGE = "Phone number already exists";
   public static final String USER_NOT_FOUND_EXCEPTION = "User not found";
 

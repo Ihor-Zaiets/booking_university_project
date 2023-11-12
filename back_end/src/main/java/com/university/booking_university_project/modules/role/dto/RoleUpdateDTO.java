@@ -2,14 +2,15 @@ package com.university.booking_university_project.modules.role.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.NonNull;
 
-@Getter
 @Setter
-public class UserRoleDTO {
+@Getter
+public class RoleUpdateDTO {
 
   private Integer id;
 
-  private Integer userId;
+  @NonNull private String name;
 
-  private Integer roleId;
+  private String description;
 }

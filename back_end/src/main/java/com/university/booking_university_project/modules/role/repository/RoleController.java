@@ -3,6 +3,7 @@ package com.university.booking_university_project.modules.role.repository;
 import com.university.booking_university_project.modules.role.RoleService;
 import com.university.booking_university_project.modules.role.dto.RoleCreationDTO;
 import com.university.booking_university_project.modules.role.dto.RoleDTO;
+import com.university.booking_university_project.modules.role.dto.RoleUpdateDTO;
 import com.university.booking_university_project.modules.role.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,8 @@ public class RoleController {
   }
 
   @PostMapping("/CreateAll")
-  public ResponseEntity<List<RoleDTO>> createRoles(@RequestBody RoleCreationDTO roleCreationDTO) {
-    return ResponseEntity.ok(roleService.createRoles(roleCreationDTO));
+  public ResponseEntity<List<RoleDTO>> createRoles(@RequestBody List<RoleCreationDTO> roleCreationDTOList) {
+    return ResponseEntity.ok(roleService.createRoles(roleCreationDTOList));
   }
 
   @GetMapping("/SearchAll")
@@ -33,8 +34,8 @@ public class RoleController {
   }
 
   @PostMapping("/EditAll")
-  public ResponseEntity<List<RoleDTO>> editRoles(@RequestBody RoleCreationDTO roleCreationDTO) {
-    return ResponseEntity.ok(roleService.editRoles(roleCreationDTO));
+  public ResponseEntity<List<RoleDTO>> editRoles(@RequestBody List<RoleUpdateDTO> roleUpdateDTOList) {
+    return ResponseEntity.ok(roleService.editRoles(roleUpdateDTOList));
   }
 
   @DeleteMapping("/DeleteAll")

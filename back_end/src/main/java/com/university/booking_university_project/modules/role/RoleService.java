@@ -5,16 +5,17 @@ import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.BaseService;
 import com.university.booking_university_project.modules.role.dto.RoleCreationDTO;
 import com.university.booking_university_project.modules.role.dto.RoleDTO;
+import com.university.booking_university_project.modules.role.dto.RoleUpdateDTO;
 import com.university.booking_university_project.modules.role.dto.UserRoleDTO;
 
 import java.util.List;
 
 public interface RoleService extends BaseService<Role, Integer> {
-  List<RoleDTO> createRoles(RoleCreationDTO roleCreationDTO);
+  List<RoleDTO> createRoles(List<RoleCreationDTO> roleCreationDTO);
 
   List<RoleDTO> findAllRolesDTO();
 
-  List<RoleDTO> editRoles(RoleCreationDTO roleCreationDTO);
+  List<RoleDTO> editRoles(List<RoleUpdateDTO> roleCreationDTO);
 
   void grantRoles(List<UserRoleDTO> userRoleDTOList);
 

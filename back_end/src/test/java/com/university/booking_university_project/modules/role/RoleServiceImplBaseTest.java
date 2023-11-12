@@ -18,7 +18,7 @@ public class RoleServiceImplBaseTest implements BaseServiceTest<Role, Integer, R
 
   @Override
   public RoleServiceImpl createService() {
-    return new RoleServiceImpl(roleRepository);
+    return new RoleServiceImpl(roleRepository, mapper);
   }
 
   @Override
