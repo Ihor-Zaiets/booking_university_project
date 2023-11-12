@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/User")
-public class UserController {
+@RequestMapping("/api/Model/User")
+public class UserModelController {
 
   private final UserService userService;
 
-  public UserController(UserService userService) {
+  public UserModelController(UserService userService) {
     this.userService = userService;
   }
 
