@@ -23,7 +23,6 @@ public class SenderServiceImpl implements EmailSenderService{
     MimeMessage mail = javaMailSender.createMimeMessage();
     MimeMessageHelper mailSend = new MimeMessageHelper(mail);
     mailSend.setTo(to);
-    mailSend.setReplyTo(to);
     mailSend.setFrom("hidden82.hidden82@gmail.com");
     mailSend.setSubject(title);
     mailSend.setText(content);
