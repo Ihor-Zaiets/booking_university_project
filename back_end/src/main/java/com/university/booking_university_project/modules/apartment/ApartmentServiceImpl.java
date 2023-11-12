@@ -60,7 +60,7 @@ public class ApartmentServiceImpl implements ApartmentService {
   }
 
   private <DTO extends ApartmentUpdateDTO> void validateApartment(DTO apartmentCreationDTO) {
-    Validation.validateNumberMoreThen0(apartmentCreationDTO.getFloor());
+    Validation.validateNumberMoreOrEquals0(apartmentCreationDTO.getFloor());
     Validation.validateNumberMoreThen0(apartmentCreationDTO.getSquare());
     Validation.validateNumberMoreThen0(apartmentCreationDTO.getRentPrice());
     Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfRooms());

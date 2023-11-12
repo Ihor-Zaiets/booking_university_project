@@ -37,12 +37,8 @@ public class ApartmentServiceImplTest {
   public static final Integer DTO_MOCK_NUMBER_OF_SINGLE_BEDS_FIELD = 1;
 
   @Test
-  public void shouldThrowIfFloorFieldIsLessThen1() {
+  public void shouldThrowIfFloorFieldIsLessThen0() {
     ApartmentCreationDTO apartmentCreationDTO = createMock();
-
-    when(apartmentCreationDTO.getFloor()).thenReturn(0);
-    assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.WRONG_NUMERIC_VALUE);
-    assertThrows(ValidationException.class, () -> apartmentService.editApartments(List.of(apartmentCreationDTO)), ExceptionMessage.WRONG_NUMERIC_VALUE);
 
     when(apartmentCreationDTO.getFloor()).thenReturn(-1);
     assertThrows(ValidationException.class, () -> apartmentService.createApartments(List.of(apartmentCreationDTO)), ExceptionMessage.WRONG_NUMERIC_VALUE);
