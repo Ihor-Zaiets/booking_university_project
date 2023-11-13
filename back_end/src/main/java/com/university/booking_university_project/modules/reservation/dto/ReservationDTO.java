@@ -1,7 +1,7 @@
 package com.university.booking_university_project.modules.reservation.dto;
 
-import com.university.booking_university_project.jpa.entity.Apartment;
-import com.university.booking_university_project.jpa.entity.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.github.dozermapper.core.Mapping;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,13 +16,17 @@ public class ReservationDTO {
 
   private Integer id;
 
-  private Integer apartment_id;
+  @Mapping("apartment.id")
+  private Integer apartmentId;
 
-  private Integer user_id;
+  @Mapping("user.id")
+  private Integer userId;
 
-  @NonNull private Timestamp start_date;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+  @NonNull private Timestamp startDate;
 
-  @NonNull private Timestamp end_date;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+  @NonNull private Timestamp endDate;
 
   @NonNull private Integer numberOfPeople;
 
