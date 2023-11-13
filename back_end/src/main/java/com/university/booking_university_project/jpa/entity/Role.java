@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+@Table(schema = "public", name = "role")
 public class Role implements IEntity<Integer> {
 
   @Id

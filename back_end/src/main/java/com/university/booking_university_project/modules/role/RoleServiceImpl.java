@@ -85,7 +85,6 @@ public class RoleServiceImpl implements RoleService {
   public List<RoleDTO> editRoles(List<RoleUpdateDTO> roleUpdateDTOList) {
     List<Role> roles = new ArrayList<>();
     for (RoleUpdateDTO roleUpdateDTO : roleUpdateDTOList) {
-      validateRole(roleUpdateDTO);
       roles.add(mapper.map(roleUpdateDTO, Role.class));
     }
     roles = roleRepository.saveAll(roles);

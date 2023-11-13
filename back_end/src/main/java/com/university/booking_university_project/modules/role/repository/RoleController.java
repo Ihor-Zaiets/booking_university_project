@@ -33,13 +33,13 @@ public class RoleController {
     return ResponseEntity.ok(roleService.findAllRolesDTO());
   }
 
-  @PostMapping("/EditAll")
+  @PatchMapping("/EditAll")
   public ResponseEntity<List<RoleDTO>> editRoles(@RequestBody List<RoleUpdateDTO> roleUpdateDTOList) {
     return ResponseEntity.ok(roleService.editRoles(roleUpdateDTOList));
   }
 
   @DeleteMapping("/DeleteAll")
-  public ResponseEntity<Void> deleteRoles(List<Integer> ids) {
+  public ResponseEntity<Void> deleteRoles(@RequestBody List<Integer> ids) {
     roleService.deleteAllByIds(ids);
     return new ResponseEntity<>(HttpStatus.OK);
   }
