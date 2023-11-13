@@ -29,7 +29,7 @@ public class ReservationController {
     return ResponseEntity.ok(reservationService.findAllDTO());
   }
 
-  @PostMapping("/editAll")
+  @PatchMapping("/editAll")
   public ResponseEntity<List<ReservationDTO>> editReservations(@RequestBody List<ReservationUpdateDTO> reservationCreationDTO) {
     return ResponseEntity.ok(reservationService.editReservations(reservationCreationDTO));
   }
