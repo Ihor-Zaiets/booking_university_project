@@ -2,6 +2,7 @@ package com.university.booking_university_project.configuration;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -11,6 +12,13 @@ import java.util.Properties;
 
 @Configuration
 public class BookingUniversityProjectConfiguration {
+
+  private final ConfigReader configReader;
+
+  @Autowired
+  public BookingUniversityProjectConfiguration(ConfigReader configReader) {
+    this.configReader = configReader;
+  }
 
   @Bean
   public Mapper getDozerBeanMapper() {
@@ -23,8 +31,8 @@ public class BookingUniversityProjectConfiguration {
     mailSender.setHost("smtp.gmail.com");
     mailSender.setPort(587);
 
-    mailSender.setUsername("hidden82.hidden82@gmail.com");
-    mailSender.setPassword("arzc usqn prso eapc");
+    mailSender.setUsername(configReader.getAppEmailLogin());
+    mailSender.setPassword(configReader.getAppEmailPassword());
 
     Properties props = mailSender.getJavaMailProperties();
     props.put("mail.transport.protocol", "smtp");
