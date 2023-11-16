@@ -114,3 +114,9 @@ I tried, i failed. Hard, complicated, unknown technology for me. Guess, next tim
 that front-end is not required and never was.
 
 Also today I for the first time wrote tests for repository. ... took a long time to do
+
+(16.11.2023)
+
+A few days ago i spoke tu my tutor. Front is required. Without it commission just wouldn't understand what my 
+project is doing.
+I'm learning typescript now.
