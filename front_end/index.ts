@@ -16,6 +16,7 @@ let variables: any = [
 
 function writeToConsole(parameter) {
     console.log('Parameter passed to function:', parameter);
+    console.log('\n');
 }
 
 function sum(a: number, b: number) {
@@ -27,17 +28,24 @@ function printPoint(point: {x?: number, y?: number}) {
     console.log('Printing point:')
     console.log('x = ', point.x?.toString());
     console.log('y = ', point.y?.toString());
+    console.log('\n');
 }
 
 function printTypePoint(point: typePoint) {
     console.log('Printing type point')
     printPoint({x: point.typeX, y: point.typeY})
+    console.log('\n');
 }
 // type alies
 
 type typePoint = {
     typeX: number;
     typeY: number
+}
+
+type typePointSameNames = {
+    x: number,
+    y: number
 }
 // union type
 function printUnionValue(value: string | number) {
@@ -47,6 +55,7 @@ function printUnionValue(value: string | number) {
     } else {
         console.log(value + 100);
     }
+    console.log('\n');
 }
 
 console.log('my variables:',variables);
@@ -64,4 +73,26 @@ printUnionValue("sto");
 printUnionValue(100);
 let myTypePointVariable: typePoint = {typeX: 10, typeY: 15};
 printPoint({x: myTypePointVariable.typeX, y: myTypePointVariable.typeY});
+let compatibleVariable: typePointSameNames = {x: 1, y: 1};
+printPoint(compatibleVariable)
 printTypePoint(myTypePointVariable)
+
+// let myLiteral: 'Hello' = 'World'; - error
+
+function printText(text: string, alignment: "center" | "left" | "right") {
+    console.log('Printing my literals:');
+    console.log('text:', text, 'with alignment:', alignment);
+    console.log('\n');
+}
+
+printText('myText', "center");
+// printText('myText', "down"); error
+printText('myText with assertion', "down" as "center"); //shit, what?
+
+function tryingToLayDownSystem(param: number): number {
+    return param > 10 ? 0 : 1;
+}
+let text: string = "text";
+console.log(tryingToLayDownSystem(text as any as number));
+
+type myIntersectionType = string & number;
