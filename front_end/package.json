@@ -3,6 +3,7 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "run-index": "npx ts-node index.ts"
+    "run-index": "npx ts-node types.ts",
+    "run-functions": "npx ts-node functions.ts"
   }
 }
