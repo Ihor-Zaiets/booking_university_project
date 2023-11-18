@@ -4,6 +4,7 @@
   },
   "scripts": {
     "run-index": "npx ts-node types.ts",
-    "run-functions": "npx ts-node functions.ts"
+    "run-functions": "npx ts-node functions.ts",
+    "run-classes": "npx ts-node classes.ts"
   }
 }
