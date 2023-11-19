@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "typescript": "^5.2.2"
-  },
-  "scripts": {
-    "run-index": "npx ts-node index.ts"
-  }
-}
