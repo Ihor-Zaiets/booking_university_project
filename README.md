@@ -120,3 +120,16 @@ Also today I for the first time wrote tests for repository. ... took a long time
 A few days ago i spoke tu my tutor. Front is required. Without it commission just wouldn't understand what my 
 project is doing.
 I'm learning typescript now.
+
+(20.11.2023)
+
+I finished getting started with typescript tried to write web application on raw typescript, didn't go well.
+Then I installed Angular and started working with it, and oh my Gosh! On 8 November 2023 was released Angular 17. 
+I have a problem now, that "Can't bind to '{ngModel}' since it isn't a known property of 'input'." And whole internet 
+telling me to add dependency into app.module.ts and of course it does not exist anymore and wherever i'm adding this
+dependency it doesn't work.
+
+Ok, so i added it to app.component.ts and todos.component.ts so it was override, idk.
+
+Also, I spend evening trying to figure out, why am i getting red error from Intellij Idea and how to fix it. Turned out,
+it was idea's bug and i just needed to ignore that highlight, because everything was working.
