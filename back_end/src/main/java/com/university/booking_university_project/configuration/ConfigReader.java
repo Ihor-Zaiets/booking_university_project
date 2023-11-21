@@ -44,7 +44,7 @@ public class ConfigReader {
   }
 
   /**
-   * For correct {@link BookingUniversityProjectConfiguration#getJavaMailSender()} work, a gmail mail must be configured.
+   * For correct {@link BookingUniversityProjectConfiguration#javaMailSender()} work, a gmail mail must be configured.
    * This method return login of such email.
    * */
   public String getAppEmailLogin() {
@@ -55,7 +55,7 @@ public class ConfigReader {
   }
 
   /**
-   * For correct {@link BookingUniversityProjectConfiguration#getJavaMailSender()} work, a gmail mail must be configured.
+   * For correct {@link BookingUniversityProjectConfiguration#javaMailSender()} work, a gmail mail must be configured.
    * This method return password of such email.
    * */
   public String getAppEmailPassword() {

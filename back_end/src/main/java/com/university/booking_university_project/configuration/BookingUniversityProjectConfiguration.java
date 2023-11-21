@@ -21,12 +21,12 @@ public class BookingUniversityProjectConfiguration {
   }
 
   @Bean
-  public Mapper getDozerBeanMapper() {
+  public Mapper dozerBeanMapper() {
     return DozerBeanMapperBuilder.buildDefault();
   }
 
   @Bean
-  public JavaMailSender getJavaMailSender() {
+  public JavaMailSender javaMailSender() {
     JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
     mailSender.setHost("smtp.gmail.com");
     mailSender.setPort(587);
