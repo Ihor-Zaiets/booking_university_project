@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApartmentComponent } from './apartment/apartment.component'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ApartmentComponent } from './apartment/apartment.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    [HttpClientModule]
   ],
   providers: [],
   bootstrap: [AppComponent]
