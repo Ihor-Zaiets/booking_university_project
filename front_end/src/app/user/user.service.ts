@@ -19,4 +19,21 @@ export class UserService {
 
     return this.http.post<any>(url, requestBody, { headers });
   }
+
+  patchData(requestBody: any): Observable<any> {
+    const url = BasicUrlLink.basicLink + '/api/User/editAll';
+    const headers = new HttpHeaders({'Content-Type': 'application/json'})
+
+    return this.http.patch<any>(url, requestBody, {headers});
+  }
+
+  deleteData(requestBody: any): Observable<any> {
+    const url = BasicUrlLink.basicLink + '/api/User/deleteAll';
+    const headers = new HttpHeaders({'Content-Type': 'application/json'})
+
+    return this.http.delete<any>(url, {
+      headers: headers,
+      body: requestBody,
+    });
+  }
 }
