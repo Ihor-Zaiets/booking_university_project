@@ -26,6 +26,7 @@
     <table>
       <thead>
       <tr>
+        <th></th>
         <th>ID</th>
         <th>Login</th>
         <th>Password</th>
@@ -39,9 +40,14 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
+        <td><input type="checkbox" [checked]="isChecked(Number(user.id))" (change)="onCheckboxChange(Number(user.id))"></td>
         <td>{{ user.id }}</td>
-        <td>{{ user.login }}</td>
-        <td>{{ user.password }}</td>
+        <td>
+          <input type="text" [(ngModel)]="user.login" name="login" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+        </td>
+        <td>
+          <input type="password" [(ngModel)]="user.password" name="password" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+        </td>
         <td>
           <ul>
             <li *ngFor="let role of user.roles">
@@ -50,14 +56,26 @@
             </li>
           </ul>
         </td>
-        <td>{{ user.firstname }}</td>
-        <td>{{ user.surname }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.phone }}</td>
-        <td>{{ user.address }}</td>
+        <td>
+          <input type="text" [(ngModel)]="user.firstname" name="firstname" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="user.surname" name="surname" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+        </td>
+        <td>
+          <input type="email" [(ngModel)]="user.email" name="email" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+        </td>
+        <td>
+          <input type="tel" [(ngModel)]="user.phone" name="phone" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="user.address" name="address" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+        </td>
       </tr>
       </tbody>
     </table>
+    <button (click)="toggleEditMode()" [ngStyle]="{'background-color': isEditMode ? 'green' : '', 'color': isEditMode ? 'white' : ''}">Toggle Edit Mode</button>
+    <button (click)="submitPatchRequest(); reloadPage()">Save Changes</button>
 
   </body>
 </html>
