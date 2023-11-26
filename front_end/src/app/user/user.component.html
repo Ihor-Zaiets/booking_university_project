@@ -1,40 +1,63 @@
-<p>Users</p><hr>
-<div class="userList" *ngFor="let user of users">
-  <div class="userObject">
-    <div class="userField">
-      id: {{user.id}}
-    </div>
-    <div class="userField">
-      login: {{user.login}}
-    </div>
-    <div class="userField">
-      password: {{user.password}}
-    </div>
-    <div class="userField">
-      roles: <br>
-      {{"{"}}
-      <div class="roleList" *ngFor="let role of user.roles">
-        <div class="role">
-          roleName: {{role.name}} <br>
-          roleDescription: {{role.description}}
-        </div><br>
-      </div>
-      {{"}"}}
-    </div>
-    <div class="userField">
-      firstname: {{user.firstname}}
-    </div>
-    <div class="userField">
-      surname: {{user.surname}}
-    </div>
-    <div class="userField">
-      email: {{user.email}}
-    </div>
-    <div class="userField">
-      phone: {{user.phone}}
-    </div>
-    <div class="userField">
-      address: {{user.address}}
-    </div>
-  </div><hr>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Table</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Roles</th>
+        <th>Firstname</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.login }}</td>
+        <td>{{ user.password }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let role of user.roles">
+              {{ role.name }}
+              <span *ngIf="role.description"> - {{ role.description }}</span>
+            </li>
+          </ul>
+        </td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.address }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </body>
+</html>
