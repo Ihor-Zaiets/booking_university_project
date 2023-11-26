@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
   public List<UserDTO> createUsers(List<UserCreateDTO> userCreationDTOList) {
     List<User> users = new ArrayList<>();
     for (UserUpdateDTO userCreationDTO : userCreationDTOList) {
-      validateUser(userCreationDTO);
+//      validateUser(userCreationDTO);
       users.add(mapper.map(userCreationDTO, User.class));
     }
     List<User> savedUsers = userRepository.saveAll(users);
