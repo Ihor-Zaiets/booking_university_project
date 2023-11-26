@@ -12,6 +12,7 @@ import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.validators.Validation;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -72,18 +73,18 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public List<UserDTO> findAllDTO() {
-    return userRepository.findAll().stream().map(user -> mapper.map(user, UserDTO.class)).collect(Collectors.toList());
+    return userRepository.findAll().stream().map(user -> mapper.map(user, UserDTO.class)).sorted(Comparator.comparingInt(UserDTO::getId)).collect(Collectors.toList());
   }
 
   @Override
   public List<UserDTO> editUsers(List<UserUpdateDTO> userUpdateDTOList) {
     List<User> users = new ArrayList<>();
     for (UserUpdateDTO userUpdateDTO : userUpdateDTOList) {
-      validateUser(userUpdateDTO);
+//      validateUser(userUpdateDTO);
       users.add(mapper.map(userUpdateDTO, User.class));
     }
     List<User> savedUsers = userRepository.saveAll(users);
-    return savedUsers.stream().map(user -> mapper.map(user, UserDTO.class)).toList();
+    return savedUsers.stream().map(user -> mapper.map(user, UserDTO.class)).sorted(Comparator.comparingInt(UserDTO::getId)).toList();
   }
 
   @Override
