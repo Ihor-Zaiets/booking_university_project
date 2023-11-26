@@ -43,10 +43,10 @@
         <td><input type="checkbox" [checked]="isChecked(Number(user.id))" (change)="onCheckboxChange(Number(user.id))"></td>
         <td>{{ user.id }}</td>
         <td>
-          <input type="text" [(ngModel)]="user.login" name="login" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+          <input type="text" [(ngModel)]="user.login" name="login" [disabled]="!isChecked(Number(user.id))"/>
         </td>
         <td>
-          <input type="password" [(ngModel)]="user.password" name="password" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+          <input type="password" [(ngModel)]="user.password" name="password" [disabled]="!isChecked(Number(user.id))"/>
         </td>
         <td>
           <ul>
@@ -57,24 +57,24 @@
           </ul>
         </td>
         <td>
-          <input type="text" [(ngModel)]="user.firstname" name="firstname" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+          <input type="text" [(ngModel)]="user.firstname" name="firstname" [disabled]="!isChecked(Number(user.id))"/>
         </td>
         <td>
-          <input type="text" [(ngModel)]="user.surname" name="surname" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+          <input type="text" [(ngModel)]="user.surname" name="surname" [disabled]="!isChecked(Number(user.id))"/>
         </td>
         <td>
-          <input type="email" [(ngModel)]="user.email" name="email" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+          <input type="email" [(ngModel)]="user.email" name="email" [disabled]="!isChecked(Number(user.id))"/>
         </td>
         <td>
-          <input type="tel" [(ngModel)]="user.phone" name="phone" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+          <input type="tel" [(ngModel)]="user.phone" name="phone" [disabled]="!isChecked(Number(user.id))"/>
         </td>
         <td>
-          <input type="text" [(ngModel)]="user.address" name="address" [disabled]="!(isEditMode && isChecked(Number(user.id)))"/>
+          <input type="text" [(ngModel)]="user.address" name="address" [disabled]="!isChecked(Number(user.id))"/>
         </td>
       </tr>
       </tbody>
     </table>
-    <button (click)="toggleEditMode()" [ngStyle]="{'background-color': isEditMode ? 'green' : '', 'color': isEditMode ? 'white' : ''}">Toggle Edit Mode</button>
+    <button>Toggle Edit Mode</button>
     <button (click)="submitPatchRequest(); reloadPage()">Save Changes</button>
 
   </body>

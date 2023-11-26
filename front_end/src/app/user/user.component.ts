@@ -10,18 +10,12 @@ import { User } from '../model/User'
 export class UserComponent implements OnInit {
   users!: User[];
 
-  isEditMode: boolean = false;
-
   checkedUsers: Set<number> = new Set<number>();
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.getAllUsers()
-  }
-
-  toggleEditMode() {
-    this.isEditMode = !this.isEditMode;
   }
 
   getAllUsers() {
