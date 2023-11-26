@@ -1,39 +1,37 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { BasicUrlLink } from '../BasicUrlLink'
 import { Observable } from 'rxjs'
+import { WebApiService } from '../Service/web-api.service'
+
+const apiUrl = BasicUrlLink.basicLink + '/api/User'
+
+const httpLink = {
+  searchAllUsers: apiUrl + '/searchAll',
+  createAllUsers: apiUrl + '/createAll',
+  editAllUsers: apiUrl + '/editAll',
+  deleteAllUsers: apiUrl + '/deleteAll'
+}
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private webApiService: WebApiService) {}
 
   getData() {
-    return this.http.get(BasicUrlLink.basicLink + '/api/User/searchAll');
+    return this.webApiService.get(httpLink.searchAllUsers);
   }
 
   postData(requestBody: any): Observable<any> {
-    const url = BasicUrlLink.basicLink + `/api/User/createAll`; // replace with your specific endpoint
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post<any>(url, requestBody, { headers });
+    return this.webApiService.post(httpLink.createAllUsers, requestBody);
   }
 
   patchData(requestBody: any): Observable<any> {
-    const url = BasicUrlLink.basicLink + '/api/User/editAll';
-    const headers = new HttpHeaders({'Content-Type': 'application/json'})
-
-    return this.http.patch<any>(url, requestBody, {headers});
+    return this.webApiService.patch(httpLink.editAllUsers, requestBody);
   }
 
   deleteData(requestBody: any): Observable<any> {
-    const url = BasicUrlLink.basicLink + '/api/User/deleteAll';
-    const headers = new HttpHeaders({'Content-Type': 'application/json'})
-
-    return this.http.delete<any>(url, {
-      headers: headers,
-      body: requestBody,
-    });
+    return this.webApiService.delete(httpLink.deleteAllUsers, requestBody);
   }
 }
