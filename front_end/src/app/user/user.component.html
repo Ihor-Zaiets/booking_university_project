@@ -74,7 +74,7 @@
       </tr>
       </tbody>
     </table>
-    <button>Toggle Edit Mode</button>
+    <button (click)="submitDeleteRequest(); reloadPage()">Delete selected users</button>
     <button (click)="submitPatchRequest(); reloadPage()">Save Changes</button>
 
   </body>

@@ -45,16 +45,16 @@ export class UserComponent implements OnInit {
     );
   }
 
-  // submitDeleteRequest() {
-  //   this.userService.deleteAllUsers(this.deleteData).subscribe(
-  //     (response) => {
-  //       console.log('DELETE request successful:', response);
-  //     },
-  //     (error) => {
-  //       console.error('Error during DELETE request:', error);
-  //     }
-  //   );
-  // }
+  submitDeleteRequest() {
+    this.userService.deleteAllUsers(Array.from(this.checkedUsers)).subscribe(
+      (response) => {
+        console.log('DELETE request successful:', response);
+      },
+      (error) => {
+        console.error('Error during DELETE request:', error);
+      }
+    );
+  }
 
   isChecked(userId: number) {
     return this.checkedUsers.has(userId);
