@@ -9,8 +9,8 @@ import { User } from '../model/User'
 })
 export class UserComponent implements OnInit {
   users!: User[];
-
   checkedUsers: Set<number> = new Set<number>();
+  newUsers: User[] = [];
 
   constructor(private userService: UserService) {}
 
@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   }
 
   submitPostRequest() {
-    this.userService.createAllUsers(this.users).subscribe(
+    this.userService.createAllUsers(this.newUsers).subscribe(
       (response) => {
         console.log('POST request successful:', response);
       },
@@ -73,4 +73,8 @@ export class UserComponent implements OnInit {
   }
 
   protected readonly Number = Number
+
+  addNewUser() {
+    this.newUsers.push(new User());
+  }
 }

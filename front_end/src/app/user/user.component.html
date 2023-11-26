@@ -75,7 +75,55 @@
       </tbody>
     </table>
     <button (click)="submitDeleteRequest(); reloadPage()">Delete selected users</button>
-    <button (click)="submitPatchRequest(); reloadPage()">Save Changes</button>
+    <button (click)="addNewUser()">Add new user</button>
+    <button (click)="submitPostRequest(); submitPatchRequest(); reloadPage()">Save Changes</button>
 
+    <table>
+      <thead>
+      <tr>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Roles</th>
+        <th>Firstname</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of newUsers">
+        <td>
+          <input type="text" [(ngModel)]="user.login" name="login"/>
+        </td>
+        <td>
+          <input type="password" [(ngModel)]="user.password" name="password"/>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let role of user.roles">
+              {{ role.name }}
+              <span *ngIf="role.description"> - {{ role.description }}</span>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="user.firstname" name="firstname"/>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="user.surname" name="surname"/>
+        </td>
+        <td>
+          <input type="email" [(ngModel)]="user.email" name="email"/>
+        </td>
+        <td>
+          <input type="tel" [(ngModel)]="user.phone" name="phone"/>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="user.address" name="address"/>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </body>
 </html>
