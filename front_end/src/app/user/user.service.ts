@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BasicUrlLink } from '../BasicUrlLink'
 import { Observable } from 'rxjs'
 import { WebApiService } from '../Service/web-api.service'
+import { User } from '../model/User'
 
 const apiUrl = BasicUrlLink.basicLink + '/api/User'
 
@@ -19,19 +20,19 @@ const httpLink = {
 export class UserService {
   constructor(private webApiService: WebApiService) {}
 
-  getData() {
+  getAllUsers() {
     return this.webApiService.get(httpLink.searchAllUsers);
   }
 
-  postData(requestBody: any): Observable<any> {
+  createAllUsers(requestBody: User[]): Observable<any> {
     return this.webApiService.post(httpLink.createAllUsers, requestBody);
   }
 
-  patchData(requestBody: any): Observable<any> {
+  editAllUsers(requestBody: User[]): Observable<any> {
     return this.webApiService.patch(httpLink.editAllUsers, requestBody);
   }
 
-  deleteData(requestBody: any): Observable<any> {
+  deleteAllUsers(requestBody: number[]): Observable<any> {
     return this.webApiService.delete(httpLink.deleteAllUsers, requestBody);
   }
 }

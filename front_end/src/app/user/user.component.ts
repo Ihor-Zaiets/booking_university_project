@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { UserService } from './user.service'
+import { User } from '../model/User'
 
 @Component({
   selector: 'app-user',
@@ -7,6 +8,7 @@ import { UserService } from './user.service'
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  users!: User[];
   data: any;
   postData: any = [
     {
@@ -34,19 +36,15 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getData().subscribe(
-      (result) => {
-      this.data = result;
-      console.log(this.data);
-    },
-    (error) => {
-      console.error('An error occurred:', error);
-    }
-      );
+    this.getAllUsers()
+  }
+
+  getAllUsers() {
+    this.userService.getAllUsers().subscribe((response) => this.users = response.body);
   }
 
   submitPostRequest() {
-    this.userService.postData(this.postData).subscribe(
+    this.userService.createAllUsers(this.postData).subscribe(
       (response) => {
         console.log('POST request successful:', response);
         this.postDataResponse = 'POST request successful';
@@ -62,7 +60,7 @@ export class UserComponent implements OnInit {
 
 
   submitPatchRequest() {
-    this.userService.patchData(this.postData).subscribe(
+    this.userService.editAllUsers(this.postData).subscribe(
       (response) => {
         console.log('PATCH request successful:', response);
         this.postDataResponse = 'PATCH request successful';
@@ -77,7 +75,7 @@ export class UserComponent implements OnInit {
   }
 
   submitDeleteRequest() {
-    this.userService.deleteData(this.deleteData).subscribe(
+    this.userService.deleteAllUsers(this.deleteData).subscribe(
       (response) => {
         console.log('DELETE request successful:', response);
         this.postDataResponse = 'DELETE request successful';

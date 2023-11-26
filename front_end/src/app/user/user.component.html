@@ -1,13 +1,40 @@
-<p>user works!</p>
-
-{{data | json}}
-<br>
-<br>
-
-<div class="myForm">
-  <div class="label">{{postDataResponse}}</div>
-  <br>
-  <br><button (click)="submitPostRequest()">Submit POST request</button>
-  <br><button (click)="submitPatchRequest()">Submit PATCH request</button>
-  <br><button (click)="submitDeleteRequest()">Submit DELETE request</button>
+<p>Users</p><hr>
+<div class="userList" *ngFor="let user of users">
+  <div class="userObject">
+    <div class="userField">
+      id: {{user.id}}
+    </div>
+    <div class="userField">
+      login: {{user.login}}
+    </div>
+    <div class="userField">
+      password: {{user.password}}
+    </div>
+    <div class="userField">
+      roles: <br>
+      {{"{"}}
+      <div class="roleList" *ngFor="let role of user.roles">
+        <div class="role">
+          roleName: {{role.name}} <br>
+          roleDescription: {{role.description}}
+        </div><br>
+      </div>
+      {{"}"}}
+    </div>
+    <div class="userField">
+      firstname: {{user.firstname}}
+    </div>
+    <div class="userField">
+      surname: {{user.surname}}
+    </div>
+    <div class="userField">
+      email: {{user.email}}
+    </div>
+    <div class="userField">
+      phone: {{user.phone}}
+    </div>
+    <div class="userField">
+      address: {{user.address}}
+    </div>
+  </div><hr>
 </div>
