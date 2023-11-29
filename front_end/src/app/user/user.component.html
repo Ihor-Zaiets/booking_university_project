@@ -28,7 +28,7 @@
       <tr *ngFor="let user of users; let i = index">
         <td>
           <input type="checkbox" class="btn-check" id="btn-check{{i}}" [checked]="isChecked(user.id)" (change)="onCheckboxChange(user.id)">
-          <label class="btn btn-outline-warning" for="btn-check{{i}}">Edit</label>
+          <label class="btn btn-outline-warning" for="btn-check{{i}}">Select</label>
         </td>
         <td>{{ user.id }}</td>
         <td>
