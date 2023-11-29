@@ -26,13 +26,13 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
-        <td><input type="checkbox" [checked]="isChecked(Number(user.id))" (change)="onCheckboxChange(Number(user.id))"></td>
+        <td><input type="checkbox" [checked]="isChecked(user.id)" (change)="onCheckboxChange(user.id)"></td>
         <td>{{ user.id }}</td>
         <td>
-          <input type="text" [(ngModel)]="user.login" name="login" [disabled]="!isChecked(Number(user.id))"/>
+          <input type="text" [(ngModel)]="user.login" name="login" [disabled]="!isChecked(user.id)"/>
         </td>
         <td>
-          <input type="password" [(ngModel)]="user.password" name="password" [disabled]="!isChecked(Number(user.id))"/>
+          <input type="password" [(ngModel)]="user.password" name="password" [disabled]="!isChecked(user.id)"/>
         </td>
         <td>
           <ul>
@@ -43,19 +43,19 @@
           </ul>
         </td>
         <td>
-          <input type="text" [(ngModel)]="user.firstname" name="firstname" [disabled]="!isChecked(Number(user.id))"/>
+          <input type="text" [(ngModel)]="user.firstname" name="firstname" [disabled]="!isChecked(user.id)"/>
         </td>
         <td>
-          <input type="text" [(ngModel)]="user.surname" name="surname" [disabled]="!isChecked(Number(user.id))"/>
+          <input type="text" [(ngModel)]="user.surname" name="surname" [disabled]="!isChecked(user.id)"/>
         </td>
         <td>
-          <input type="email" [(ngModel)]="user.email" name="email" [disabled]="!isChecked(Number(user.id))"/>
+          <input type="email" [(ngModel)]="user.email" name="email" [disabled]="!isChecked(user.id)"/>
         </td>
         <td>
-          <input type="tel" [(ngModel)]="user.phone" name="phone" [disabled]="!isChecked(Number(user.id))"/>
+          <input type="tel" [(ngModel)]="user.phone" name="phone" [disabled]="!isChecked(user.id)"/>
         </td>
         <td>
-          <input type="text" [(ngModel)]="user.address" name="address" [disabled]="!isChecked(Number(user.id))"/>
+          <input type="text" [(ngModel)]="user.address" name="address" [disabled]="!isChecked(user.id)"/>
         </td>
       </tr>
       </tbody>
