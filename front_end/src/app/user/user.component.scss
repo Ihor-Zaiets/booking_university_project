@@ -1,0 +1,19 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Scrollbar styling
+
+.table-responsive::-webkit-scrollbar {
+  width: 12px; /* width of the vertical scrollbar */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #6c757d; /* color of the thumb (dragging handle) */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background-color: #f8f9fa; /* color of the scrollbar track (the area the thumb moves along) */
+}
+
+.table-responsive {
+  overflow-x: auto; /* adds horizontal scrollbar if content exceeds the container width */
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
