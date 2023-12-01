@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ApartmentComponent } from './apartment/apartment.component'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
+import { ToastrModule } from 'ngx-toastr'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { FormsModule } from '@angular/forms'
     AppRoutingModule,
     [HttpClientModule],
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
