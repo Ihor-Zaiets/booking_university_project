@@ -77,4 +77,8 @@ export class UserComponent implements OnInit {
   addNewUser() {
     this.newUsers.push(new User());
   }
+
+  deleteNewUser(index: number) {
+    this.newUsers.splice(index, 1);
+  }
 }

@@ -70,6 +70,7 @@
     <table class="table table-hover table-borderless">
       <thead class="table-primary">
       <tr>
+        <th></th>
         <th>Login</th>
         <th>Password</th>
         <th>Roles</th>
@@ -81,7 +82,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of newUsers">
+      <tr *ngFor="let user of newUsers; let i = index;">
+        <td><button class="btn btn-outline-danger" (click)="deleteNewUser(i)">Delete</button></td>
         <td>
           <input type="text" [(ngModel)]="user.login" name="login"/>
         </td>
