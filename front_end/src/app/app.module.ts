@@ -10,6 +10,12 @@ import { FormsModule } from '@angular/forms'
 import { ToastrModule } from 'ngx-toastr'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
+const toastrConfiguration = {
+  timeOut: 3000,
+  tapToDismiss: true,
+  positionClass: 'toast-bottom-center',
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     [HttpClientModule],
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(toastrConfiguration),
   ],
   providers: [],
   bootstrap: [AppComponent]
