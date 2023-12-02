@@ -36,7 +36,7 @@ export class WebApiService {
     return this.httpClient.get(url, httpGetOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -44,7 +44,7 @@ export class WebApiService {
     return this.httpClient.post(url, requestBody, httpOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -52,7 +52,7 @@ export class WebApiService {
     return this.httpClient.patch(url, requestBody, httpOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -61,7 +61,7 @@ export class WebApiService {
     return this.httpClient.delete(url, httpDeleteOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
