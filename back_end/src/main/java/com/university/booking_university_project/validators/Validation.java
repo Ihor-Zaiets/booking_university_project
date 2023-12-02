@@ -11,23 +11,35 @@ public class Validation {
   public static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
   public static final String PHONE_REGEX = "^(\\+\\d{1,3}\\s*)?\\d{9}$";
 
+  public static final String FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX = "Firstname field error.";
+  public static final String EMAIL_FIELD_EXCEPTION_MESSAGE_PREFIX = "Email field error.";
+  public static final String PHONE_FIELD_EXCEPTION_MESSAGE_PREFIX = "Phone field error.";
+
+  public static void validateTrimSpaces(String string) {
+    validateTrimSpacesWithMessagePrefix(string, "");
+  }
+
   /**
    * @param string string to check on trim spaces, if null then ignore.
    * */
-  public static void validateTrimSpaces(String string) {
+  public static void validateTrimSpacesWithMessagePrefix(String string, String prefix) {
     if (string != null && !string.trim().equals(string)) {
-      throw new ValidationException(ExceptionMessage.TRIM_VALIDATION_MESSAGE);
+      throw new ValidationException(prefix + ExceptionMessage.TRIM_VALIDATION_MESSAGE);
     }
   }
 
   public static void validateObjectNullOrEmpty(Object object) {
+    validateObjectNullOrEmptyWithMessagePrefix(object, "");
+  }
+
+  public static void validateObjectNullOrEmptyWithMessagePrefix(Object object, String prefix) {
     if (Objects.isNull(object) || object instanceof String && object.toString().isEmpty())
-      throw new ValidationException(ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+      throw new ValidationException(prefix + ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   public static void validateUserFirstName(String firstName) {
-    validateObjectNullOrEmpty(firstName);
-    validateTrimSpaces(firstName);
+    validateObjectNullOrEmptyWithMessagePrefix(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
+    validateTrimSpacesWithMessagePrefix(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
     if (firstName.matches(ONLY_NUMBERS_REGEX))
       throw new ValidationException(ExceptionMessage.USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN);
   }
@@ -48,8 +60,12 @@ public class Validation {
   }
 
   public static void validatePhone(String userPhone) {
-    validateObjectNullOrEmpty(userPhone);
-    validateTrimSpaces(userPhone);
+    validatePhoneWithMessagePrefix(userPhone, "");
+  }
+
+  public static void validatePhoneWithMessagePrefix(String userPhone, String prefix) {
+    validateObjectNullOrEmptyWithMessagePrefix(userPhone, prefix);
+    validateTrimSpacesWithMessagePrefix(userPhone, prefix);
     if (!userPhone.replaceAll(" ", "").matches(PHONE_REGEX))
       throw new ValidationException(ExceptionMessage.PHONE_NUMBER_VALIDATION_MESSAGE);
   }

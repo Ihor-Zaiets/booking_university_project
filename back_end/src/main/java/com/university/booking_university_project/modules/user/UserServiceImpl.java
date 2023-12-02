@@ -103,11 +103,11 @@ public class UserServiceImpl implements UserService {
     Validation.validateUserSurname(userUpdateDTO.getSurname());
     Validation.validateEmail(userUpdateDTO.getEmail());
     validateEmailAlreadyExist(userUpdateDTO.getEmail());
-    Validation.validatePhone(userUpdateDTO.getPhone());
+    Validation.validatePhoneWithMessagePrefix(userUpdateDTO.getPhone(), Validation.PHONE_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
   }
 
   public void validateEmailAlreadyExist(String email) {
-    if (userRepository.existsByEmail(email))
+    if (email != null && userRepository.existsByEmail(email))
       throw new ValidationException(ExceptionMessage.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE);
   }
 }
