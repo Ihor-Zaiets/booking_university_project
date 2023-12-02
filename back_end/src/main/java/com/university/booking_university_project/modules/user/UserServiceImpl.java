@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
   public List<UserDTO> createUsers(List<UserCreateDTO> userCreationDTOList) {
     List<User> users = new ArrayList<>();
     for (UserUpdateDTO userCreationDTO : userCreationDTOList) {
-//      validateUser(userCreationDTO);
+      validateUser(userCreationDTO);
       users.add(mapper.map(userCreationDTO, User.class));
     }
     List<User> savedUsers = userRepository.saveAll(users);
@@ -102,11 +102,11 @@ public class UserServiceImpl implements UserService {
     Validation.validateUserFirstName(userUpdateDTO.getFirstname());
     Validation.validateUserSurname(userUpdateDTO.getSurname());
     Validation.validateEmail(userUpdateDTO.getEmail());
-    validateUserEmail(userUpdateDTO.getEmail());
+    validateEmailAlreadyExist(userUpdateDTO.getEmail());
     Validation.validatePhone(userUpdateDTO.getPhone());
   }
 
-  public void validateUserEmail(String email) {
+  public void validateEmailAlreadyExist(String email) {
     if (userRepository.existsByEmail(email))
       throw new ValidationException(ExceptionMessage.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE);
   }

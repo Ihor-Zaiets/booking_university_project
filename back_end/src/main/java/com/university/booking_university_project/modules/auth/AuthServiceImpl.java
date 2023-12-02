@@ -25,7 +25,7 @@ public class AuthServiceImpl implements AuthService {
     Validation.validateUserFirstName(userRegistrationRequest.getFirstname());
     Validation.validateUserSurname(userRegistrationRequest.getSurname());
     Validation.validateEmail(userRegistrationRequest.getEmail());
-    userServiceImpl.validateUserEmail(userRegistrationRequest.getEmail());
+    userServiceImpl.validateEmailAlreadyExist(userRegistrationRequest.getEmail());
     Validation.validatePhone(userRegistrationRequest.getPhone());
     validateLogin(userRegistrationRequest.getLogin());
     validatePassword(userRegistrationRequest.getPassword());
