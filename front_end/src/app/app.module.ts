@@ -11,7 +11,7 @@ import { ToastrModule } from 'ngx-toastr'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 const toastrConfiguration = {
-  timeOut: 3000,
+  timeOut: 10000,
   tapToDismiss: true,
   positionClass: 'toast-bottom-center',
 }
