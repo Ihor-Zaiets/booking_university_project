@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { catchError, map, Observable, throwError } from 'rxjs'
 import { ToastrService } from 'ngx-toastr'
 
@@ -69,7 +69,11 @@ export class WebApiService {
     return response;
   }
 
-  private handleError(error: any) {
+  private handleError(error: HttpErrorResponse) {
+    if (error.status >= 400 && error.status <= 499)
+      this.toastr.error(error.error.message);
+    else
+      this.toastr.error('Unexpected error happened. Please contact administrator');
     return throwError(error);
   }
 }
