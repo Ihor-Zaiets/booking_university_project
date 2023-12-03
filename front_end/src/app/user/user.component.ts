@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { UserService } from './user.service'
 import { User } from '../model/User'
+import { RouteService } from '../Service/route.service'
 
 @Component({
   selector: 'app-user',
@@ -12,7 +13,7 @@ export class UserComponent implements OnInit {
   checkedUsers: Set<number> = new Set<number>();
   newUsers: User[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private route: RouteService) {}
 
   ngOnInit(): void {
     this.getAllUsers()
@@ -23,37 +24,21 @@ export class UserComponent implements OnInit {
   }
 
   submitPostRequest() {
-    this.userService.createAllUsers(this.newUsers).subscribe(
-      (response) => {
-        console.log('POST request successful:', response);
-      },
-      (error) => {
-        console.error('Error during POST request:', error);
-      }
-    );
+    this.userService.createAllUsers(this.newUsers).subscribe(() => {
+      this.route.reloadComponent(true);
+    });
   }
 
-
   submitPatchRequest() {
-    this.userService.editAllUsers(this.users.filter((user) => this.checkedUsers.has(Number(user.id)))).subscribe(
-      (response) => {
-        console.log('PATCH request successful:', response);
-      },
-      (error) => {
-        console.error('Error during PATCH request:', error);
-      }
-    );
+    this.userService.editAllUsers(this.users.filter((user) => this.checkedUsers.has(Number(user.id)))).subscribe(() => {
+      this.route.reloadComponent(true);
+    });
   }
 
   submitDeleteRequest() {
-    this.userService.deleteAllUsers(Array.from(this.checkedUsers)).subscribe(
-      (response) => {
-        console.log('DELETE request successful:', response);
-      },
-      (error) => {
-        console.error('Error during DELETE request:', error);
-      }
-    );
+    this.userService.deleteAllUsers(Array.from(this.checkedUsers)).subscribe(() => {
+      this.route.reloadComponent(true);
+    });
   }
 
   isChecked(userId: number) {
