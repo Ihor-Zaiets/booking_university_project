@@ -23,19 +23,19 @@ export class UserComponent implements OnInit {
     this.userService.getAllUsers().subscribe((response) => this.users = response.body);
   }
 
-  submitPostRequest() {
+  saveUsers() {
     this.userService.createAllUsers(this.newUsers).subscribe(() => {
       this.route.reloadComponent(true);
     });
   }
 
-  submitPatchRequest() {
+  editUsers() {
     this.userService.editAllUsers(this.users.filter((user) => this.checkedUsers.has(Number(user.id)))).subscribe(() => {
       this.route.reloadComponent(true);
     });
   }
 
-  submitDeleteRequest() {
+  deleteUsers() {
     this.userService.deleteAllUsers(Array.from(this.checkedUsers)).subscribe(() => {
       this.route.reloadComponent(true);
     });
