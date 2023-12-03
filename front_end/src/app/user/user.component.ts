@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { UserService } from './user.service'
 import { User } from '../model/User'
 import { RouteService } from '../Service/route.service'
+import { ToastrService } from 'ngx-toastr'
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ export class UserComponent implements OnInit {
   checkedUsers: Set<number> = new Set<number>();
   newUsers: User[] = [];
 
-  constructor(private userService: UserService, private route: RouteService) {}
+  constructor(private userService: UserService, private route: RouteService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getAllUsers()
@@ -26,18 +27,21 @@ export class UserComponent implements OnInit {
   saveUsers() {
     this.userService.createAllUsers(this.newUsers).subscribe(() => {
       this.route.reloadComponent(true);
+      this.toastr.success('Users saved')
     });
   }
 
   editUsers() {
     this.userService.editAllUsers(this.users.filter((user) => this.checkedUsers.has(Number(user.id)))).subscribe(() => {
       this.route.reloadComponent(true);
+      this.toastr.success('Users updated')
     });
   }
 
   deleteUsers() {
     this.userService.deleteAllUsers(Array.from(this.checkedUsers)).subscribe(() => {
       this.route.reloadComponent(true);
+      this.toastr.success('Users deleted')
     });
   }
 
