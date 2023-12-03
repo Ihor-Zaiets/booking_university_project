@@ -8,7 +8,8 @@ import { ApartmentComponent } from './apartment/apartment.component'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { ToastrModule } from 'ngx-toastr'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component'
 
 const toastrConfiguration = {
   timeOut: 10000,
@@ -20,7 +21,8 @@ const toastrConfiguration = {
   declarations: [
     AppComponent,
     UserComponent,
-    ApartmentComponent
+    ApartmentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
