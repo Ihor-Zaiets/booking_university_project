@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms'
 import { ToastrModule } from 'ngx-toastr'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component'
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { StartComponent } from './start/start.component'
 
 const toastrConfiguration = {
   timeOut: 10000,
@@ -24,7 +25,8 @@ const toastrConfiguration = {
     UserComponent,
     ApartmentComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
