@@ -2,10 +2,14 @@ package com.university.booking_university_project.jpa.entity;
 
 import com.university.booking_university_project.jpa.IEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 import java.util.Objects;
 
+@Getter
+@Setter
 @Table(schema = "public", name = "apartment")
 @Entity
 public class Apartment implements IEntity<Integer> {
@@ -31,74 +35,6 @@ public class Apartment implements IEntity<Integer> {
 
     @NonNull
     private Integer numberOfSingleBeds;
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    @NonNull
-    public Integer getNumberOfRooms() {
-        return numberOfRooms;
-    }
-
-    public void setNumberOfRooms(Integer numberOfRooms) {
-        this.numberOfRooms = numberOfRooms;
-    }
-
-    public Double getSquare() {
-        return square;
-    }
-
-    public void setSquare(Double square) {
-        this.square = square;
-    }
-
-    @NonNull
-    public Double getRentPrice() {
-        return rentPrice;
-    }
-
-    public void setRentPrice(Double rentPrice) {
-        this.rentPrice = rentPrice;
-    }
-
-    public Integer getFloor() {
-        return floor;
-    }
-
-    public void setFloor(Integer floor) {
-        this.floor = floor;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @NonNull
-    public Integer getNumberOfDoubleBeds() {
-        return numberOfDoubleBeds;
-    }
-
-    public void setNumberOfDoubleBeds(Integer hasDoubleBed) {
-        this.numberOfDoubleBeds = hasDoubleBed;
-    }
-
-    @NonNull
-    public Integer getNumberOfSingleBeds() {
-        return numberOfSingleBeds;
-    }
-
-    public void setNumberOfSingleBeds(Integer hasSingleBed) {
-        this.numberOfSingleBeds = hasSingleBed;
-    }
 
     @Override
     public boolean equals(Object o) {
