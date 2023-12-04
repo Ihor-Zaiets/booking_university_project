@@ -27,21 +27,21 @@ export class ApartmentComponent implements OnInit {
   saveApartments() {
     this.apartmentService.createAllApartments(this.newApartments).subscribe(() => {
       this.route.reloadComponent(true);
-      this.toastr.success('Apartments saved');
+      this.toastr.success('Zapisano');
     });
   }
 
   editApartments() {
     this.apartmentService.editAllApartments(this.apartments.filter((apartment) => this.checkedApartments.has(Number(apartment.id)))).subscribe(() => {
       this.route.reloadComponent(true);
-      this.toastr.success('Apartments updated');
+      this.toastr.success('Zapisano');
     });
   }
 
   deleteApartments() {
     this.apartmentService.deleteAllApartments(Array.from(this.checkedApartments)).subscribe(() => {
       this.route.reloadComponent(true);
-      this.toastr.success('Apartments deleted');
+      this.toastr.success('Usunięto');
     });
   }
 

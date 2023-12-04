@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apartment Table</title>
+    <title>Tabela Apartamentów</title>
   </head>
   <body>
     <div class=" table-responsive">
@@ -12,20 +12,20 @@
         <tr>
           <th></th>
           <th>ID</th>
-          <th>Number of Rooms</th>
-          <th>Square</th>
-          <th>Rent Price</th>
-          <th>Floor</th>
-          <th>Description</th>
-          <th>Number of Double Beds</th>
-          <th>Number of Single Beds</th>
+          <th>Liczba Pokoi</th>
+          <th>Metraż</th>
+          <th>Cena Wynajmu</th>
+          <th>Piętro</th>
+          <th>Opis</th>
+          <th>Liczba Łóżek Podwójnych</th>
+          <th>Liczba Łóżek Jednoosobowych</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let apartment of apartments; let i = index">
           <td>
             <input type="checkbox" class="btn-check" id="btn-check{{i}}" [checked]="isChecked(apartment.id)" (change)="onCheckboxChange(apartment.id)">
-            <label class="btn btn-outline-warning" for="btn-check{{i}}">Select</label>
+            <label class="btn btn-outline-warning" for="btn-check{{i}}">Wybierz</label>
           </td>
           <td>{{ apartment.id }}</td>
           <td>
@@ -53,27 +53,27 @@
         </tbody>
       </table>
 
-      <button class="btn btn-outline-danger" (click)="deleteApartments();">Delete selected apartments</button>
-      <button class="btn btn-outline-primary" (click)="addNewApartment()">Add new apartment</button>
-      <button class="btn btn-outline-primary" (click)="saveApartments();">Save apartments</button>
-      <button class="btn btn-outline-warning" (click)="editApartments();">Save Selected</button>
+      <button class="btn btn-outline-danger" (click)="deleteApartments();">Usuń wybrane</button>
+      <button class="btn btn-outline-primary" (click)="addNewApartment()">Dodaj nowy apartament</button>
+      <button class="btn btn-outline-primary" (click)="saveApartments();">Zapisz apartamenty</button>
+      <button class="btn btn-outline-warning" (click)="editApartments();">Zapisz wybrane</button>
 
       <table class="table table-hover table-borderless">
         <thead class="table-primary">
         <tr>
           <th></th>
-          <th>Number of Rooms</th>
-          <th>Square</th>
-          <th>Rent Price</th>
-          <th>Floor</th>
-          <th>Description</th>
-          <th>Number of Double Beds</th>
-          <th>Number of Single Beds</th>
+          <th>Liczba Pokoi</th>
+          <th>Metraż</th>
+          <th>Cena Wynajmu</th>
+          <th>Piętro</th>
+          <th>Opis</th>
+          <th>Liczba Łóżek Podwójnych</th>
+          <th>Liczba Łóżek Jednoosobowych</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let apartment of newApartments; let i = index;">
-          <td><button class="btn btn-outline-danger" (click)="deleteNewApartment(i)">Delete</button></td>
+          <td><button class="btn btn-outline-danger" (click)="deleteNewApartment(i)">Usuń</button></td>
           <td>
             <input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms"/>
           </td>

@@ -27,21 +27,21 @@ export class UserComponent implements OnInit {
   saveUsers() {
     this.userService.createAllUsers(this.newUsers).subscribe(() => {
       this.route.reloadComponent(true);
-      this.toastr.success('Users saved')
+      this.toastr.success('Zapisano')
     });
   }
 
   editUsers() {
     this.userService.editAllUsers(this.users.filter((user) => this.checkedUsers.has(Number(user.id)))).subscribe(() => {
       this.route.reloadComponent(true);
-      this.toastr.success('Users updated')
+      this.toastr.success('Zapisano')
     });
   }
 
   deleteUsers() {
     this.userService.deleteAllUsers(Array.from(this.checkedUsers)).subscribe(() => {
       this.route.reloadComponent(true);
-      this.toastr.success('Users deleted')
+      this.toastr.success('Usunięto')
     });
   }
 

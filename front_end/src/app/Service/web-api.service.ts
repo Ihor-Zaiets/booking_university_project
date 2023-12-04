@@ -73,7 +73,7 @@ export class WebApiService {
     if (error.status >= 400 && error.status <= 499)
       this.toastr.error(error.error.message);
     else
-      this.toastr.error('Unexpected error happened. Please contact administrator');
+      this.toastr.error('Nieoczekiwany błąd. Skontaktuj się z administratorem');
     return throwError(error);
   }
 }
