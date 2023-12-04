@@ -6,11 +6,13 @@ import com.university.booking_university_project.modules.apartment.dto.Apartment
 import com.university.booking_university_project.modules.apartment.dto.ApartmentDTO;
 import com.university.booking_university_project.modules.apartment.dto.ApartmentUpdateDTO;
 import com.university.booking_university_project.modules.apartment.repository.ApartmentRepository;
+import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.validators.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -70,7 +72,7 @@ public class ApartmentServiceImpl implements ApartmentService {
 
   @Override
   public List<ApartmentDTO> findAllDTO() {
-    return apartmentRepository.findAll().stream().map(entity -> mapper.map(entity, ApartmentDTO.class)).collect(Collectors.toList());
+    return apartmentRepository.findAll().stream().map(entity -> mapper.map(entity, ApartmentDTO.class)).sorted(Comparator.comparingInt(ApartmentDTO::getId)).collect(Collectors.toList());
   }
 
   @Override
