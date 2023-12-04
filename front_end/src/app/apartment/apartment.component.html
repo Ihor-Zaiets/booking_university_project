@@ -1,1 +1,103 @@
-<p>apartment works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Table</title>
+  </head>
+  <body>
+    <div class=" table-responsive">
+      <table class="table table-hover table-borderless">
+        <thead class="table-success">
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>Number of Rooms</th>
+          <th>Square</th>
+          <th>Rent Price</th>
+          <th>Floor</th>
+          <th>Description</th>
+          <th>Number of Double Beds</th>
+          <th>Number of Single Beds</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let apartment of apartments; let i = index">
+          <td>
+            <input type="checkbox" class="btn-check" id="btn-check{{i}}" [checked]="isChecked(apartment.id)" (change)="onCheckboxChange(apartment.id)">
+            <label class="btn btn-outline-warning" for="btn-check{{i}}">Select</label>
+          </td>
+          <td>{{ apartment.id }}</td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.square" name="square" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.rentPrice" name="rentPrice" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.floor" name="floor" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="apartment.description" name="description" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfDoubleBeds" name="numberOfDoubleBeds" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <button class="btn btn-outline-danger" (click)="deleteApartments();">Delete selected apartments</button>
+      <button class="btn btn-outline-primary" (click)="addNewApartment()">Add new apartment</button>
+      <button class="btn btn-outline-primary" (click)="saveApartments();">Save apartments</button>
+      <button class="btn btn-outline-warning" (click)="editApartments();">Save Selected</button>
+
+      <table class="table table-hover table-borderless">
+        <thead class="table-primary">
+        <tr>
+          <th></th>
+          <th>Number of Rooms</th>
+          <th>Square</th>
+          <th>Rent Price</th>
+          <th>Floor</th>
+          <th>Description</th>
+          <th>Number of Double Beds</th>
+          <th>Number of Single Beds</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let apartment of newApartments; let i = index;">
+          <td><button class="btn btn-outline-danger" (click)="deleteNewApartment(i)">Delete</button></td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.square" name="square"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.rentPrice" name="rentPrice"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.floor" name="floor"/>
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="apartment.description" name="description"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfDoubleBeds" name="numberOfDoubleBeds"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
