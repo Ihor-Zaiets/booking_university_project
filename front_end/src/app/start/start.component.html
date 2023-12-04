@@ -1,1 +1,57 @@
-<p>start works!</p>
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Apartamentów</title>
+  </head>
+  <body>
+    <div class=" table-responsive">
+      <table class="table table-hover table-borderless">
+        <thead class="table-success">
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>Liczba Pokoi</th>
+          <th>Metraż</th>
+          <th>Cena Wynajmu</th>
+          <th>Piętro</th>
+          <th>Opis</th>
+          <th>Liczba Łóżek Podwójnych</th>
+          <th>Liczba Łóżek Jednoosobowych</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let apartment of apartments; let i = index">
+          <td>
+            <input type="checkbox" class="btn-check" id="btn-check{{i}}" [checked]="isChecked(apartment.id)" (change)="onCheckboxChange(apartment.id)">
+            <label class="btn btn-outline-warning" for="btn-check{{i}}">Wybierz</label>
+          </td>
+          <td>{{ apartment.id }}</td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.square" name="square" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.rentPrice" name="rentPrice" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.floor" name="floor" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="apartment.description" name="description" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfDoubleBeds" name="numberOfDoubleBeds" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+          <td>
+            <input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds" [disabled]="!isChecked(apartment.id)"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
