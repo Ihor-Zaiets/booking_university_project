@@ -16,30 +16,30 @@ public class Validation {
   public static final String PHONE_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu telefon.";
 
   public static void validateTrimSpaces(String string) {
-    validateTrimSpacesWithMessagePrefix(string, "");
+    validateTrimSpaces(string, "");
   }
 
   /**
    * @param string string to check on trim spaces, if null then ignore.
    * */
-  public static void validateTrimSpacesWithMessagePrefix(String string, String prefix) {
+  public static void validateTrimSpaces(String string, String prefix) {
     if (string != null && !string.trim().equals(string)) {
       throw new ValidationException(prefix + ExceptionMessage.TRIM_VALIDATION_MESSAGE);
     }
   }
 
   public static void validateObjectNullOrEmpty(Object object) {
-    validateObjectNullOrEmptyWithMessagePrefix(object, "");
+    validateObjectNullOrEmpty(object, "");
   }
 
-  public static void validateObjectNullOrEmptyWithMessagePrefix(Object object, String prefix) {
+  public static void validateObjectNullOrEmpty(Object object, String prefix) {
     if (Objects.isNull(object) || object instanceof String && object.toString().isEmpty())
       throw new ValidationException(prefix + ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
   }
 
   public static void validateUserFirstName(String firstName) {
-    validateObjectNullOrEmptyWithMessagePrefix(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
-    validateTrimSpacesWithMessagePrefix(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
+    validateObjectNullOrEmpty(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
+    validateTrimSpaces(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
     if (firstName.matches(ONLY_NUMBERS_REGEX))
       throw new ValidationException(ExceptionMessage.USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN);
   }
@@ -64,8 +64,8 @@ public class Validation {
   }
 
   public static void validatePhoneWithMessagePrefix(String userPhone, String prefix) {
-    validateObjectNullOrEmptyWithMessagePrefix(userPhone, prefix);
-    validateTrimSpacesWithMessagePrefix(userPhone, prefix);
+    validateObjectNullOrEmpty(userPhone, prefix);
+    validateTrimSpaces(userPhone, prefix);
     if (!userPhone.replaceAll(" ", "").matches(PHONE_REGEX))
       throw new ValidationException(ExceptionMessage.PHONE_NUMBER_VALIDATION_MESSAGE);
   }
