@@ -12,8 +12,11 @@ public class Validation {
   public static final String PHONE_REGEX = "^(\\+\\d{1,3}\\s*)?\\d{9}$";
 
   public static final String FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu imie.";
+  public static final String SURTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu nazwisko.";
   public static final String EMAIL_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu email.";
   public static final String PHONE_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu telefon.";
+  public static final String LOGIN_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu login.";
+  public static final String PASSWORD_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu hasło.";
 
   public static void validateTrimSpaces(String string) {
     validateTrimSpaces(string, "");
@@ -45,7 +48,7 @@ public class Validation {
   }
 
   public static void validateUserSurname(String userSurname) {
-    validateTrimSpaces(userSurname);
+    validateTrimSpaces(userSurname, SURTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX);
     if (userSurname != null && (userSurname.isBlank() || userSurname.matches(ONLY_NUMBERS_REGEX)))
       throw new ValidationException(ExceptionMessage.USER_SURNAME_VALIDATION_MESSAGE);
   }
@@ -54,7 +57,7 @@ public class Validation {
    * @param userEmail checks email against email regex, if email is null then ignore.
    * */
   public static void validateEmail(String userEmail) {
-    validateTrimSpaces(userEmail);
+    validateTrimSpaces(userEmail, EMAIL_FIELD_EXCEPTION_MESSAGE_PREFIX);
     if (userEmail != null && !userEmail.matches(EMAIL_REGEX))
       throw new ValidationException(ExceptionMessage.EMAIL_VALIDATION_MESSAGE);
   }
