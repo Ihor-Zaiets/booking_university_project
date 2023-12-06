@@ -7,10 +7,10 @@ import org.springframework.lang.NonNull;
 @Getter
 @Setter
 public class UserRegistrationRequest {
-  
-  private String login;
 
-  private String password;
+  @NonNull private String login;
+
+  @NonNull private String password;
 
   @NonNull private String firstname;
 
