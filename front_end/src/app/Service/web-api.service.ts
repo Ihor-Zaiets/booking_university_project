@@ -33,6 +33,7 @@ export class WebApiService {
   constructor(private httpClient: HttpClient, private toastr: ToastrService) { }
 
   get(url: string): Observable<any> {
+    console.log("webApiService, get, url: ", url, " httpGetOptions: ", httpGetOptions)
     return this.httpClient.get(url, httpGetOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
@@ -41,6 +42,7 @@ export class WebApiService {
   }
 
   post(url: string, requestBody: any): Observable<any> {
+    console.log("webApiService, post, url: ", url, " requestBody: ", requestBody, " httpOptions: ", httpOptions)
     return this.httpClient.post(url, requestBody, httpOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
@@ -49,6 +51,7 @@ export class WebApiService {
   }
 
   patch(url: string, requestBody: any): Observable<any> {
+    console.log("webApiService, patch, url: ", url, " requestBody: ", requestBody, " httpOptions: ", httpOptions)
     return this.httpClient.patch(url, requestBody, httpOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
@@ -58,6 +61,7 @@ export class WebApiService {
 
   delete(url: string, requestBody: any): Observable<any> {
     httpDeleteOptions.body = requestBody;
+    console.log("webApiService, delete, url: ", url, " requestBody: ", httpDeleteOptions)
     return this.httpClient.delete(url, httpDeleteOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
