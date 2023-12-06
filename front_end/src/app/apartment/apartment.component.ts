@@ -21,11 +21,7 @@ export class ApartmentComponent implements OnInit {
   }
 
   getAllApartments() {
-    this.apartmentService.getAllApartments().subscribe((response) => {
-      console.log(response.body)
-      this.apartments = response.body
-      console.log(this.apartments)
-    });
+    this.apartmentService.getAllApartments().subscribe((response) => this.apartments = response.body);
   }
 
   saveApartments() {
