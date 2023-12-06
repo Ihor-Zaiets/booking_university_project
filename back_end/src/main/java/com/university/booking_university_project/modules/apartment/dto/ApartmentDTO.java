@@ -7,7 +7,7 @@ import org.springframework.lang.NonNull;
 @Setter
 @Getter
 public class ApartmentDTO {
-  
+
   private Integer id;
 
   @NonNull private Integer numberOfRooms;
@@ -23,4 +23,6 @@ public class ApartmentDTO {
   @NonNull private Integer numberOfDoubleBeds;
 
   @NonNull private Integer numberOfSingleBeds;
+
+  @NonNull private String address;
 }

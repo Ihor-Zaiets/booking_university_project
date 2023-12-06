@@ -7,4 +7,5 @@ export class Apartment {
   description!:string;
   numberOfDoubleBeds!:number;
   numberOfSingleBeds!:number;
+  address!:string;
 }

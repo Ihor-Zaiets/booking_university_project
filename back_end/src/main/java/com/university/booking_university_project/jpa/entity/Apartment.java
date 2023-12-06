@@ -36,6 +36,9 @@ public class Apartment implements IEntity<Integer> {
     @NonNull
     private Integer numberOfSingleBeds;
 
+    @NonNull
+    private String address;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -19,6 +19,7 @@
           <th>Opis</th>
           <th>Liczba Łóżek Podwójnych</th>
           <th>Liczba Łóżek Jednoosobowych</th>
+          <th>Adres</th>
         </tr>
         </thead>
         <tbody>
@@ -49,6 +50,9 @@
           <td>
             <input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds" [disabled]="!isChecked(apartment.id)"/>
           </td>
+          <td>
+            <input type="text" [(ngModel)]="apartment.address" name="address" [disabled]="!isChecked(apartment.id)"/>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -69,6 +73,7 @@
           <th>Opis</th>
           <th>Liczba Łóżek Podwójnych</th>
           <th>Liczba Łóżek Jednoosobowych</th>
+          <th>Adres</th>
         </tr>
         </thead>
         <tbody>
@@ -94,6 +99,9 @@
           </td>
           <td>
             <input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds"/>
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="apartment.address" name="address"/>
           </td>
         </tr>
         </tbody>

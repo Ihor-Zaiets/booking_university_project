@@ -15,7 +15,8 @@ CREATE TABLE public.apartment (
                                   floor integer,
                                   description text,
                                   number_of_double_beds integer NOT NULL,
-                                  number_of_single_beds integer NOT NULL
+                                  number_of_single_beds integer NOT NULL,
+                                  address text NOT NULL
 );
 
 CREATE TABLE public."user" (
