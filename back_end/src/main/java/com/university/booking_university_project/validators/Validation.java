@@ -11,9 +11,9 @@ public class Validation {
   public static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
   public static final String PHONE_REGEX = "^(\\+\\d{1,3}\\s*)?\\d{9}$";
 
-  public static final String FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX = "Firstname field error.";
-  public static final String EMAIL_FIELD_EXCEPTION_MESSAGE_PREFIX = "Email field error.";
-  public static final String PHONE_FIELD_EXCEPTION_MESSAGE_PREFIX = "Phone field error.";
+  public static final String FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu imie.";
+  public static final String EMAIL_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu email.";
+  public static final String PHONE_FIELD_EXCEPTION_MESSAGE_PREFIX = "Błąd w polu telefon.";
 
   public static void validateTrimSpaces(String string) {
     validateTrimSpacesWithMessagePrefix(string, "");
