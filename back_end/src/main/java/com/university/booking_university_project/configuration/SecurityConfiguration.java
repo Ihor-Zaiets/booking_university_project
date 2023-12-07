@@ -1,8 +1,8 @@
 package com.university.booking_university_project.configuration;
 
+import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,9 +11,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 public class SecurityConfiguration {
@@ -26,7 +23,14 @@ public class SecurityConfiguration {
             .cors(corsConfigurer -> corsConfigurer.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests((authorize) ->
             authorize
-//                    .requestMatchers("/api/auth/testString").hasAnyAuthority("ADMIN") //example
+                    .requestMatchers("/api/User/searchAll").hasAnyAuthority("ADMIN")
+                    .requestMatchers("/api/User/createAll").hasAnyAuthority("ADMIN")
+                    .requestMatchers("/api/User/editAll").hasAnyAuthority("ADMIN")
+                    .requestMatchers("/api/User/deleteAll").hasAnyAuthority("ADMIN")
+                    .requestMatchers("/api/Apartment/searchAll").hasAnyAuthority("ADMIN")
+                    .requestMatchers("/api/Apartment/createAll").hasAnyAuthority("ADMIN")
+                    .requestMatchers("/api/Apartment/editAll").hasAnyAuthority("ADMIN")
+                    .requestMatchers("/api/Apartment/deleteAll").hasAnyAuthority("ADMIN")
                     .anyRequest().permitAll())
 //            .httpBasic(Customizer.withDefaults()) //  turn on for postman testing
             .formLogin(formConfigurer ->
