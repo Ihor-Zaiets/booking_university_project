@@ -13,6 +13,6 @@ export class SignUpComponent {
   constructor(private signUpService: SignUpService) {}
 
   signUp() {
-    this.signUpService.signUp(this.userRegistrationRequest);
+    this.signUpService.signUp(this.userRegistrationRequest).subscribe();
   }
 }

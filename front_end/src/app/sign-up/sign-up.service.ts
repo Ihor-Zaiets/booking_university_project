@@ -18,6 +18,6 @@ export class SignUpService {
 
   signUp(requestBody: UserRegistrationRequest) {
     console.log('webapi ', requestBody)
-    this.webApiService.post(httpLink.signUp, requestBody);
+    return this.webApiService.post(httpLink.signUp, requestBody);
   }
 }
