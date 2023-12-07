@@ -17,4 +17,8 @@ public interface UserService extends BaseService<User, Integer> {
   List<UserDTO> editUsers(List<UserUpdateDTO> userUpdateDTO);
 
   UserDTO signUp(UserRegistrationRequest registrationRequest);
+
+  User findByLogin(String login);
+
+  UserDTO toDTO(User user);
 }

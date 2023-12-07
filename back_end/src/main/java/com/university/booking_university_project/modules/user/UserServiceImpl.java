@@ -99,6 +99,18 @@ public class UserServiceImpl implements UserService {
     return mapper.map(user, UserDTO.class);
   }
 
+  @Override
+  public User findByLogin(String login) {
+    return userRepository.findByLogin(login);
+  }
+
+  @Override
+  public UserDTO toDTO(User user) {
+    if (user == null)
+      return null;
+    return mapper.map(user, UserDTO.class);
+  }
+
   private void validateUserCreation(UserCreateDTO userUpdateDTO) {
     Validation.validateUserFirstName(userUpdateDTO.getFirstname());
     Validation.validateUserSurname(userUpdateDTO.getSurname());
