@@ -13,14 +13,8 @@ public class AuthController {
 
   private final AuthService authService;
 
-  private final SecurityService securityService;
-
-  private final UserService userService;
-
-  public AuthController(AuthService authService, SecurityService securityService, UserService userService) {
+  public AuthController(AuthService authService) {
     this.authService = authService;
-    this.securityService = securityService;
-    this.userService = userService;
   }
 
   @PostMapping("/signup")
@@ -30,6 +24,6 @@ public class AuthController {
 
   @GetMapping("/loggedUser")
   public UserDTO getLoggedUser() {
-    return userService.toDTO(securityService.getloggedUser());
+    return authService.getLoggedUserDTO();
   }
 }

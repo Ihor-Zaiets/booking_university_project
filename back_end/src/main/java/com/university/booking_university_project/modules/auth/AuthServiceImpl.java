@@ -1,5 +1,6 @@
 package com.university.booking_university_project.modules.auth;
 
+import com.university.booking_university_project.modules.security.SecurityService;
 import com.university.booking_university_project.modules.user.UserServiceImpl;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
@@ -11,14 +12,22 @@ public class AuthServiceImpl implements AuthService {
 
   private final UserServiceImpl userServiceImpl;
 
-  public AuthServiceImpl(UserServiceImpl userServiceImpl) {
+  private final SecurityService securityService;
+
+  public AuthServiceImpl(UserServiceImpl userServiceImpl, SecurityService securityService) {
     this.userServiceImpl = userServiceImpl;
+    this.securityService = securityService;
   }
 
   @Override
   public UserDTO signUp(UserRegistrationRequest registrationRequest) {
     validateUser(registrationRequest);
     return userServiceImpl.signUp(registrationRequest);
+  }
+
+  @Override
+  public UserDTO getLoggedUserDTO() {
+    return userServiceImpl.toDTO(securityService.getloggedUser());
   }
 
   private void validateUser(UserRegistrationRequest userRegistrationRequest) {

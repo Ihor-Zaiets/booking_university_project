@@ -5,4 +5,6 @@ import com.university.booking_university_project.modules.user.dto.UserRegistrati
 
 public interface AuthService {
   UserDTO signUp(UserRegistrationRequest userRegistrationRequest);
+
+  UserDTO getLoggedUserDTO();
 }
