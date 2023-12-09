@@ -1,6 +1,7 @@
 package com.university.booking_university_project.modules.auth;
 
 import com.university.booking_university_project.modules.security.SecurityService;
+import com.university.booking_university_project.modules.user.UserService;
 import com.university.booking_university_project.modules.user.UserServiceImpl;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
@@ -10,31 +11,31 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthServiceImpl implements AuthService {
 
-  private final UserServiceImpl userServiceImpl;
+  private final UserService userService;
 
   private final SecurityService securityService;
 
-  public AuthServiceImpl(UserServiceImpl userServiceImpl, SecurityService securityService) {
-    this.userServiceImpl = userServiceImpl;
+  public AuthServiceImpl(UserServiceImpl userService, SecurityService securityService) {
+    this.userService = userService;
     this.securityService = securityService;
   }
 
   @Override
   public UserDTO signUp(UserRegistrationRequest registrationRequest) {
     validateUser(registrationRequest);
-    return userServiceImpl.signUp(registrationRequest);
+    return userService.signUp(registrationRequest);
   }
 
   @Override
   public UserDTO getLoggedUserDTO() {
-    return userServiceImpl.toDTO(securityService.getloggedUser());
+    return userService.toDTO(securityService.getloggedUser());
   }
 
   private void validateUser(UserRegistrationRequest userRegistrationRequest) {
     Validation.validateUserFirstName(userRegistrationRequest.getFirstname());
     Validation.validateUserSurname(userRegistrationRequest.getSurname());
     Validation.validateEmail(userRegistrationRequest.getEmail());
-    userServiceImpl.validateEmailAlreadyExist(userRegistrationRequest.getEmail());
+    userService.validateEmailAlreadyExist(userRegistrationRequest.getEmail());
     Validation.validatePhone(userRegistrationRequest.getPhone());
     validateLogin(userRegistrationRequest.getLogin());
     validatePassword(userRegistrationRequest.getPassword());
