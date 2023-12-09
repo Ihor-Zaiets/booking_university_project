@@ -5,10 +5,10 @@
         <a class="nav-link" routerLinkActive="active" routerLink="/start">Start</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/user">Użytkownicy</a>
+        <a class="nav-link" *ngIf="loggedUserHasRole(adminRoleName)" routerLinkActive="active" routerLink="/user">Użytkownicy</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/apartment">Apartamenty</a>
+        <a class="nav-link" *ngIf="loggedUserHasRole(adminRoleName)" routerLinkActive="active" routerLink="/apartment">Apartamenty</a>
       </li>
     </ul>
 
