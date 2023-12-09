@@ -135,6 +135,7 @@ public class UserServiceImpl implements UserService {
     }
   }
 
+  @Override
   public void validateEmailAlreadyExist(String email) {
     if (email != null && userRepository.existsByEmail(email))
       throw new ValidationException(ExceptionMessage.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE);

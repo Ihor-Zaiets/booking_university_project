@@ -21,4 +21,6 @@ public interface UserService extends BaseService<User, Integer> {
   User findByLogin(String login);
 
   UserDTO toDTO(User user);
+
+  void validateEmailAlreadyExist(String email);
 }
