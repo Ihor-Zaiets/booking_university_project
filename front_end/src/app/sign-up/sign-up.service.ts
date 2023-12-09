@@ -17,7 +17,6 @@ export class SignUpService {
   constructor(private webApiService: WebApiService) {}
 
   signUp(requestBody: UserRegistrationRequest) {
-    console.log('webapi ', requestBody)
     return this.webApiService.post(httpLink.signUp, requestBody);
   }
 }
