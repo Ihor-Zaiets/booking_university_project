@@ -109,15 +109,15 @@ Now I have to do something like that (DozerBeanMapper) DozerBeanMapperBuilder.bu
 
 (11.11.2023)
 
-Today I tried to implement some front-end, cuz my tutor said it`s required for presentation. Gosh, i hate front-end. 
-I tried, i failed. Hard, complicated, unknown technology for me. Guess, next time i'd try to convince him, 
+Today I tried to implement some front-end, cuz my tutor said it`s required for presentation. Gosh, I hate front-end. 
+I tried, I failed. Hard, complicated, unknown technology for me. Guess, next time I'd try to convince him, 
 that front-end is not required and never was.
 
-Also today I for the first time wrote tests for repository. ... took a long time to do
+Also, today I for the first time wrote tests for repository. ... took a long time to do
 
 (16.11.2023)
 
-A few days ago i spoke tu my tutor. Front is required. Without it commission just wouldn't understand what my 
+A few days ago I spoke tu my tutor. Front is required. Without it commission just wouldn't understand what my 
 project is doing.
 I'm learning typescript now.
 
@@ -126,10 +126,31 @@ I'm learning typescript now.
 I finished getting started with typescript tried to write web application on raw typescript, didn't go well.
 Then I installed Angular and started working with it, and oh my Gosh! On 8 November 2023 was released Angular 17. 
 I have a problem now, that "Can't bind to '{ngModel}' since it isn't a known property of 'input'." And whole internet 
-telling me to add dependency into app.module.ts and of course it does not exist anymore and wherever i'm adding this
+telling me to add dependency into app.module.ts and of course it does not exist anymore and wherever I'm adding this
 dependency it doesn't work.
 
-Ok, so i added it to app.component.ts and todos.component.ts so it was override, idk.
+Ok, so I added it to app.component.ts and todos.component.ts so it was override, I don't know.
 
-Also, I spend evening trying to figure out, why am i getting red error from Intellij Idea and how to fix it. Turned out,
-it was idea's bug and i just needed to ignore that highlight, because everything was working.
+Also, I spend evening trying to figure out, why am I getting red error from Intellij Idea and how to fix it. Turned out,
+it was idea's bug and I just needed to ignore that highlight, because everything was working.
+
+(11.12.2023)
+
+I'm so burnt out. In two weeks I needed to learn a whole front-end to be able to do something in it, and also I'm still
+strugling with spring security. Just nothing works with it. ***ing maven cannot find a repository in central. Form login
+doesn't work. Httpbasic login doesn't work. Jwt have a guides. Maven decided, it just won't load a dependency. Doesn't work.
+
+```xml
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-api</artifactId>
+    <version>0.12.3</version>
+</dependency>
+``` 
+that dependency just doesn't exist for my maven. I found it myself on maven and downloaded a jar, then added that manually 
+to my project in `libs` directory and configure, so that project would see it. Gosh, and even now I found a deprecated 
+tutorial, cuz every method from that that tutorial in this library is marked deprecated and one is already gone.
+
+At what time am I writting this project?! Why everythind I find on internet is already deprecated?
+
+Ok, but quite quickly I already was able to deal with such problem. I installed 0.11.3 version, MANUALLY.
