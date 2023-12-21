@@ -24,6 +24,7 @@ public class ApartmentServiceImplBaseTest implements BaseServiceTest<Apartment, 
     public static final String TEST_DESCRIPTION = "Apartment";
     public static final int TEST_NUMBER_OF_DOUBLE_BEDS = 2;
     public static final int TEST_NUMBER_OF_SINGLE_BEDS = 1;
+    public static final String TEST_ADDRESS = "some address";
 
     @Autowired
     public ApartmentServiceImplBaseTest(ApartmentRepository apartmentRepository, TestUtils testUtils, Mapper mapper) {
@@ -46,7 +47,8 @@ public class ApartmentServiceImplBaseTest implements BaseServiceTest<Apartment, 
                 TEST_FLOOR,
                 TEST_DESCRIPTION,
                 TEST_NUMBER_OF_DOUBLE_BEDS,
-                TEST_NUMBER_OF_SINGLE_BEDS
+                TEST_NUMBER_OF_SINGLE_BEDS,
+                TEST_ADDRESS
         );
     }
 }

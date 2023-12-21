@@ -24,7 +24,8 @@ public class TestUtils {
             Integer floor,
             String description,
             Integer numberOfSingleBeds,
-            Integer numberOfDoubleBeds
+            Integer numberOfDoubleBeds,
+            String address
     ) {
         Apartment apartment = new Apartment();
         apartment.setNumberOfRooms(numberOfRooms);
@@ -34,6 +35,7 @@ public class TestUtils {
         apartment.setDescription(description);
         apartment.setNumberOfSingleBeds(numberOfSingleBeds);
         apartment.setNumberOfDoubleBeds(numberOfDoubleBeds);
+        apartment.setAddress(address);
         return apartment;
     }
 }
