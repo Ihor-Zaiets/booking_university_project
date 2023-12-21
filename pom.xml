@@ -107,6 +107,25 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>2.9.0</version>
+				<configuration>
+					<java>
+						<includes>
+							<include>back_end/src/main/java/**/*.java</include> <!-- Check application code -->
+							<include>back_end/src/test/java/**/*.java</include> <!-- Check application tests code -->
+						</includes>
+						<importOrder /> <!-- standard import order -->
+						<eclipse>
+							<file>${project.basedir}/code-style-settings.xml</file> <!-- path to code style settings-->
+						</eclipse>
+						<removeUnusedImports /> <!-- removes unused imports -->
+						<ratchetFrom>origin/master</ratchetFrom> <!-- only format files which have changed since origin/develop -->
+					</java>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
