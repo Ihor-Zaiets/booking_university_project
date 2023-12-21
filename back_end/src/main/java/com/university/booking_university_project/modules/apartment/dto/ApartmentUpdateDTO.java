@@ -8,21 +8,26 @@ import org.springframework.lang.NonNull;
 @Setter
 public class ApartmentUpdateDTO {
 
-  private Integer id;
+    private Integer id;
 
-  @NonNull private Integer numberOfRooms;
+    @NonNull
+    private Integer numberOfRooms;
 
-  private Double square;
+    private Double square;
 
-  @NonNull private Double rentPrice;
+    @NonNull
+    private Double rentPrice;
 
-  private Integer floor;
+    private Integer floor;
 
-  private String description;
+    private String description;
 
-  @NonNull private Integer numberOfDoubleBeds;
+    @NonNull
+    private Integer numberOfDoubleBeds;
 
-  @NonNull private Integer numberOfSingleBeds;
+    @NonNull
+    private Integer numberOfSingleBeds;
 
-  @NonNull private String address;
+    @NonNull
+    private String address;
 }

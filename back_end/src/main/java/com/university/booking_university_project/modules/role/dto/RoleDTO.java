@@ -7,10 +7,11 @@ import org.springframework.lang.NonNull;
 @Setter
 @Getter
 public class RoleDTO {
-  
-  private Integer id;
 
-  @NonNull private String name;
+    private Integer id;
 
-  private String description;
+    @NonNull
+    private String name;
+
+    private String description;
 }

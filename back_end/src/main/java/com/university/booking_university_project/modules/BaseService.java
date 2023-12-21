@@ -5,23 +5,23 @@ import java.util.Optional;
 
 public interface BaseService<T, ID> {
 
-  List<T> saveAll(List<T> ts);
+    List<T> saveAll(List<T> ts);
 
-  void deleteAll(List<T> ts);
+    void deleteAll(List<T> ts);
 
-  void deleteAllByIds(List<ID> ids);
+    void deleteAllByIds(List<ID> ids);
 
-  default T save(T t) {
-    return saveAll(List.of(t)).get(0);
-  }
+    default T save(T t) {
+        return saveAll(List.of(t)).get(0);
+    }
 
-  Optional<T> findById(ID id);
+    Optional<T> findById(ID id);
 
-  default void delete(T t) {
-    deleteAll(List.of(t));
-  }
+    default void delete(T t) {
+        deleteAll(List.of(t));
+    }
 
-  default void deleteById(ID id) {
-    deleteAllByIds(List.of(id));
-  }
+    default void deleteById(ID id) {
+        deleteAllByIds(List.of(id));
+    }
 }

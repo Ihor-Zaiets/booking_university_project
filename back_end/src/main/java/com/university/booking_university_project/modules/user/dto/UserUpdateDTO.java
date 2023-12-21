@@ -8,17 +8,19 @@ import org.springframework.lang.NonNull;
 @Setter
 public class UserUpdateDTO {
 
-  private Integer id;
+    private Integer id;
 
-  private String login;
+    private String login;
 
-  @NonNull private String firstname;
+    @NonNull
+    private String firstname;
 
-  private String surname;
+    private String surname;
 
-  private String email;
+    private String email;
 
-  @NonNull private String phone;
+    @NonNull
+    private String phone;
 
-  private String address;
+    private String address;
 }

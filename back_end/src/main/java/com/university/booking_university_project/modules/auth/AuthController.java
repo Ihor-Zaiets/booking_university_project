@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/Auth")
 public class AuthController {
 
-  private final AuthService authService;
+    private final AuthService authService;
 
-  public AuthController(AuthService authService) {
-    this.authService = authService;
-  }
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
-  @PostMapping("/signup")
-  public ResponseEntity<UserDTO> signUp(@RequestBody UserRegistrationRequest registrationRequest) {
-    return ResponseEntity.ok(authService.signUp(registrationRequest));
-  }
+    @PostMapping("/signup")
+    public ResponseEntity<UserDTO> signUp(@RequestBody UserRegistrationRequest registrationRequest) {
+        return ResponseEntity.ok(authService.signUp(registrationRequest));
+    }
 
-  @PostMapping("/login")
-  public ResponseEntity<JwtAuthenticationResponse> login(@RequestBody UserLoginRequest userLoginRequest) {
-    return ResponseEntity.ok(authService.login(userLoginRequest));
-  }
+    @PostMapping("/login")
+    public ResponseEntity<JwtAuthenticationResponse> login(@RequestBody UserLoginRequest userLoginRequest) {
+        return ResponseEntity.ok(authService.login(userLoginRequest));
+    }
 
-  @GetMapping("/loggedUser")
-  public UserDTO getLoggedUser() {
-    return authService.getLoggedUserDTO();
-  }
+    @GetMapping("/loggedUser")
+    public UserDTO getLoggedUser() {
+        return authService.getLoggedUserDTO();
+    }
 }

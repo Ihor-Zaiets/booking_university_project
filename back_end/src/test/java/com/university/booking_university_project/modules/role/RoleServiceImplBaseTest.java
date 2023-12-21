@@ -8,27 +8,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class RoleServiceImplBaseTest implements BaseServiceTest<Role, Integer, RoleServiceImpl> {
 
-  private final RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
-  private final Mapper mapper;
+    private final Mapper mapper;
 
-  public static final String TEST_ROLE_NAME = "ADMIN";
+    public static final String TEST_ROLE_NAME = "ADMIN";
 
-  @Autowired
-  public RoleServiceImplBaseTest(RoleRepository roleRepository, Mapper mapper) {
-    this.roleRepository = roleRepository;
-    this.mapper = mapper;
-  }
+    @Autowired
+    public RoleServiceImplBaseTest(RoleRepository roleRepository, Mapper mapper) {
+        this.roleRepository = roleRepository;
+        this.mapper = mapper;
+    }
 
-  @Override
-  public RoleServiceImpl createService() {
-    return new RoleServiceImpl(roleRepository, mapper);
-  }
+    @Override
+    public RoleServiceImpl createService() {
+        return new RoleServiceImpl(roleRepository, mapper);
+    }
 
-  @Override
-  public Role createEntity() {
-    Role role = new Role();
-    role.setName(TEST_ROLE_NAME);
-    return role;
-  }
+    @Override
+    public Role createEntity() {
+        Role role = new Role();
+        role.setName(TEST_ROLE_NAME);
+        return role;
+    }
 }

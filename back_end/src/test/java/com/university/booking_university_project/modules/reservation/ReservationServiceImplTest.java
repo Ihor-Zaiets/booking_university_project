@@ -6,7 +6,6 @@ import static org.mockito.Mockito.*;
 import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.exception.ExceptionMessage;
 import com.university.booking_university_project.exception.ValidationException;
-import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.jpa.entity.Reservation;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
 import com.university.booking_university_project.modules.reservation.dto.ReservationCreationDTO;
@@ -22,89 +21,139 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ReservationServiceImplTest {
 
-  @InjectMocks
-  private ReservationServiceImpl reservationServiceImpl;
+    @InjectMocks
+    private ReservationServiceImpl reservationServiceImpl;
 
-  @Mock
-  private ReservationRepository reservationRepository;
+    @Mock
+    private ReservationRepository reservationRepository;
 
-  @Mock
-  private Mapper mapper;
+    @Mock
+    private Mapper mapper;
 
-  @Test
-  public void ShouldThrowIfApartmentIsNull() {
-    ReservationCreationDTO reservationCreationDTO = createDTOMock();
-    when(reservationCreationDTO.getApartmentId()).thenReturn(null);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
-  }
+    @Test
+    public void ShouldThrowIfApartmentIsNull() {
+        ReservationCreationDTO reservationCreationDTO = createDTOMock();
+        when(reservationCreationDTO.getApartmentId()).thenReturn(null);
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE
+        );
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE
+        );
+    }
 
-  @Test
-  public void ShouldThrowIfUserIsNull() {
-    ReservationCreationDTO reservationCreationDTO = createDTOMock();
-    when(reservationCreationDTO.getUserId()).thenReturn(null);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)), ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
-  }
+    @Test
+    public void ShouldThrowIfUserIsNull() {
+        ReservationCreationDTO reservationCreationDTO = createDTOMock();
+        when(reservationCreationDTO.getUserId()).thenReturn(null);
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE
+        );
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE
+        );
+    }
 
-  @Test
-  public void shouldThrowIfNumberOfPeopleFieldIsLessThen0() {
-    ReservationCreationDTO reservationCreationDTO = createDTOMock();
+    @Test
+    public void shouldThrowIfNumberOfPeopleFieldIsLessThen0() {
+        ReservationCreationDTO reservationCreationDTO = createDTOMock();
 
-    when(reservationCreationDTO.getNumberOfPeople()).thenReturn(-1);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)), ExceptionMessage.WRONG_NUMERIC_VALUE);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)), ExceptionMessage.WRONG_NUMERIC_VALUE);
-  }
+        when(reservationCreationDTO.getNumberOfPeople()).thenReturn(-1);
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.WRONG_NUMERIC_VALUE
+        );
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.WRONG_NUMERIC_VALUE
+        );
+    }
 
-  @Test
-  public void shouldThrowIfPriceFieldIsLessThen0() {
-    ReservationCreationDTO reservationCreationDTO = createDTOMock();
+    @Test
+    public void shouldThrowIfPriceFieldIsLessThen0() {
+        ReservationCreationDTO reservationCreationDTO = createDTOMock();
 
-    when(reservationCreationDTO.getPrice()).thenReturn(-1);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)), ExceptionMessage.WRONG_NUMERIC_VALUE);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)), ExceptionMessage.WRONG_NUMERIC_VALUE);
-  }
+        when(reservationCreationDTO.getPrice()).thenReturn(-1);
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.WRONG_NUMERIC_VALUE
+        );
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.WRONG_NUMERIC_VALUE
+        );
+    }
 
-  @Test
-  public void shouldThrowIfStartDateLaterThenEndDate() {
-    ReservationCreationDTO reservationCreationDTO = createDTOMock();
+    @Test
+    public void shouldThrowIfStartDateLaterThenEndDate() {
+        ReservationCreationDTO reservationCreationDTO = createDTOMock();
 
-    when(reservationCreationDTO.getStartDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now()));
-    when(reservationCreationDTO.getEndDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now().minusSeconds(1)));
+        when(reservationCreationDTO.getStartDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now()));
+        when(reservationCreationDTO.getEndDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now().minusSeconds(1)));
 
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)), ExceptionMessage.END_DATE_BEFORE_START_DATE);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)), ExceptionMessage.END_DATE_BEFORE_START_DATE);
-  }
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.END_DATE_BEFORE_START_DATE
+        );
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.END_DATE_BEFORE_START_DATE
+        );
+    }
 
-  @Test
-  public void shouldThrowIfReservationForApartmentOnThatTimeAlreadyExists() {
-    ReservationCreationDTO reservationCreationDTO = createDTOMock();
+    @Test
+    public void shouldThrowIfReservationForApartmentOnThatTimeAlreadyExists() {
+        ReservationCreationDTO reservationCreationDTO = createDTOMock();
 
-    when(reservationRepository.isReservationExistsForApartmentInDates(
-            reservationCreationDTO.getApartmentId(),
-            reservationCreationDTO.getStartDate(),
-            reservationCreationDTO.getEndDate()))
-            .thenReturn(true);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)), ExceptionMessage.RESERVATION_OVERLAY);
-    assertThrows(ValidationException.class, () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)), ExceptionMessage.RESERVATION_OVERLAY);
-  }
-  
-  @Test
-  public void shouldNotThrow() {
-    ReservationCreationDTO reservationCreationDTO = createDTOMock();
-    when(mapper.map(reservationCreationDTO, Reservation.class)).thenReturn(mock(Reservation.class));
-    assertDoesNotThrow(() -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)));
-    assertDoesNotThrow(() -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)));
-  }
+        when(
+                reservationRepository.isReservationExistsForApartmentInDates(
+                        reservationCreationDTO.getApartmentId(),
+                        reservationCreationDTO.getStartDate(),
+                        reservationCreationDTO.getEndDate()
+                )
+        ).thenReturn(true);
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.RESERVATION_OVERLAY
+        );
+        assertThrows(
+                ValidationException.class,
+                () -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)),
+                ExceptionMessage.RESERVATION_OVERLAY
+        );
+    }
 
-  private ReservationCreationDTO createDTOMock() {
-    ReservationCreationDTO reservationCreationDTO = mock(ReservationCreationDTO.class);
-    when(reservationCreationDTO.getPrice()).thenReturn(1);
-    when(reservationCreationDTO.getStartDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now()));
-    when(reservationCreationDTO.getEndDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now().plusDays(7)));
-    when(reservationCreationDTO.getApartmentId()).thenReturn(1);
-    when(reservationCreationDTO.getUserId()).thenReturn(1);
-    when(reservationCreationDTO.getReservationStatus()).thenReturn(ReservationStatus.ACTIVE);
-    return reservationCreationDTO;
-  }
+    @Test
+    public void shouldNotThrow() {
+        ReservationCreationDTO reservationCreationDTO = createDTOMock();
+        when(mapper.map(reservationCreationDTO, Reservation.class)).thenReturn(mock(Reservation.class));
+        assertDoesNotThrow(() -> reservationServiceImpl.createReservations(List.of(reservationCreationDTO)));
+        assertDoesNotThrow(() -> reservationServiceImpl.editReservations(List.of(reservationCreationDTO)));
+    }
+
+    private ReservationCreationDTO createDTOMock() {
+        ReservationCreationDTO reservationCreationDTO = mock(ReservationCreationDTO.class);
+        when(reservationCreationDTO.getPrice()).thenReturn(1);
+        when(reservationCreationDTO.getStartDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now()));
+        when(reservationCreationDTO.getEndDate()).thenReturn(Timestamp.valueOf(LocalDateTime.now().plusDays(7)));
+        when(reservationCreationDTO.getApartmentId()).thenReturn(1);
+        when(reservationCreationDTO.getUserId()).thenReturn(1);
+        when(reservationCreationDTO.getReservationStatus()).thenReturn(ReservationStatus.ACTIVE);
+        return reservationCreationDTO;
+    }
 }

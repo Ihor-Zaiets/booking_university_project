@@ -8,6 +8,8 @@ import org.springframework.lang.NonNull;
 @Setter
 public class UserLoginRequest {
 
-  @NonNull private String login;
-  @NonNull private String password;
+    @NonNull
+    private String login;
+    @NonNull
+    private String password;
 }

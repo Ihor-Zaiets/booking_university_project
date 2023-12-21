@@ -7,9 +7,9 @@ import lombok.Setter;
 @Setter
 public class UserRoleDTO {
 
-  private Integer id;
+    private Integer id;
 
-  private Integer userId;
+    private Integer userId;
 
-  private Integer roleId;
+    private Integer roleId;
 }

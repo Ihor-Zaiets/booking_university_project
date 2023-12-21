@@ -10,19 +10,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecurityService {
 
-  @Autowired
-  private UserService userService;
+    @Autowired
+    private UserService userService;
 
-  public String getLoggedUserName() {
-    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    if (principal instanceof UserDetails) {
-      return ((UserDetails) principal).getUsername();
-    } else {
-      return principal.toString();
+    public String getLoggedUserName() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal).getUsername();
+        } else {
+            return principal.toString();
+        }
     }
-  }
 
-  public User getloggedUser() {
-    return userService.findByLogin(getLoggedUserName());
-  }
+    public User getloggedUser() {
+        return userService.findByLogin(getLoggedUserName());
+    }
 }

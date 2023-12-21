@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/Model/User")
 public class UserModelController {
 
-  private final UserService userService;
+    private final UserService userService;
 
-  public UserModelController(UserService userService) {
-    this.userService = userService;
-  }
+    public UserModelController(UserService userService) {
+        this.userService = userService;
+    }
 
-  @GetMapping("/searchAll")
-  public String searchUsers(Model model) {
-    model.addAttribute("userDTOList", userService.findAllDTO());
-    return "userController/searchUsers";
-  }
+    @GetMapping("/searchAll")
+    public String searchUsers(Model model) {
+        model.addAttribute("userDTOList", userService.findAllDTO());
+        return "userController/searchUsers";
+    }
 
-  @PostMapping("/editUsers")
-  public String editUsers(Model model) {
-    model.addAttribute("userDTO", userService.findAllDTO().stream().findAny().get());
-    return "userController/editUsers";
-  }
+    @PostMapping("/editUsers")
+    public String editUsers(Model model) {
+        model.addAttribute("userDTO", userService.findAllDTO().stream().findAny().get());
+        return "userController/editUsers";
+    }
 }

@@ -3,12 +3,11 @@ package com.university.booking_university_project.jpa.entity;
 import com.university.booking_university_project.jpa.IEntity;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
 import jakarta.persistence.*;
+import java.sql.Timestamp;
+import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.lang.NonNull;
-
-import java.sql.Timestamp;
-import java.util.Objects;
 
 @Getter
 @Setter

@@ -8,9 +8,10 @@ import org.springframework.lang.NonNull;
 @Getter
 public class RoleUpdateDTO {
 
-  private Integer id;
+    private Integer id;
 
-  @NonNull private String name;
+    @NonNull
+    private String name;
 
-  private String description;
+    private String description;
 }

@@ -6,9 +6,9 @@ import com.university.booking_university_project.modules.user.dto.UserLoginReque
 import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
 
 public interface AuthService {
-  UserDTO signUp(UserRegistrationRequest userRegistrationRequest);
+    UserDTO signUp(UserRegistrationRequest userRegistrationRequest);
 
-  UserDTO getLoggedUserDTO();
+    UserDTO getLoggedUserDTO();
 
-  JwtAuthenticationResponse login(UserLoginRequest request);
+    JwtAuthenticationResponse login(UserLoginRequest request);
 }

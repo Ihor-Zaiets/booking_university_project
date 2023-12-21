@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class RoleCreationDTO extends RoleUpdateDTO {
 
-  @JsonIgnore
-  @Override
-  public Integer getId() {
-    return super.getId();
-  }
+    @JsonIgnore
+    @Override
+    public Integer getId() {
+        return super.getId();
+    }
 }

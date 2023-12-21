@@ -2,11 +2,10 @@ package com.university.booking_university_project.jpa.entity;
 
 import com.university.booking_university_project.jpa.IEntity;
 import jakarta.persistence.*;
+import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.lang.NonNull;
-
-import java.util.Objects;
 
 @Getter
 @Setter

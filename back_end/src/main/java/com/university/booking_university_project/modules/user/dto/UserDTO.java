@@ -10,22 +10,23 @@ import org.springframework.lang.NonNull;
 @Setter
 public class UserDTO {
 
-  private Integer id;
+    private Integer id;
 
-  private String login;
+    private String login;
 
-  private String password;
+    private String password;
 
-  private List<RoleDTO> roles;
+    private List<RoleDTO> roles;
 
-  @NonNull
-  private String firstname;
+    @NonNull
+    private String firstname;
 
-  private String surname;
+    private String surname;
 
-  private String email;
+    private String email;
 
-  @NonNull private String phone;
+    @NonNull
+    private String phone;
 
-  private String address;
+    private String address;
 }

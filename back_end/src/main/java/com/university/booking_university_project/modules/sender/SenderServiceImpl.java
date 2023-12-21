@@ -8,25 +8,24 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SenderServiceImpl implements EmailSenderService{
+public class SenderServiceImpl implements EmailSenderService {
 
-  private final JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
 
-  @Autowired
-  public SenderServiceImpl(JavaMailSender javaMailSender) {
-    this.javaMailSender = javaMailSender;
-  }
+    @Autowired
+    public SenderServiceImpl(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
 
+    @Override
+    public void send(String to, String title, String content) throws MessagingException {
+        MimeMessage mail = javaMailSender.createMimeMessage();
+        MimeMessageHelper mailSend = new MimeMessageHelper(mail);
+        mailSend.setTo(to);
+        mailSend.setFrom(to);
+        mailSend.setSubject(title);
+        mailSend.setText(content);
 
-  @Override
-  public void send(String to, String title, String content) throws MessagingException {
-    MimeMessage mail = javaMailSender.createMimeMessage();
-    MimeMessageHelper mailSend = new MimeMessageHelper(mail);
-    mailSend.setTo(to);
-    mailSend.setFrom(to);
-    mailSend.setSubject(title);
-    mailSend.setText(content);
-
-    javaMailSender.send(mail);
-  }
+        javaMailSender.send(mail);
+    }
 }
