@@ -44,4 +44,9 @@ public class ApartmentController {
         apartmentService.deleteAllByIds(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/forUsers")
+    public ResponseEntity<List<ApartmentDTO>> findApartmentsForUsers() {
+        return ResponseEntity.ok(apartmentService.findApartmentsForUsers());
+    }
 }

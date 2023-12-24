@@ -13,4 +13,6 @@ public interface ApartmentService extends BaseService<Apartment, Integer> {
     List<ApartmentDTO> findAllDTO();
 
     List<ApartmentDTO> editApartments(List<ApartmentUpdateDTO> apartmentCreationDTO);
+
+    List<ApartmentDTO> findApartmentsForUsers();
 }

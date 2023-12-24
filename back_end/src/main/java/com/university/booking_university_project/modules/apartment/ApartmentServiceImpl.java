@@ -95,4 +95,13 @@ public class ApartmentServiceImpl implements ApartmentService {
                 .map(apartment -> mapper.map(apartment, ApartmentDTO.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ApartmentDTO> findApartmentsForUsers() {
+        return apartmentRepository.findAll()
+                .stream()
+                .map(entity -> mapper.map(entity, ApartmentDTO.class))
+                .sorted(Comparator.comparingInt(ApartmentDTO::getId))
+                .collect(Collectors.toList());
+    }
 }
