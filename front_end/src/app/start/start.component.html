@@ -23,7 +23,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let apartment of apartments; let i = index">
-          <td><button class="btn btn-outline-primary" routerLinkActive="active" routerLink="/apartmentForReservation">Wybierz</button></td>
+          <td><button class="btn btn-outline-primary" routerLinkActive="active" routerLink="/apartmentForReservation" (click)="setApartmentForReservation(apartment)">Wybierz</button></td>
           <td>{{apartment.numberOfRooms}}</td>
           <td>{{apartment.square}}</td>
           <td>{{apartment.rentPrice}}</td>
