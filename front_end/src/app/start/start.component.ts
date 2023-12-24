@@ -14,11 +14,11 @@ export class StartComponent implements OnInit {
   constructor(private apartmentService: ApartmentService) {}
 
   ngOnInit(): void {
-    this.getAllApartments();
+    this.getApartmentsForUsers();
   }
 
-  getAllApartments() {
-    this.apartmentService.getAllApartments().subscribe((response) => this.apartments = response.body);
+  getApartmentsForUsers() {
+    this.apartmentService.getApartmentsForUsers().subscribe((response) => this.apartments = response.body);
   }
 
   isChecked(apartmentId: number) {

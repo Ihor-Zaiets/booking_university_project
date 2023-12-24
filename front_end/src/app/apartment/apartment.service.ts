@@ -7,6 +7,7 @@ import { Apartment } from '../model/Apartment';
 const apiUrl = BasicUrlLink.basicLink + '/api/Apartment';
 
 const httpLink = {
+  apartmentsForUsers: apiUrl + '/forUsers',
   searchAllApartments: apiUrl + '/searchAll',
   createAllApartments: apiUrl + '/createAll',
   editAllApartments: apiUrl + '/editAll',
@@ -18,6 +19,10 @@ const httpLink = {
 })
 export class ApartmentService {
   constructor(private webApiService: WebApiService) {}
+
+  getApartmentsForUsers(): Observable<any> {
+    return this.webApiService.post(httpLink.apartmentsForUsers, null);
+  }
 
   getAllApartments(): Observable<any> {
     return this.webApiService.get(httpLink.searchAllApartments);
