@@ -29,30 +29,14 @@
             <label class="btn btn-outline-warning" for="btn-check{{i}}">Wybierz</label>
           </td>
           <td>{{ apartment.id }}</td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms" [disabled]="!isChecked(apartment.id)"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.square" name="square" [disabled]="!isChecked(apartment.id)"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.rentPrice" name="rentPrice" [disabled]="!isChecked(apartment.id)"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.floor" name="floor" [disabled]="!isChecked(apartment.id)"/>
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="apartment.description" name="description" [disabled]="!isChecked(apartment.id)"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.numberOfDoubleBeds" name="numberOfDoubleBeds" [disabled]="!isChecked(apartment.id)"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds" [disabled]="!isChecked(apartment.id)"/>
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="apartment.address" name="address" [disabled]="!isChecked(apartment.id)"/>
-          </td>
+          <td><input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms" [disabled]="!isChecked(apartment.id)"/></td>
+          <td><input type="number" [(ngModel)]="apartment.square" name="square" [disabled]="!isChecked(apartment.id)"/></td>
+          <td><input type="number" [(ngModel)]="apartment.rentPrice" name="rentPrice" [disabled]="!isChecked(apartment.id)"/></td>
+          <td><input type="number" [(ngModel)]="apartment.floor" name="floor" [disabled]="!isChecked(apartment.id)"/></td>
+          <td><input type="text" [(ngModel)]="apartment.description" name="description" [disabled]="!isChecked(apartment.id)"/></td>
+          <td><input type="number" [(ngModel)]="apartment.numberOfDoubleBeds" name="numberOfDoubleBeds" [disabled]="!isChecked(apartment.id)"/></td>
+          <td><input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds" [disabled]="!isChecked(apartment.id)"/></td>
+          <td><input type="text" [(ngModel)]="apartment.address" name="address" [disabled]="!isChecked(apartment.id)"/></td>
         </tr>
         </tbody>
       </table>
@@ -79,30 +63,14 @@
         <tbody>
         <tr *ngFor="let apartment of newApartments; let i = index;">
           <td><button class="btn btn-outline-danger" (click)="deleteNewApartment(i)">Usuń</button></td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.square" name="square"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.rentPrice" name="rentPrice"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.floor" name="floor"/>
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="apartment.description" name="description"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.numberOfDoubleBeds" name="numberOfDoubleBeds"/>
-          </td>
-          <td>
-            <input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds"/>
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="apartment.address" name="address"/>
-          </td>
+          <td><input type="number" [(ngModel)]="apartment.numberOfRooms" name="numberOfRooms"/></td>
+          <td><input type="number" [(ngModel)]="apartment.square" name="square"/></td>
+          <td><input type="number" [(ngModel)]="apartment.rentPrice" name="rentPrice"/></td>
+          <td><input type="number" [(ngModel)]="apartment.floor" name="floor"/></td>
+          <td><input type="text" [(ngModel)]="apartment.description" name="description"/></td>
+          <td><input type="number" [(ngModel)]="apartment.numberOfDoubleBeds" name="numberOfDoubleBeds"/></td>
+          <td><input type="number" [(ngModel)]="apartment.numberOfSingleBeds" name="numberOfSingleBeds"/></td>
+          <td><input type="text" [(ngModel)]="apartment.address" name="address"/></td>
         </tr>
         </tbody>
       </table>
