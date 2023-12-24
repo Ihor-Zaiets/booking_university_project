@@ -2,6 +2,7 @@ package com.university.booking_university_project.modules.reservation;
 
 import com.university.booking_university_project.modules.reservation.dto.ReservationCreationDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationDTO;
+import com.university.booking_university_project.modules.reservation.dto.ReservationRequestDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationUpdateDTO;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,11 @@ public class ReservationController {
 
     public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
+    }
+
+    @PostMapping("/makeReservation")
+    public ResponseEntity<ReservationDTO> makeReservation(@RequestBody ReservationRequestDTO reservationRequestDTO) {
+        return ResponseEntity.ok(reservationService.makeReservation(reservationRequestDTO));
     }
 
     @PostMapping("/createAll")

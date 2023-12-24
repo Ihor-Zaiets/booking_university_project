@@ -6,6 +6,7 @@ import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.Reservation;
 import com.university.booking_university_project.modules.reservation.dto.ReservationCreationDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationDTO;
+import com.university.booking_university_project.modules.reservation.dto.ReservationRequestDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationUpdateDTO;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
 import com.university.booking_university_project.validators.Validation;
@@ -107,5 +108,12 @@ public class ReservationServiceImpl implements ReservationService {
         return reservations.stream()
                 .map(reservation -> mapper.map(reservation, ReservationDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ReservationDTO makeReservation(ReservationRequestDTO reservationRequestDTO) {
+        validateReservation(reservationRequestDTO);
+        Reservation reservation = this.save(mapper.map(reservationRequestDTO, Reservation.class));
+        return mapper.map(reservation, ReservationDTO.class);
     }
 }
