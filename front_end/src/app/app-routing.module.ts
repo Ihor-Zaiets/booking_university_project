@@ -6,6 +6,7 @@ import { ApartmentComponent } from './apartment/apartment.component'
 import { LoginComponent } from './login/login.component'
 import { SignUpComponent } from './sign-up/sign-up.component'
 import { StartComponent } from './start/start.component'
+import { ApartmentForReservationComponent } from './apartment-for-reservation/apartment-for-reservation.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'start', component: StartComponent },
+  { path: 'apartmentForReservation', component: ApartmentForReservationComponent },
   // Add other routes as needed
 ];
 
