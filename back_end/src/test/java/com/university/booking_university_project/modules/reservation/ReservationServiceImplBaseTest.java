@@ -43,7 +43,7 @@ public class ReservationServiceImplBaseTest implements BaseServiceTest<Reservati
 
     @Override
     public ReservationServiceImpl createService() {
-        return new ReservationServiceImpl(reservationRepository, mapper);
+        return new ReservationServiceImpl(reservationRepository, userService, mapper);
     }
 
     @Override

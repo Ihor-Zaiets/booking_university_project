@@ -15,4 +15,6 @@ public class ExceptionMessage {
     public static final String WRONG_NUMERIC_VALUE = "Nieprawidłowa wartość numeryczna";
     public static final String END_DATE_BEFORE_START_DATE = "Data końcowa jest przed datą początkową";
     public static final String RESERVATION_OVERLAY = "Rezerwacja dla tego hotelu w tym czasie już istnieje";
+    public static final String START_DATE_OR_END_DATE_IS_NULL = "Data początkowa lub data końcowa jest pusta";
+    public static final String START_DATE_EQUALS_END_DATE = "Data początkowa równa się dacie końcowej";
 }

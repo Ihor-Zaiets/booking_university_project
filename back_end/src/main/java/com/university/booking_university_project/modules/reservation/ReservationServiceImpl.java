@@ -9,8 +9,12 @@ import com.university.booking_university_project.modules.reservation.dto.Reserva
 import com.university.booking_university_project.modules.reservation.dto.ReservationRequestDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationUpdateDTO;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
+import com.university.booking_university_project.modules.user.UserService;
+import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
+import com.university.booking_university_project.modules.user.dto.UserDTO;
 import com.university.booking_university_project.validators.Validation;
 import java.sql.Timestamp;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,11 +27,14 @@ public class ReservationServiceImpl implements ReservationService {
 
     private final ReservationRepository reservationRepository;
 
+    private final UserService userService;
+
     private final Mapper mapper;
 
     @Autowired
-    public ReservationServiceImpl(ReservationRepository reservationRepository, Mapper mapper) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, UserService userService, Mapper mapper) {
         this.reservationRepository = reservationRepository;
+        this.userService = userService;
         this.mapper = mapper;
     }
 
@@ -84,7 +91,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     private void validateDates(Timestamp startDate, Timestamp endDate) {
+        if (startDate == null || endDate == null) throw new ValidationException(
+                ExceptionMessage.START_DATE_OR_END_DATE_IS_NULL
+        );
         if (startDate.after(endDate)) throw new ValidationException(ExceptionMessage.END_DATE_BEFORE_START_DATE);
+        if (startDate.equals(endDate)) throw new ValidationException(ExceptionMessage.START_DATE_EQUALS_END_DATE);
     }
 
     @Override
@@ -112,8 +123,31 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationDTO makeReservation(ReservationRequestDTO reservationRequestDTO) {
+        checkReservationUser(reservationRequestDTO);
+        if (reservationRequestDTO.getNumberOfPeople() == null) reservationRequestDTO.setNumberOfPeople(1);
+        reservationRequestDTO.setPrice(
+                calculatePrice(
+                        reservationRequestDTO.getPrice(),
+                        reservationRequestDTO.getStartDate(),
+                        reservationRequestDTO.getEndDate()
+                )
+        );
         validateReservation(reservationRequestDTO);
         Reservation reservation = this.save(mapper.map(reservationRequestDTO, Reservation.class));
         return mapper.map(reservation, ReservationDTO.class);
+    }
+
+    private Integer calculatePrice(Integer price, Timestamp startDate, Timestamp endDate) {
+        return Math.toIntExact(ChronoUnit.DAYS.between(startDate.toLocalDateTime(), endDate.toLocalDateTime()) * price);
+    }
+
+    private void checkReservationUser(ReservationRequestDTO reservationRequestDTO) {
+        if (!reservationRequestDTO.getIsUserLogged()) {
+            UserCreateDTO userCreateDTO = new UserCreateDTO();
+            userCreateDTO.setPhone(reservationRequestDTO.getUserPhoneNumber());
+            userCreateDTO.setFirstname(reservationRequestDTO.getUserFirstName());
+            List<UserDTO> users = userService.createUsers(List.of(userCreateDTO));
+            reservationRequestDTO.setUserId(users.get(0).getId());
+        }
     }
 }
