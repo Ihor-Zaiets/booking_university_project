@@ -2,13 +2,17 @@ package com.university.booking_university_project.modules.reservation;
 
 import com.github.dozermapper.core.Mapper;
 import com.university.booking_university_project.exception.ExceptionMessage;
+import com.university.booking_university_project.exception.ResourceNotFoundException;
 import com.university.booking_university_project.exception.ValidationException;
+import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.jpa.entity.Reservation;
+import com.university.booking_university_project.modules.apartment.ApartmentService;
 import com.university.booking_university_project.modules.reservation.dto.ReservationCreationDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationRequestDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationUpdateDTO;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
+import com.university.booking_university_project.modules.sender.EmailSenderService;
 import com.university.booking_university_project.modules.user.UserService;
 import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
@@ -31,11 +35,25 @@ public class ReservationServiceImpl implements ReservationService {
 
     private final Mapper mapper;
 
+    private final EmailSenderService emailSenderService;
+
+    private final ApartmentService apartmentService;
+
+    public static final String RESERVATION_EMAIL_TITLE = "Szczegóły rezerwacji";
+
     @Autowired
-    public ReservationServiceImpl(ReservationRepository reservationRepository, UserService userService, Mapper mapper) {
+    public ReservationServiceImpl(
+            ReservationRepository reservationRepository,
+            UserService userService,
+            Mapper mapper,
+            EmailSenderService emailSenderService,
+            ApartmentService apartmentService
+    ) {
         this.reservationRepository = reservationRepository;
         this.userService = userService;
         this.mapper = mapper;
+        this.emailSenderService = emailSenderService;
+        this.apartmentService = apartmentService;
     }
 
     @Override
@@ -78,7 +96,6 @@ public class ReservationServiceImpl implements ReservationService {
         Validation.validateObjectNullOrEmpty(reservationCreationDTO.getUserId());
         Validation.validateObjectNullOrEmpty(reservationCreationDTO.getApartmentId());
         Validation.validateNumberMoreOrEquals0(reservationCreationDTO.getNumberOfPeople());
-        Validation.validateNumberMoreOrEquals0(reservationCreationDTO.getPrice());
         validateReservationOverlay(reservationCreationDTO);
     }
 
@@ -125,6 +142,7 @@ public class ReservationServiceImpl implements ReservationService {
     public ReservationDTO makeReservation(ReservationRequestDTO reservationRequestDTO) {
         checkReservationUser(reservationRequestDTO);
         if (reservationRequestDTO.getNumberOfPeople() == null) reservationRequestDTO.setNumberOfPeople(1);
+        validateReservation(reservationRequestDTO);
         reservationRequestDTO.setPrice(
                 calculatePrice(
                         reservationRequestDTO.getPrice(),
@@ -132,9 +150,37 @@ public class ReservationServiceImpl implements ReservationService {
                         reservationRequestDTO.getEndDate()
                 )
         );
-        validateReservation(reservationRequestDTO);
         Reservation reservation = this.save(mapper.map(reservationRequestDTO, Reservation.class));
+        sendEmailIfPossible(reservationRequestDTO);
         return mapper.map(reservation, ReservationDTO.class);
+    }
+
+    private void sendEmailIfPossible(ReservationRequestDTO reservationRequestDTO) {
+        if (reservationRequestDTO.getUserEmail() != null && reservationRequestDTO.getUserEmail()
+                .endsWith("@gmail.com")) {
+            Apartment apartment = apartmentService.findById(reservationRequestDTO.getApartmentId())
+                    .orElseThrow(ResourceNotFoundException::new);
+            String emailContent = new StringBuilder().append("Witamy. Przesyłamy Państwu szczególy rezerwacji.")
+                    .append("\n")
+                    .append("\n")
+                    .append("Adres hotelu: ")
+                    .append(apartment.getAddress())
+                    .append("\n")
+                    .append("Początek rezerwacji: ")
+                    .append(reservationRequestDTO.getStartDate().toLocalDateTime().toLocalDate())
+                    .append(" o 14:00.")
+                    .append("\n")
+                    .append("Koniec rezerwacji: ")
+                    .append(reservationRequestDTO.getEndDate().toLocalDateTime().toLocalDate())
+                    .append(" o 14:00.")
+                    .append("\n")
+                    .append("Cena: ")
+                    .append(reservationRequestDTO.getPrice())
+                    .append(" zl ")
+                    .append("\n")
+                    .toString();
+            emailSenderService.send(reservationRequestDTO.getUserEmail(), RESERVATION_EMAIL_TITLE, emailContent);
+        }
     }
 
     private Integer calculatePrice(Integer price, Timestamp startDate, Timestamp endDate) {

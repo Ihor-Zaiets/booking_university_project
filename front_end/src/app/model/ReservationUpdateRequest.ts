@@ -10,4 +10,5 @@ export class ReservationUpdateRequest {
   isUserLogged!:boolean;
   userFirstName!:string;
   userPhoneNumber!:string;
+  userEmail!:string;
 }

@@ -47,19 +47,23 @@
         <div class="row row-cols-2">
           <div class="col mb-3">
             <label for="startDate">Start</label>
-            <input id="startDate" class="form-control" type="date" [(ngModel)]="startDate"/>
+            <input id="startDate" class="form-control" type="date" [(ngModel)]="reservationUpdateRequest.startDate"/>
           </div>
           <div class="col mb-3">
             <label for="endDate">Koniec</label>
-            <input id="endDate" class="form-control" type="date" [(ngModel)]="endDate"/>
+            <input id="endDate" class="form-control" type="date" [(ngModel)]="reservationUpdateRequest.endDate"/>
           </div>
           <div class="col mb-3">
             <label for="firstname" class="form-label">Imię:</label>
-            <input type="text" class="form-control border border-dark" id="firstname" name="firstname" [(ngModel)]="userFirstName" required>
+            <input type="text" class="form-control border border-dark" id="firstname" name="firstname" [(ngModel)]="reservationUpdateRequest.userFirstName" required>
           </div>
           <div class="col mb-3">
             <label for="phone" class="form-label">Telefon:</label>
-            <input type="tel" class="form-control border border-dark" id="phone" name="phone" [(ngModel)]="userPhoneNumber" required>
+            <input type="tel" class="form-control border border-dark" id="phone" name="phone" [(ngModel)]="reservationUpdateRequest.userPhoneNumber" required>
+          </div>
+          <div class="col mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control border border-dark" id="email" name="phone" [(ngModel)]="reservationUpdateRequest.userEmail" required>
           </div>
         </div>
       </div>

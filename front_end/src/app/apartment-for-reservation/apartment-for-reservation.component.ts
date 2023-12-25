@@ -17,28 +17,19 @@ export class ApartmentForReservationComponent {
   constructor(private apartmentForReservationService: ApartmentForReservationService, private route: RouteService, private toastr: ToastrService) { }
 
   apartmentForReservation = this.apartmentForReservationService.getApartment();
-  startDate!: string;
-  endDate!: string;
-  userFirstName!: string;
-  userPhoneNumber!: string;
-  numberOfPeople!: number;
+  reservationUpdateRequest = new ReservationUpdateRequest()
   user!: User;
 
   doReservation() {
-    let reservationUpdateRequest = new ReservationUpdateRequest()
+
     if (this.isUserLogged()) {
-      reservationUpdateRequest.userId = this.user.id;
+      this.reservationUpdateRequest.userId = this.user.id;
     }
-    reservationUpdateRequest.apartmentId = this.apartmentForReservation.id;
-    reservationUpdateRequest.price = this.apartmentForReservation.rentPrice;
-    reservationUpdateRequest.startDate = this.startDate;
-    reservationUpdateRequest.endDate = this.endDate;
-    reservationUpdateRequest.numberOfPeople = this.numberOfPeople;
-    reservationUpdateRequest.reservationStatus = ReservationStatus.ACTIVE.toString();
-    reservationUpdateRequest.isUserLogged = this.isUserLogged();
-    reservationUpdateRequest.userFirstName = this.userFirstName;
-    reservationUpdateRequest.userPhoneNumber = this.userPhoneNumber;
-    this.apartmentForReservationService.makeReservation(reservationUpdateRequest).subscribe(() => {
+    this.reservationUpdateRequest.apartmentId = this.apartmentForReservation.id;
+    this.reservationUpdateRequest.price = this.apartmentForReservation.rentPrice;
+    this.reservationUpdateRequest.reservationStatus = ReservationStatus.ACTIVE.toString();
+    this.reservationUpdateRequest.isUserLogged = this.isUserLogged();
+    this.apartmentForReservationService.makeReservation(this.reservationUpdateRequest).subscribe(() => {
       this.route.reloadComponent(true);
       this.toastr.success('Zapisano');
     });

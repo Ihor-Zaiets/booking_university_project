@@ -12,4 +12,6 @@ public class ReservationRequestDTO extends ReservationUpdateDTO {
     private String userFirstName;
 
     private String userPhoneNumber;
+
+    private String userEmail;
 }

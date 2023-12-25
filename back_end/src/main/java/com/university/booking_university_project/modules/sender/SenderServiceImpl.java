@@ -18,14 +18,17 @@ public class SenderServiceImpl implements EmailSenderService {
     }
 
     @Override
-    public void send(String to, String title, String content) throws MessagingException {
+    public void send(String to, String title, String content) {
         MimeMessage mail = javaMailSender.createMimeMessage();
         MimeMessageHelper mailSend = new MimeMessageHelper(mail);
-        mailSend.setTo(to);
-        mailSend.setFrom(to);
-        mailSend.setSubject(title);
-        mailSend.setText(content);
-
+        try {
+            mailSend.setTo(to);
+            mailSend.setFrom(to);
+            mailSend.setSubject(title);
+            mailSend.setText(content);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
         javaMailSender.send(mail);
     }
 }
