@@ -7,6 +7,7 @@ import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
 import com.university.booking_university_project.modules.baseService.BaseServiceTest;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
+import com.university.booking_university_project.modules.user.UserService;
 import jakarta.persistence.EntityManager;
 import java.sql.Timestamp;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +20,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ReservationServiceImplBaseTest implements BaseServiceTest<Reservation, Integer, ReservationServiceImpl> {
 
     private final ReservationRepository reservationRepository;
+
+    private final UserService userService;
 
     private final EntityManager entityManager;
 
@@ -33,10 +36,12 @@ public class ReservationServiceImplBaseTest implements BaseServiceTest<Reservati
     @Autowired
     public ReservationServiceImplBaseTest(
             ReservationRepository reservationRepository,
+            UserService userService,
             EntityManager entityManager,
             Mapper mapper
     ) {
         this.reservationRepository = reservationRepository;
+        this.userService = userService;
         this.entityManager = entityManager;
         this.mapper = mapper;
     }
