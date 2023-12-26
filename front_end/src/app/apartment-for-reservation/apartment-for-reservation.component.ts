@@ -6,6 +6,7 @@ import { ReservationStatus } from '../model/ReservationStatus';
 import { User } from '../model/User'
 import { RouteService } from '../Service/route.service'
 import { ToastrService } from 'ngx-toastr'
+import { LoginService } from '../login/login.service'
 
 @Component({
   selector: 'app-apartment-for-reservation',
@@ -14,7 +15,7 @@ import { ToastrService } from 'ngx-toastr'
 })
 export class ApartmentForReservationComponent {
 
-  constructor(private apartmentForReservationService: ApartmentForReservationService, private route: RouteService, private toastr: ToastrService) { }
+  constructor(private apartmentForReservationService: ApartmentForReservationService, private loginService: LoginService, private route: RouteService, private toastr: ToastrService) { }
 
   apartmentForReservation = this.apartmentForReservationService.getApartment();
   reservationUpdateRequest = new ReservationUpdateRequest()
@@ -36,6 +37,7 @@ export class ApartmentForReservationComponent {
   }
 
   private isUserLogged() {
+    this.loginService.isUserLogged();
     return false;
   }
 }

@@ -1,12 +1,17 @@
 import { BasicUrlLink } from '../BasicUrlLink'
 import { Injectable } from '@angular/core'
 import { WebApiService } from '../Service/web-api.service'
-import { UserRegistrationRequest } from '../model/UserRegistrationRequest'
+import * as jwt_decode from "jwt-decode";
 
 const apiUrl = BasicUrlLink.basicLink + '/api/Auth'
 
 const httpLink = {
   login: apiUrl + '/login',
+}
+
+const roleNames = {
+  adminRoleName: "ADMIN",
+  userRoleName: "USER"
 }
 
 @Injectable({
@@ -22,6 +27,25 @@ export class LoginService {
   }
 
   isUserLogged() {
+    return localStorage.getItem("token") !== null;
+  }
 
+  decodeJWTToken(token: string) {
+    return jwt_decode.jwtDecode(token);
+  }
+
+  getLoggedUserJWTPayload() {
+    if (localStorage.getItem("token") !== null) {
+      let payloadAsJSON = JSON.parse(window.atob((localStorage.getItem("token") as string).split('.')[1]))
+      return payloadAsJSON;
+    }
+    return null;
+  }
+
+  isLoggedUserHasRole(roleName: string) {
+    if (this.getLoggedUserJWTPayload() === null)
+      return false;
+    else
+      return this.getLoggedUserJWTPayload().roles.includes(roleName);
   }
 }

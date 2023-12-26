@@ -16,7 +16,7 @@ export class LoginComponent {
 
   login() {
     this.loginService.login(this.loginRequest).subscribe((requestBody) => {
-      console.log(requestBody)
+      localStorage.setItem("token", requestBody.body.token);
       this.route.reloadComponent(false, '/start');
       this.toastr.success('Zalogowano');
     });
