@@ -1,5 +1,6 @@
 package com.university.booking_university_project.modules.jwt;
 
+import com.university.booking_university_project.jpa.entity.Role;
 import com.university.booking_university_project.jpa.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -28,7 +30,9 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public String generateToken(User user) {
-        return generateToken(new HashMap<>(), user);
+        HashMap<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.toSet()));
+        return generateToken(extraClaims, user);
     }
 
     @Override

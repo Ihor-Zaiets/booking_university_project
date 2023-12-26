@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 import { WebApiService } from '../Service/web-api.service'
 import { UserRegistrationRequest } from '../model/UserRegistrationRequest'
 
-const apiUrl = BasicUrlLink.basicLink + ''
+const apiUrl = BasicUrlLink.basicLink + '/api/Auth'
 
 const httpLink = {
   login: apiUrl + '/login',
@@ -19,5 +19,9 @@ export class LoginService {
 
   login(requestBody: {login:string, password:string}) {
     return this.webApiService.post(httpLink.login, requestBody);
+  }
+
+  isUserLogged() {
+
   }
 }

@@ -15,7 +15,8 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private route: RouteService, private toastr: ToastrService) {}
 
   login() {
-    this.loginService.login(this.loginRequest).subscribe(() => {
+    this.loginService.login(this.loginRequest).subscribe((requestBody) => {
+      console.log(requestBody)
       this.route.reloadComponent(false, '/start');
       this.toastr.success('Zalogowano');
     });
