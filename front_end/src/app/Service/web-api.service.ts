@@ -3,24 +3,28 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { catchError, map, Observable, throwError } from 'rxjs'
 import { ToastrService } from 'ngx-toastr'
 
+const token = localStorage.getItem("token");
+
+let headers: HttpHeaders = new HttpHeaders({
+  'Content-Type':  'application/json'
+})
+
+if (token !== null) {
+  headers = headers.set('Authorization', 'Bearer ' + token);
+}
+
 const httpGetOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Cache-Control' : 'no-cache',
-    'Pragma' : 'no-cache'
-  }),
+  headers: headers.set('Cache-Control', 'no-cache').set('Pragma', 'no-cache'),
   observe: "response" as 'body'
 };
 
 const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  }),
+  headers: headers,
   observe: "response" as 'body'
 };
 
 const httpDeleteOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
+  headers: headers,
   observe: "response" as 'body',
   body: null,
 }
