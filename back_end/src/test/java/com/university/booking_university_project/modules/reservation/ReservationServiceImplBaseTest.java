@@ -5,8 +5,10 @@ import com.university.booking_university_project.jpa.entity.Apartment;
 import com.university.booking_university_project.jpa.entity.Reservation;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.jpa.enums.ReservationStatus;
+import com.university.booking_university_project.modules.apartment.ApartmentService;
 import com.university.booking_university_project.modules.baseService.BaseServiceTest;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
+import com.university.booking_university_project.modules.sender.EmailSenderService;
 import com.university.booking_university_project.modules.user.UserService;
 import jakarta.persistence.EntityManager;
 import java.sql.Timestamp;
@@ -25,6 +27,10 @@ public class ReservationServiceImplBaseTest implements BaseServiceTest<Reservati
 
     private final EntityManager entityManager;
 
+    private final EmailSenderService emailSenderService;
+
+    private final ApartmentService apartmentService;
+
     private final Mapper mapper;
 
     private static final Timestamp TEST_START_DATE = Timestamp.valueOf("2023-01-01 12:00:00");
@@ -38,11 +44,15 @@ public class ReservationServiceImplBaseTest implements BaseServiceTest<Reservati
             ReservationRepository reservationRepository,
             UserService userService,
             EntityManager entityManager,
+            EmailSenderService emailSenderService,
+            ApartmentService apartmentService,
             Mapper mapper
     ) {
         this.reservationRepository = reservationRepository;
         this.userService = userService;
         this.entityManager = entityManager;
+        this.emailSenderService = emailSenderService;
+        this.apartmentService = apartmentService;
         this.mapper = mapper;
     }
 
