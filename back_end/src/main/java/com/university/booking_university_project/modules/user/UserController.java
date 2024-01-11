@@ -46,4 +46,9 @@ public class UserController {
     public ResponseEntity<UserDataForReservationDTO> getUserDataForReservation(@PathVariable Integer userId) {
         return ResponseEntity.ok(userService.getUserDataForReservation(userId));
     }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<UserDTO> findUserById(@PathVariable Integer userId) {
+        return ResponseEntity.ok(userService.getUserDTOById(userId));
+    }
 }

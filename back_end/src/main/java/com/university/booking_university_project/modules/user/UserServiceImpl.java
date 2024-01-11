@@ -164,6 +164,11 @@ public class UserServiceImpl implements UserService {
         return mapper.map(user, UserDataForReservationDTO.class);
     }
 
+    @Override
+    public UserDTO getUserDTOById(Integer userId) {
+        return mapper.map(userRepository.findById(userId).orElseThrow(), UserDTO.class);
+    }
+
     public User getById(Integer userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION));

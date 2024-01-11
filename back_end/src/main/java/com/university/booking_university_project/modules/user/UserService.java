@@ -20,4 +20,5 @@ public interface UserService extends BaseService<User, Integer> {
 
     void validateEmailAlreadyExist(String email);
     UserDataForReservationDTO getUserDataForReservation(Integer userId);
+    UserDTO getUserDTOById(Integer userId);
 }
