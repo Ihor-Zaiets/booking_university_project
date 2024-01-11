@@ -13,7 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { StartComponent } from './start/start.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ApartmentForReservationComponent } from './apartment-for-reservation/apartment-for-reservation.component'
+import { ApartmentForReservationComponent } from './apartment-for-reservation/apartment-for-reservation.component';
+import { UserProfileComponent } from './user-profile/user-profile.component'
 
 const toastrConfiguration = {
   timeOut: 10000,
@@ -30,7 +31,8 @@ const toastrConfiguration = {
     SignUpComponent,
     StartComponent,
     NavbarComponent,
-    ApartmentForReservationComponent
+    ApartmentForReservationComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
