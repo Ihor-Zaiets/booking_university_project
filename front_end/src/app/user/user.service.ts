@@ -11,7 +11,9 @@ const httpLink = {
   createAllUsers: apiUrl + '/createAll',
   editAllUsers: apiUrl + '/editAll',
   deleteAllUsers: apiUrl + '/deleteAll',
-  getUserDataForReservation: apiUrl + '/userDataForReservation/'
+  getUserDataForReservation: apiUrl + '/userDataForReservation/',
+  user: apiUrl + '/user/',
+  saveUser: '/saveUser',
 }
 
 @Injectable({
@@ -39,5 +41,13 @@ export class UserService {
 
   getUserDataForReservation(userId: number) {
     return this.webApiService.get(httpLink.getUserDataForReservation + userId);
+  }
+
+  getUserById(userId: number) {
+    return this.webApiService.get(httpLink.user + userId);
+  }
+
+  saveUser(requestbody: User) {
+    return this.webApiService.patch(httpLink.saveUser, requestbody);
   }
 }

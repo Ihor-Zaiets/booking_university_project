@@ -42,6 +42,10 @@ export class AuthService {
     return null;
   }
 
+  getLoggedUserId(): number {
+    return this.getLoggedUserJWTPayload().userId as number;
+  }
+
   isLoggedUserHasRole(roleName: string) {
     if (this.getLoggedUserJWTPayload() === null)
       return false;

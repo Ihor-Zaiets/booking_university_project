@@ -31,7 +31,7 @@ export class ApartmentForReservationComponent implements OnInit {
     if (this.authService.isUserLogged()) {
       console.log("Ihor test: ", localStorage.getItem("token"))
       console.log("Ihor test: ", this.authService.getLoggedUserJWTPayload())
-      let userId = this.authService.getLoggedUserJWTPayload().userId;
+      let userId = this.authService.getLoggedUserId();
       this.userService.getUserDataForReservation(userId).subscribe((userData) => {
         this.reservationUpdateRequest.userFirstName = userData.body.firstname;
         this.reservationUpdateRequest.userEmail = userData.body.email;
