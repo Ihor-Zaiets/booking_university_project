@@ -6,7 +6,7 @@ import { ReservationStatus } from '../model/ReservationStatus';
 import { User } from '../model/User'
 import { RouteService } from '../Service/route.service'
 import { ToastrService } from 'ngx-toastr'
-import { LoginService } from '../login/login.service'
+import { AuthService } from '../Service/auth.service'
 
 @Component({
   selector: 'app-apartment-for-reservation',
@@ -15,7 +15,7 @@ import { LoginService } from '../login/login.service'
 })
 export class ApartmentForReservationComponent {
 
-  constructor(private apartmentForReservationService: ApartmentForReservationService, private loginService: LoginService, private route: RouteService, private toastr: ToastrService) { }
+  constructor(private apartmentForReservationService: ApartmentForReservationService, private loginService: AuthService, private route: RouteService, private toastr: ToastrService) { }
 
   apartmentForReservation = this.apartmentForReservationService.getApartment();
   reservationUpdateRequest = new ReservationUpdateRequest()

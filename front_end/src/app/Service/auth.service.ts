@@ -1,6 +1,6 @@
 import { BasicUrlLink } from '../BasicUrlLink'
 import { Injectable } from '@angular/core'
-import { WebApiService } from '../Service/web-api.service'
+import { WebApiService } from './web-api.service'
 import * as jwt_decode from "jwt-decode";
 
 const apiUrl = BasicUrlLink.basicLink + '/api/Auth'
@@ -18,7 +18,7 @@ const roleNames = {
   providedIn: 'root'
 })
 
-export class LoginService {
+export class AuthService {
 
   constructor(private webApiService: WebApiService) {}
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarService } from './navbar.service'
-import { LoginService } from '../login/login.service'
+import { AuthService } from '../Service/auth.service'
 import { ToastrService } from 'ngx-toastr'
 
 @Component({
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr'
 export class NavbarComponent {
   adminRoleName = 'ADMIN'
 
-  constructor(private navbarService: NavbarService, private loginService: LoginService, private toastr: ToastrService) {}
+  constructor(private navbarService: NavbarService, private loginService: AuthService, private toastr: ToastrService) {}
 
   loggedUserHasRole(roleName: string) {
     return this.loginService.isLoggedUserHasRole(roleName);
