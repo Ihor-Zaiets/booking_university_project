@@ -17,6 +17,10 @@ export class NavbarComponent {
     return this.authService.isLoggedUserHasRole(roleName);
   }
 
+  isUserLogged() {
+    return this.authService.isUserLogged();
+  }
+
   logOut() {
     localStorage.removeItem("token");
     this.toastr.success("Wylogowano")
