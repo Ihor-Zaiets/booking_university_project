@@ -2,10 +2,7 @@ package com.university.booking_university_project.modules.user;
 
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.BaseService;
-import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
-import com.university.booking_university_project.modules.user.dto.UserDTO;
-import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
-import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
+import com.university.booking_university_project.modules.user.dto.*;
 import java.util.List;
 
 public interface UserService extends BaseService<User, Integer> {
@@ -22,4 +19,5 @@ public interface UserService extends BaseService<User, Integer> {
     UserDTO toDTO(User user);
 
     void validateEmailAlreadyExist(String email);
+    UserDataForReservationDTO getUserDataForReservation(Integer userId);
 }

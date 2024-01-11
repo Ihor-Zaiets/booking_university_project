@@ -6,10 +6,7 @@ import com.university.booking_university_project.exception.ResourceNotFoundExcep
 import com.university.booking_university_project.exception.ValidationException;
 import com.university.booking_university_project.jpa.entity.User;
 import com.university.booking_university_project.modules.role.RoleService;
-import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
-import com.university.booking_university_project.modules.user.dto.UserDTO;
-import com.university.booking_university_project.modules.user.dto.UserRegistrationRequest;
-import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
+import com.university.booking_university_project.modules.user.dto.*;
 import com.university.booking_university_project.modules.user.repository.UserRepository;
 import com.university.booking_university_project.validators.Validation;
 import java.util.*;
@@ -158,6 +155,13 @@ public class UserServiceImpl implements UserService {
         if (email != null && userRepository.existsByEmail(email)) throw new ValidationException(
                 ExceptionMessage.EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE
         );
+    }
+
+    @Override
+    public UserDataForReservationDTO getUserDataForReservation(Integer userId) {
+        User user = userRepository.findById(userId).orElseThrow();
+
+        return mapper.map(user, UserDataForReservationDTO.class);
     }
 
     public User getById(Integer userId) {

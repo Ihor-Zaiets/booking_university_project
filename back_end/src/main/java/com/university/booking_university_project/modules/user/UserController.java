@@ -2,6 +2,7 @@ package com.university.booking_university_project.modules.user;
 
 import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
+import com.university.booking_university_project.modules.user.dto.UserDataForReservationDTO;
 import com.university.booking_university_project.modules.user.dto.UserUpdateDTO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,10 @@ public class UserController {
     public ResponseEntity<Void> deleteUsers(@RequestBody List<Integer> ids) {
         userService.deleteAllByIds(ids);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/userDataForReservation/{userId}")
+    public ResponseEntity<UserDataForReservationDTO> getUserDataForReservation(@PathVariable Integer userId) {
+        return ResponseEntity.ok(userService.getUserDataForReservation(userId));
     }
 }

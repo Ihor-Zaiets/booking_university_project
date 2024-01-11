@@ -10,7 +10,8 @@ const httpLink = {
   searchAllUsers: apiUrl + '/searchAll',
   createAllUsers: apiUrl + '/createAll',
   editAllUsers: apiUrl + '/editAll',
-  deleteAllUsers: apiUrl + '/deleteAll'
+  deleteAllUsers: apiUrl + '/deleteAll',
+  getUserDataForReservation: apiUrl + '/userDataForReservation/'
 }
 
 @Injectable({
@@ -34,5 +35,9 @@ export class UserService {
 
   deleteAllUsers(requestBody: number[]): Observable<any> {
     return this.webApiService.delete(httpLink.deleteAllUsers, requestBody);
+  }
+
+  getUserDataForReservation(userId: number) {
+    return this.webApiService.get(httpLink.getUserDataForReservation + userId);
   }
 }
