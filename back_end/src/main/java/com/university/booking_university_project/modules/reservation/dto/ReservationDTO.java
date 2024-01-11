@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
 
 @Getter
 @Setter
@@ -22,20 +21,15 @@ public class ReservationDTO {
     private Integer userId;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    @NonNull
     private Timestamp startDate;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    @NonNull
     private Timestamp endDate;
 
-    @NonNull
     private Integer numberOfPeople;
 
-    @NonNull
     private Integer price;
 
-    @NonNull
     @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
 }

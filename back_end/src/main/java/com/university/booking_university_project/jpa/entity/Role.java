@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
 
 @Setter
 @Getter
@@ -17,7 +16,6 @@ public class Role implements IEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NonNull
     private String name;
 
     private String description;
