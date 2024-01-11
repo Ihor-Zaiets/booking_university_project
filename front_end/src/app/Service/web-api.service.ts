@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { catchError, map, Observable, throwError } from 'rxjs'
 import { ToastrService } from 'ngx-toastr'
+import * as jwt_decode from "jwt-decode";
 
 const token = localStorage.getItem("token");
 
@@ -9,8 +10,14 @@ let headers: HttpHeaders = new HttpHeaders({
   'Content-Type':  'application/json'
 })
 
+const currentTime: number = Math.floor(Date.now() / 1000);
+
 if (token !== null) {
-  headers = headers.set('Authorization', 'Bearer ' + token);
+  if (jwt_decode.jwtDecode(token).exp! > currentTime) {
+    headers = headers.set('Authorization', 'Bearer ' + token);
+  } else {
+   localStorage.removeItem("token");
+  }
 }
 
 const httpGetOptions = {
