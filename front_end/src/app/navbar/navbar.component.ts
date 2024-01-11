@@ -11,10 +11,10 @@ import { ToastrService } from 'ngx-toastr'
 export class NavbarComponent {
   adminRoleName = 'ADMIN'
 
-  constructor(private navbarService: NavbarService, private loginService: AuthService, private toastr: ToastrService) {}
+  constructor(private navbarService: NavbarService, private authService: AuthService, private toastr: ToastrService) {}
 
   loggedUserHasRole(roleName: string) {
-    return this.loginService.isLoggedUserHasRole(roleName);
+    return this.authService.isLoggedUserHasRole(roleName);
   }
 
   logOut() {
