@@ -66,12 +66,12 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private void validatePassword(String password) {
-        Validation.validateObjectNullOrEmpty(password);
+        Validation.validateObjectNullOrEmpty(password, Validation.PASSWORD_FIELD_EXCEPTION_MESSAGE_PREFIX);
         Validation.validateTrimSpaces(password, Validation.PASSWORD_FIELD_EXCEPTION_MESSAGE_PREFIX);
     }
 
     private void validateLogin(String login) {
-        Validation.validateObjectNullOrEmpty(login);
+        Validation.validateObjectNullOrEmpty(login, Validation.LOGIN_FIELD_EXCEPTION_MESSAGE_PREFIX);
         Validation.validateTrimSpaces(login, Validation.LOGIN_FIELD_EXCEPTION_MESSAGE_PREFIX);
     }
 }

@@ -26,7 +26,7 @@ public class Validation {
      */
     public static void validateTrimSpaces(String string, String prefix) {
         if (string != null && !string.trim().equals(string)) {
-            throw new ValidationException(prefix + ExceptionMessage.TRIM_VALIDATION_MESSAGE);
+            throw new ValidationException(prefix + " " + ExceptionMessage.TRIM_VALIDATION_MESSAGE);
         }
     }
 
@@ -36,12 +36,12 @@ public class Validation {
 
     public static void validateObjectNullOrEmpty(Object object, String prefix) {
         if (Objects.isNull(object) || object instanceof String && object.toString().isEmpty())
-            throw new ValidationException(prefix + ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
+            throw new ValidationException(prefix + " " + ExceptionMessage.FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE);
     }
 
     public static void validateUserFirstName(String firstName) {
-        validateObjectNullOrEmpty(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
-        validateTrimSpaces(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX + " ");
+        validateObjectNullOrEmpty(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX);
+        validateTrimSpaces(firstName, FIRSTNAME_FIELD_EXCEPTION_MESSAGE_PREFIX);
         if (firstName.matches(ONLY_NUMBERS_REGEX)) throw new ValidationException(
                 ExceptionMessage.USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN
         );
@@ -64,7 +64,7 @@ public class Validation {
     }
 
     public static void validatePhone(String userPhone) {
-        validatePhoneWithMessagePrefix(userPhone, "");
+        validatePhoneWithMessagePrefix(userPhone, PHONE_FIELD_EXCEPTION_MESSAGE_PREFIX);
     }
 
     public static void validatePhoneWithMessagePrefix(String userPhone, String prefix) {

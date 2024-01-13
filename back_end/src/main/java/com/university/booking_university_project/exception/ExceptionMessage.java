@@ -3,8 +3,8 @@ package com.university.booking_university_project.exception;
 public class ExceptionMessage {
     public static final String TRIM_VALIDATION_MESSAGE = "Napis zawiera białe znaki na początku lub końcu";
     public static final String USER_FIRSTNAME_DOES_NOT_MATCH_PATTERN = "Nieprawidłowy wzorzec imienia użytkownika";
-    public static final String FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE = "Pole jest puste lub null";
-    public static final String USER_SURNAME_VALIDATION_MESSAGE = "Nazwisko użytkownika jest puste lub null";
+    public static final String FIELD_NULL_OR_EMPTY_VALIDATION_MESSAGE = "Pole jest puste";
+    public static final String USER_SURNAME_VALIDATION_MESSAGE = "Nazwisko użytkownika jest puste";
     public static final String EMAIL_VALIDATION_MESSAGE = "Adres e-mail nie spełnia wzorca";
     public static final String PHONE_NUMBER_VALIDATION_MESSAGE = "Numer telefonu nie spełnia wzorca";
     public static final String EMAIL_ALREADY_EXISTS_VALIDATION_MESSAGE = "Adres e-mail już istnieje";
