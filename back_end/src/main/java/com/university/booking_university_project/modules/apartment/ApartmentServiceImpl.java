@@ -68,8 +68,8 @@ public class ApartmentServiceImpl implements ApartmentService {
         Validation.validateNumberMoreThen0(apartmentCreationDTO.getSquare());
         Validation.validateNumberMoreThen0(apartmentCreationDTO.getRentPrice());
         Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfRooms());
-        Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfDoubleBeds());
-        Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfSingleBeds());
+        //        Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfDoubleBeds());
+        //        Validation.validateNumberMoreThen0(apartmentCreationDTO.getNumberOfSingleBeds());
     }
 
     @Override
