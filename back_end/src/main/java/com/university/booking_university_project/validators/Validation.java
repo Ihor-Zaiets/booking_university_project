@@ -76,11 +76,15 @@ public class Validation {
     }
 
     public static void validateNumberMoreThen0(Number number) {
-        if (!(number.doubleValue() > 0)) throw new ValidationException(ExceptionMessage.WRONG_NUMERIC_VALUE);
+        if (number == null || !(number.doubleValue() > 0)) throw new ValidationException(
+                ExceptionMessage.WRONG_NUMERIC_VALUE
+        );
     }
 
     public static void validateNumberMoreOrEquals0(Number number) {
-        if (!(number.doubleValue() >= 0)) throw new ValidationException(ExceptionMessage.WRONG_NUMERIC_VALUE);
+        if (number == null || !(number.doubleValue() >= 0)) throw new ValidationException(
+                ExceptionMessage.WRONG_NUMERIC_VALUE
+        );
     }
 
 }
