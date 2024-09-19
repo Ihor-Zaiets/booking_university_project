@@ -15,7 +15,7 @@
 	<name>booking_university_project</name>
 	<description>My diplom work for university</description>
     <modules>
-        <module>back_end</module>
+        <module>back-end</module>
         <module>front-end</module>
     </modules>
 
