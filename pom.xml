@@ -8,9 +8,9 @@
 		<version>3.1.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.university</groupId>
+	<groupId>com.ihorzaiets</groupId>
 	<artifactId>booking_university_project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>booking_university_project</name>
 	<description>My diplom work for university</description>
 	<properties>
