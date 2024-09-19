@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>front-end</artifactId>
   <parent>
-    <groupId>com.ihorzaiets</groupId>
+    <groupId>com.ihorzaiets.booking_university_project</groupId>
     <artifactId>booking_university_project</artifactId>
     <version>0.0.1</version>
   </parent>
