@@ -16,7 +16,7 @@
 	<description>My diplom work for university</description>
     <modules>
         <module>back_end</module>
-        <module>front_end</module>
+        <module>front-end</module>
     </modules>
 
 </project>
