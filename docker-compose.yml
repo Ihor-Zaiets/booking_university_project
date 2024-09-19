@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:13
+    ports:
+      - "5433:5432"
+    environment:
+      #change your database user credentials here
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: booking_university_project
