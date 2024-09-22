@@ -10,3 +10,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: booking_university_project
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:
