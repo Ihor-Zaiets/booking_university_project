@@ -16,8 +16,8 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigReader {
     private static final String CONFIG_FILE_NAME = "secrets.properties";
 
-    private static final String APP_EMAIL_LOGIN_FIELD_NAME = "applicationEmailLogin";
-    private static final String APP_EMAIL_PASSWORD_FIELD_NAME = "applicationEmailPassword";
+    private static final String APP_EMAIL_LOGIN_FIELD_NAME = "secret.application.email.login";
+    private static final String APP_EMAIL_PASSWORD_FIELD_NAME = "secret.application.email.password";
 
     private Properties properties;
 
