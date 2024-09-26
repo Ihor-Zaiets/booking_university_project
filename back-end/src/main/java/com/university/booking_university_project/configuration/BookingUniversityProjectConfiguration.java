@@ -12,11 +12,11 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @Configuration
 public class BookingUniversityProjectConfiguration {
 
-    private final ConfigReader configReader;
+    private final SecretsReader secretsReader;
 
     @Autowired
-    public BookingUniversityProjectConfiguration(ConfigReader configReader) {
-        this.configReader = configReader;
+    public BookingUniversityProjectConfiguration(SecretsReader secretsReader) {
+        this.secretsReader = secretsReader;
     }
 
     @Bean
@@ -30,8 +30,8 @@ public class BookingUniversityProjectConfiguration {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername(configReader.getAppEmailLogin());
-        mailSender.setPassword(configReader.getAppEmailPassword());
+        mailSender.setUsername(secretsReader.getAppEmailLogin());
+        mailSender.setPassword(secretsReader.getAppEmailPassword());
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

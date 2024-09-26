@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * that defined in this class as <code>private static final String</code> fields.
  */
 @Configuration
-public class ConfigReader {
+public class SecretsReader {
     private static final String CONFIG_FILE_NAME = "secrets.properties";
 
     private static final String APP_EMAIL_LOGIN_FIELD_NAME = "secret.application.email.login";
@@ -21,7 +21,7 @@ public class ConfigReader {
 
     private Properties properties;
 
-    public ConfigReader() {
+    public SecretsReader() {
         URL configFile = getClass().getClassLoader().getResource(CONFIG_FILE_NAME);
         if (configFile == null) throw new ConfigurationFileReaderException(CONFIG_FILE_NAME);
 
