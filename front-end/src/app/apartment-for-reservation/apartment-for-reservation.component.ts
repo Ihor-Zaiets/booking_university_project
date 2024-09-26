@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { Apartment } from '../model/Apartment'
 import { ApartmentForReservationService } from './apartment-for-reservation.service'
 import { ReservationUpdateRequest } from '../model/ReservationUpdateRequest'
 import { ReservationStatus } from '../model/ReservationStatus';
-import { User } from '../model/User'
 import { RouteService } from '../Service/route.service'
 import { ToastrService } from 'ngx-toastr'
 import { AuthService } from '../Service/auth.service'
@@ -26,6 +24,7 @@ export class ApartmentForReservationComponent implements OnInit {
 
   apartmentForReservation = this.apartmentForReservationService.getApartment();
   reservationUpdateRequest = new ReservationUpdateRequest()
+  loading: boolean = false;
 
   ngOnInit(): void {
     if (this.authService.isUserLogged()) {
@@ -42,13 +41,20 @@ export class ApartmentForReservationComponent implements OnInit {
   }
 
   doReservation() {
+    this.loading = true;
     this.reservationUpdateRequest.apartmentId = this.apartmentForReservation.id;
     this.reservationUpdateRequest.price = this.apartmentForReservation.rentPrice;
     this.reservationUpdateRequest.reservationStatus = ReservationStatus.ACTIVE.toString();
     this.reservationUpdateRequest.isUserLogged = this.authService.isUserLogged();
-    this.apartmentForReservationService.makeReservation(this.reservationUpdateRequest).subscribe(() => {
-      this.route.reloadComponent(true);
-      this.toastr.success('Zapisano');
+    this.apartmentForReservationService.makeReservation(this.reservationUpdateRequest).subscribe({
+      next: () => {
+        this.route.reloadComponent(true);
+        this.toastr.success('Zapisano');
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+      }
     });
   }
 }
