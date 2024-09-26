@@ -6,6 +6,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Properties;
+
+import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -18,6 +20,9 @@ public class SecretsReader {
 
     private static final String APP_EMAIL_LOGIN_FIELD_NAME = "secret.application.email.login";
     private static final String APP_EMAIL_PASSWORD_FIELD_NAME = "secret.application.email.password";
+    private static final String DATASOURCE_USERNAME_FIELD_NAME = "secret.datasource.username";
+    private static final String DATASOURCE_PASSWORD_FIELD_NAME = "secret.datasource.password";
+    private static final String JWT_KEY_FIELD_NAME = "secret.jwt.key";
 
     private Properties properties;
 
@@ -44,15 +49,23 @@ public class SecretsReader {
         }
     }
 
+    @PostConstruct
+    private void checkOnStartUp() {
+        if (!properties.containsKey(DATASOURCE_USERNAME_FIELD_NAME))
+            throw new ConfigurationFileReaderException(DATASOURCE_USERNAME_FIELD_NAME, CONFIG_FILE_NAME);
+        if (!properties.containsKey(DATASOURCE_PASSWORD_FIELD_NAME))
+            throw new ConfigurationFileReaderException(DATASOURCE_PASSWORD_FIELD_NAME, CONFIG_FILE_NAME);
+        if (!properties.containsKey(JWT_KEY_FIELD_NAME))
+            throw new ConfigurationFileReaderException(JWT_KEY_FIELD_NAME, CONFIG_FILE_NAME);
+    }
+
     /**
      * For correct {@link BookingUniversityProjectConfiguration#javaMailSender()} work, a gmail mail must be configured.
      * This method return login of such email.
      */
     public String getAppEmailLogin() {
-        if (!properties.containsKey(APP_EMAIL_LOGIN_FIELD_NAME)) throw new ConfigurationFileReaderException(
-                APP_EMAIL_LOGIN_FIELD_NAME,
-                CONFIG_FILE_NAME
-        );
+        if (!properties.containsKey(APP_EMAIL_LOGIN_FIELD_NAME))
+            throw new ConfigurationFileReaderException(APP_EMAIL_LOGIN_FIELD_NAME, CONFIG_FILE_NAME);
 
         return properties.getProperty(APP_EMAIL_LOGIN_FIELD_NAME);
     }
@@ -62,10 +75,8 @@ public class SecretsReader {
      * This method return password of such email.
      */
     public String getAppEmailPassword() {
-        if (!properties.containsKey(APP_EMAIL_PASSWORD_FIELD_NAME)) throw new ConfigurationFileReaderException(
-                APP_EMAIL_PASSWORD_FIELD_NAME,
-                CONFIG_FILE_NAME
-        );
+        if (!properties.containsKey(APP_EMAIL_PASSWORD_FIELD_NAME))
+            throw new ConfigurationFileReaderException(APP_EMAIL_PASSWORD_FIELD_NAME, CONFIG_FILE_NAME);
 
         return properties.getProperty(APP_EMAIL_PASSWORD_FIELD_NAME);
     }
