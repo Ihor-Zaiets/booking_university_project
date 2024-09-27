@@ -7,7 +7,7 @@ Created using java 17 + Angular 16.
 
 Main features of the projects are:
 1. CRUD operations for main entities: Appartments, Users and Roles
-2. User signing up and loginng in
+2. User signing up and logging in
 3. Authentication and authorization
 4. Email notification sending
 

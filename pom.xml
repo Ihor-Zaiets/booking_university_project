@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ihorzaiets.booking_university_project</groupId>
 	<artifactId>booking_university_project</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
     <packaging>pom</packaging>
 	<name>booking_university_project</name>
 	<description>My diplom work for university</description>
