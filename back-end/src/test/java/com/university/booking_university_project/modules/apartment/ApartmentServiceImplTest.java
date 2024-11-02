@@ -142,7 +142,7 @@ public class ApartmentServiceImplTest {
     }
 
     @Disabled
-    @Test
+//    @Test
     public void shouldThrowIfNumberOfDoubleBedsFieldIsLessThen1() {
         ApartmentCreationDTO apartmentCreationDTO = createMock();
 
@@ -172,7 +172,7 @@ public class ApartmentServiceImplTest {
     }
 
     @Disabled
-    @Test
+//    @Test
     public void shouldThrowIfNumberOfSingleBedsIsLessThen1() {
         ApartmentCreationDTO apartmentCreationDTO = createMock();
 

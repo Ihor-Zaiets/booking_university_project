@@ -81,7 +81,7 @@ public class ReservationServiceImplTest {
     }
 
     @Disabled
-    @Test
+//    @Test
     public void shouldThrowIfPriceFieldIsLessThen0() {
         ReservationCreationDTO reservationCreationDTO = createDTOMock();
 
