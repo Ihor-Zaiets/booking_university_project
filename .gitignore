@@ -35,4 +35,4 @@ build/
 
 ### Secrets ###
 
-/back-end/src/main/resources/secrets.properties
+/back-end-service/src/main/resources/secrets.properties
