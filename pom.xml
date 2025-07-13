@@ -16,7 +16,8 @@
 	<description>My diploma work for university</description>
     <modules>
         <module>back-end-service</module>
-        <module>front-end</module>
+		<module>email-service</module>
+		<module>front-end</module>
     </modules>
 
 </project>
