@@ -12,7 +12,8 @@ import com.university.booking_university_project.modules.reservation.dto.Reserva
 import com.university.booking_university_project.modules.reservation.dto.ReservationRequestDTO;
 import com.university.booking_university_project.modules.reservation.dto.ReservationUpdateDTO;
 import com.university.booking_university_project.modules.reservation.repository.ReservationRepository;
-import com.university.booking_university_project.modules.sender.EmailSenderService;
+import com.university.booking_university_project.modules.sender.EmailEvent;
+import com.university.booking_university_project.modules.sender.EmailSenderProducer;
 import com.university.booking_university_project.modules.user.UserService;
 import com.university.booking_university_project.modules.user.dto.UserCreateDTO;
 import com.university.booking_university_project.modules.user.dto.UserDTO;
@@ -36,7 +37,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     private final Mapper mapper;
 
-    private final EmailSenderService emailSenderService;
+    private final EmailSenderProducer emailSenderProducer;
 
     private final ApartmentService apartmentService;
 
@@ -47,13 +48,12 @@ public class ReservationServiceImpl implements ReservationService {
             ReservationRepository reservationRepository,
             UserService userService,
             Mapper mapper,
-            EmailSenderService emailSenderService,
-            ApartmentService apartmentService
+            EmailSenderProducer emailSenderProducer, ApartmentService apartmentService
     ) {
         this.reservationRepository = reservationRepository;
         this.userService = userService;
         this.mapper = mapper;
-        this.emailSenderService = emailSenderService;
+        this.emailSenderProducer = emailSenderProducer;
         this.apartmentService = apartmentService;
     }
 
@@ -180,7 +180,7 @@ public class ReservationServiceImpl implements ReservationService {
                     .append(" zl ")
                     .append("\n")
                     .toString();
-            emailSenderService.send(reservationRequestDTO.getUserEmail(), RESERVATION_EMAIL_TITLE, emailContent);
+            emailSenderProducer.sendEmailEvent(new EmailEvent(reservationRequestDTO.getUserEmail(), RESERVATION_EMAIL_TITLE, emailContent));
         }
     }
 
